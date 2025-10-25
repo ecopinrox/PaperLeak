@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Crawlable
+  - Guard
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - PlayerProne
+  - Crawlable
+  - Guard
+  - Camera
+  - PlayerCentredCamera
+  - Wall
+  - Transparent
+  - Ground
+  - Distraction
+  - Collectible
+  - RoomFocusedCamera
+  - Confiner
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: GroundTilemap
+    uniqueID: 152122649
+    locked: 0
+  - name: Distraction
+    uniqueID: 3665376683
+    locked: 0
+  - name: Character
+    uniqueID: 412747615
+    locked: 0
+  - name: Collectible
+    uniqueID: 257885637
+    locked: 0
+  - name: CrawlTilemap
+    uniqueID: 1358633753
+    locked: 0
+  - name: WallTilemap
+    uniqueID: 1349843291
+    locked: 0
+  - name: SpriteOverlay
+    uniqueID: 3746606929
+    locked: 0
+  - name: TransparentTilemap
+    uniqueID: 3216364961
+    locked: 0
+  - name: Icon
+    uniqueID: 333012283
+    locked: 0
+  m_RenderingLayers:
+  - Default
