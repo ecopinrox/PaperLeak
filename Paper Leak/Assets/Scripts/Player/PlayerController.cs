@@ -15,18 +15,11 @@ public class PlayerController : MonoBehaviour
     InputAction moveAction;
     InputAction crawlAction;
     InputAction peekAction;
-    InputAction aimAction;
     InputAction interactAction;
-    InputAction throwAction;
-    InputAction cancelAction;
-    InputAction selectVDAction;
-    InputAction selectSDAction;
-    InputAction makePaperBallsAction;
     InputAction fartAction;
     InputAction exitUIAction;
 
     const string movementActionMapName = "Player";
-    const string aimingActionMapName = "Aiming";
     const string uiActionMapName = "UI";
 
     Interactible interactible;
@@ -44,13 +37,7 @@ public class PlayerController : MonoBehaviour
         moveAction              = playerInput.actions["Move"                    ];
         crawlAction             = playerInput.actions["Crawl"                   ];
         peekAction              = playerInput.actions["Peek"                    ];
-        aimAction               = playerInput.actions["Aim"                     ];
         interactAction          = playerInput.actions["Interact"                ];
-        throwAction             = playerInput.actions["Throw"                   ];
-        cancelAction            = playerInput.actions["Cancel"                  ];
-        selectVDAction          = playerInput.actions["SelectVisualDistraction" ];
-        selectSDAction          = playerInput.actions["SelectSoundDistraction"  ];
-        makePaperBallsAction    = playerInput.actions["MakePaperBalls"          ];
         fartAction              = playerInput.actions["Fart"                    ];
         exitUIAction            = playerInput.actions["Exit"                    ];
     }
@@ -72,19 +59,7 @@ public class PlayerController : MonoBehaviour
 
         crawlAction.performed += ToggleCrawl;
 
-        aimAction.performed += StartAiming;
-
-        cancelAction.started += StopAiming;
-
         interactAction.performed += Interact;
-
-        throwAction.performed += Throw;
-
-        selectVDAction.performed += SelectVisualDistraction;
-
-        selectSDAction.performed += SelectSoundDistraction;
-
-        makePaperBallsAction.performed += MakePaperBalls;
 
         fartAction.performed += Fart;
 
@@ -105,19 +80,7 @@ public class PlayerController : MonoBehaviour
 
         crawlAction.performed -= ToggleCrawl;
 
-        aimAction.performed -= StartAiming;
-
-        cancelAction.started -= StopAiming;
-        
         interactAction.performed -= Interact;
-
-        throwAction.performed -= Throw;
-
-        selectVDAction.performed -= SelectVisualDistraction;
-
-        selectSDAction.performed -= SelectSoundDistraction;
-
-        makePaperBallsAction.performed -= MakePaperBalls;
 
         fartAction.performed -= Fart;
 
@@ -196,20 +159,6 @@ public class PlayerController : MonoBehaviour
         playerCameraRigHandler.SetActiveCamera(ctx.ReadValue<Vector2>());
     }
 
-    void StartAiming(InputAction.CallbackContext ctx)
-    {
-        SwitchActionMap(aimingActionMapName);
-        playerDistraction.EnterAimMode();
-    }
-
-    void StopAiming(InputAction.CallbackContext ctx)
-    {
-        SwitchActionMap(movementActionMapName);
-        playerDistraction.ExitAimMode();
-        //CameraSwitcher.SetCamera(Vector2.zero);
-        playerCameraRigHandler.SetActiveCamera(ctx.ReadValue<Vector2>());
-    }
-
     void Interact(InputAction.CallbackContext ctx) 
     {
         if (!interactible)
@@ -221,31 +170,6 @@ public class PlayerController : MonoBehaviour
         if(uiEnabled) SwitchActionMap(uiActionMapName);
     }
 
-    void Throw(InputAction.CallbackContext ctx)
-    {
-        if (playerDistraction.Throw(playerMovement.IsCrawling))
-        {
-            SwitchActionMap(movementActionMapName);
-        }
-    }
-
-    void SelectVisualDistraction(InputAction.CallbackContext ctx)
-    {
-        playerDistraction.isPopPop = false;
-        playerDistraction.UpdateDistractionInformation();
-    }
-
-    void SelectSoundDistraction(InputAction.CallbackContext ctx)
-    {
-        playerDistraction.isPopPop = true;
-        playerDistraction.UpdateDistractionInformation();
-    }
-
-    void MakePaperBalls(InputAction.CallbackContext ctx)
-    {
-        playerDistraction.TearPaper();
-    } 
-    
     private void Fart(InputAction.CallbackContext context)
     {
         playerDistraction.Fart();

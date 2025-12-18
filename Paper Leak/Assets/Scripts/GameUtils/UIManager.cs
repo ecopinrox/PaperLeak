@@ -15,12 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject changeDifficultyPanel;
     [SerializeField] Button[] difficultyButtons;
 
-    [Header("Distraction Information")]
-    [SerializeField] GameObject VDSelectPanel; 
-    [SerializeField] GameObject SDSelectPanel;
-    [SerializeField] TextMeshProUGUI paperBallCountText;
-    [SerializeField] TextMeshProUGUI popPopCountText;
-
     [Header("Collectibles")]
     [SerializeField] List<GameObject> collectibleIcons;
 
@@ -109,15 +103,6 @@ public class UIManager : MonoBehaviour
     public void SetDifficultyText(int difficulty)
     {
         SetDifficultyText();
-    }
-
-    public void UpdateDistractionInformation(bool sd, int pbc, int ppc)
-    {
-        VDSelectPanel.SetActive(!sd);
-        SDSelectPanel.SetActive(sd);
-
-        paperBallCountText.text = "x" + pbc;
-        popPopCountText.text = "x" + ppc;
     }
 
     public void UpdateCollectibleIcons(HashSet<int> collectibleIDs)

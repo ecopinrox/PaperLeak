@@ -19,7 +19,7 @@
                     "name": "Crawl",
                     "type": "Button",
                     "id": "c30c995f-e7ea-421e-85d3-490695096b24",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -34,54 +34,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
-                    "type": "Button",
-                    "id": "3dc2b2d2-a5c1-4676-831c-c9695a2e5a70",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SelectVisualDistraction",
-                    "type": "Button",
-                    "id": "aae32a81-b78e-475f-b66e-258072fba9f6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SelectSoundDistraction",
-                    "type": "Button",
-                    "id": "950f7b3f-edf9-4c35-b2b2-45d1d3e0c236",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "ae093052-6423-4023-b487-4e56709c5fa4",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MakePaperBalls",
-                    "type": "Button",
-                    "id": "5c81b284-4f19-4b18-aeef-c74462109927",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fart",
-                    "type": "Button",
-                    "id": "367743a6-9a60-43e0-9948-9115adc309dc",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -201,39 +156,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3fef53c8-f09c-42b9-aa63-31cee1ade79c",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4bba9a3a-d8e1-4b42-8cb8-b047ee59587b",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SelectVisualDistraction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cb4be82a-0b4b-4997-8112-4d0fe9cc427d",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SelectSoundDistraction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4321440d-f20d-4eff-b684-38495013807f",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -308,65 +230,6 @@
                     "action": "Peek",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "7858d609-6db9-444b-a542-25fca6727347",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MakePaperBalls",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Aiming",
-            "id": "bbb9f43e-4388-4dd1-b65a-7826cb40b6a1",
-            "actions": [
-                {
-                    "name": "Throw",
-                    "type": "Button",
-                    "id": "264b7554-2f4c-4361-84e7-4e28745acd78",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Cancel",
-                    "type": "Button",
-                    "id": "7a625c79-788a-4730-9c7b-7cacd35e83e1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "882fbab2-4291-4cb0-8d84-c3ad05951315",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "892179b5-c9fd-4dfa-b315-0121073cfede",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },

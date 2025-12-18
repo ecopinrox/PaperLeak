@@ -5,10 +5,8 @@ using UnityEngine;
 public class SaveState : ScriptableObject
 {
     public Vector2Int playerPos;
-    public HashSet<int> items = new();
+    public HashSet<int> collectibles = new();
     public HashSet<Vector2Int> openedDoors = new();
     public HashSet<Vector2Int> collectedItemLocations = new();
-    public int paperBallCount = 3;
-    public int popPopCount = 3;
     public float timeElapsed = 0;
 }
