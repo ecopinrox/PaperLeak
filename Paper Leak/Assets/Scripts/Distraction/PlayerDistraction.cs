@@ -12,12 +12,6 @@ public class PlayerDistraction : Distraction
 
     public float ViewDistanceMultiplier { get; private set; } = 1f;
 
-    [SerializeField] GameObject paperBall;
-    [SerializeField] GameObject popPop;
-    [HideInInspector] public bool isPopPop;
-
-    [SerializeField] int paperBallIncrementCount = 3;
-
     [SerializeField] SoundData fartSFX;
     SoundData walkSFX;
     SoundData paperTearingSFX;
@@ -46,40 +40,6 @@ public class PlayerDistraction : Distraction
 
     public void ExitAimMode() => aimingController.ExitAimMode();
 
-    public bool Throw(bool isCrawling)
-    {
-        if (aimingController.SelectedPos == null) { return false; }
-
-        Vector2Int pos = (Vector2Int)aimingController.SelectedPos;
-        if (!isPopPop && playerInventory.PaperBallCount > 0)
-        {
-            GameObject instance = Instantiate(paperBall);
-            instance.transform.position = transform.position;
-
-            instance.GetComponent<PaperBallController>().SetDestination(pos, isCrawling);
-            playerInventory.DecrementPaperBallCount();
-        }
-        else if (isPopPop && playerInventory.PopPopCount > 0)
-        {
-            GameObject instance = Instantiate(popPop);
-            instance.transform.position = transform.position;
-
-            instance.GetComponent<PopPopController>().SetDestination(pos, isCrawling);
-            playerInventory.DecrementPopPopCount();
-        }
-
-        UpdateDistractionInformation();
-        ExitAimMode();
-
-        return true;
-    }
-    
-    public void TearPaper()
-    {
-        soundManager.PlaySound(paperTearingSFX, Position, this);
-        playerInventory.IncrementPaperBallCount(paperBallIncrementCount);
-    }
-
     public void Fart()
     {
         soundManager.PlaySound(fartSFX, Position, this);
@@ -95,6 +55,4 @@ public class PlayerDistraction : Distraction
         walkSFX = playerSettings.walkSFX;
         paperTearingSFX = playerSettings.paperTearingSFX;
     }
-
-    public void UpdateDistractionInformation() => uiManager.UpdateDistractionInformation(isPopPop, playerInventory.PaperBallCount, playerInventory.PopPopCount);
 }

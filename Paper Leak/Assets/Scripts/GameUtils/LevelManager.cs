@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
-        saveState.items = new();
+        saveState.collectibles = new();
         saveState.openedDoors = new();
         collectedItemLocations = new();
 
@@ -94,9 +94,7 @@ public class LevelManager : MonoBehaviour
 
         saveState.playerPos = Vector2Int.RoundToInt(playerInventory.transform.position);
         saveState.openedDoors = new(openedDoors);
-        saveState.items = new(playerInventory.Items);
-        saveState.paperBallCount = playerInventory.PaperBallCount;
-        saveState.popPopCount = playerInventory.PopPopCount;
+        saveState.collectibles = new(playerInventory.Collectibles);
         saveState.collectedItemLocations = new(collectedItemLocations);
         saveState.timeElapsed = TimeElapsed;
     }
