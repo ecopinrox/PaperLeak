@@ -4,6 +4,6 @@ public class TestItem : Item
 {
     public override void Use()
     {
-        Debug.Log("used");
+        Debug.Log("item used");
     }
 }

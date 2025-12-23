@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] SaveState saveState;
     public static SaveState SaveState { get { return Instance.saveState; } }
 
-    public static event Action OnLoadSave;
+    public static event Action OnLoadState;
     public static bool isReloading = false;
 
     public static int currentDifficultySetting = 1;
@@ -119,7 +119,7 @@ public class LevelManager : MonoBehaviour
         //}
         collectedItemLocations = new(saveState.collectedItemLocations);
         TimeElapsed = saveState.timeElapsed;
-        OnLoadSave?.Invoke();
+        OnLoadState?.Invoke();
         LoadDifficultySettings();
     }
 }

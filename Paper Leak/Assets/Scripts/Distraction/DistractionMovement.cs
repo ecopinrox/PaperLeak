@@ -13,13 +13,6 @@ public class DistractionMovement : MonoBehaviour
     bool isStopped;
     bool canPassUnderCrawlableAreas = false;
 
-    GridManager gridManager;
-
-    private void Awake()
-    {
-        gridManager = FindFirstObjectByType<GridManager>();
-    }
-
     public void SetDestination(Vector2Int destination, bool canPassUnderCrawlableAreas)
     {
         this.canPassUnderCrawlableAreas = canPassUnderCrawlableAreas;

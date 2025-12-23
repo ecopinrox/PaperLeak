@@ -49,11 +49,11 @@ TagManager:
   - name: Distraction
     uniqueID: 3665376683
     locked: 0
-  - name: Character
-    uniqueID: 412747615
-    locked: 0
   - name: Collectible
     uniqueID: 257885637
+    locked: 0
+  - name: Character
+    uniqueID: 412747615
     locked: 0
   - name: CrawlTilemap
     uniqueID: 1358633753

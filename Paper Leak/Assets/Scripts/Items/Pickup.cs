@@ -2,14 +2,14 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class ItemPickup : MonoBehaviour
+public class Pickup : MonoBehaviour
 {
     public event Action<PlayerInventory> OnPickup;
     Vector2Int GridPos => Vector2Int.RoundToInt(transform.position);
 
     private void Awake()
     {
-        LevelManager.OnLoadSave += CheckIfItemAcquired;
+        LevelManager.OnLoadState += CheckIfItemAcquired;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -23,7 +23,7 @@ public class ItemPickup : MonoBehaviour
 
     void OnDisable()
     {
-        LevelManager.OnLoadSave -= CheckIfItemAcquired;
+        LevelManager.OnLoadState -= CheckIfItemAcquired;
     }
 
     void CheckIfItemAcquired()

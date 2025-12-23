@@ -15,12 +15,12 @@ public class LockedDoor : Interactible
         gridManager = FindFirstObjectByType<GridManager>();
         pathfinder = FindFirstObjectByType<Pathfinder>();
 
-        LevelManager.OnLoadSave += CheckIfKeyUsed;
+        LevelManager.OnLoadState += CheckIfKeyUsed;
     }
 
     private void OnDisable()
     {
-        LevelManager.OnLoadSave -= CheckIfKeyUsed;
+        LevelManager.OnLoadState -= CheckIfKeyUsed;
     }
 
     public override void Interact(out bool uiEnabled)
@@ -28,7 +28,7 @@ public class LockedDoor : Interactible
         uiEnabled = false;
 
         PlayerInventory playerInventory = FindFirstObjectByType<PlayerInventory>();
-        if (playerInventory.HasObject(keyID))
+        if (playerInventory.HasCollectible(keyID))
         {
             OpenDoor();
         }
