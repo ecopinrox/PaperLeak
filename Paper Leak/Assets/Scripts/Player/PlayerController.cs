@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerController : MonoBehaviour
 {
     PlayerInput playerInput;
     PlayerMovement playerMovement;
+    PlayerInventory playerInventory;
     SpriteRenderer spriteRenderer;
     PlayerDistraction playerDistraction;
     PlayerCameraRigHandler playerCameraRigHandler;
@@ -16,8 +18,8 @@ public class PlayerController : MonoBehaviour
     InputAction crawlAction;
     InputAction peekAction;
     InputAction interactAction;
-    InputAction fartAction;
     InputAction exitUIAction;
+    InputAction useItemAction;
 
     const string movementActionMapName = "Player";
     const string uiActionMapName = "UI";
@@ -28,18 +30,18 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerInventory = GetComponent<PlayerInventory>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         playerDistraction = GetComponent<PlayerDistraction>();
         playerCameraRigHandler = GetComponent<PlayerCameraRigHandler>();
         uiManager = FindFirstObjectByType<UIManager>();
-        //CameraSwitcher = FindFirstObjectByType<PlayerCameraHandler>();
 
         moveAction              = playerInput.actions["Move"                    ];
         crawlAction             = playerInput.actions["Crawl"                   ];
         peekAction              = playerInput.actions["Peek"                    ];
         interactAction          = playerInput.actions["Interact"                ];
-        fartAction              = playerInput.actions["Fart"                    ];
         exitUIAction            = playerInput.actions["Exit"                    ];
+        useItemAction           = playerInput.actions["UseItem"                 ];
     }
 
     //moving also counts as peeking for some odd reason but the vector read is (0,0) so it shouldn't(?) matter for my purposes
@@ -61,9 +63,9 @@ public class PlayerController : MonoBehaviour
 
         interactAction.performed += Interact;
 
-        fartAction.performed += Fart;
-
         exitUIAction.performed += ExitUI;
+
+        useItemAction.performed += UseItem;
 
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
 
@@ -82,9 +84,9 @@ public class PlayerController : MonoBehaviour
 
         interactAction.performed -= Interact;
 
-        fartAction.performed -= Fart;
-
         exitUIAction.performed -= ExitUI;
+
+        useItemAction.performed -= UseItem;
 
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
     }
@@ -126,6 +128,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #region InputMethods
+
     /// <summary>
     /// temporary function, change when i get the actual sprites
     /// </summary>
@@ -170,15 +173,16 @@ public class PlayerController : MonoBehaviour
         if(uiEnabled) SwitchActionMap(uiActionMapName);
     }
 
-    private void Fart(InputAction.CallbackContext context)
-    {
-        playerDistraction.Fart();
-    }
-
     void ExitUI(InputAction.CallbackContext ctx)
     {
         uiManager.DisableAllMenus();
         SwitchActionMap(movementActionMapName);
     }
+
+    void UseItem(InputAction.CallbackContext context)
+    {
+        playerInventory.UseSelectedItem();
+    }
+
     #endregion
 }

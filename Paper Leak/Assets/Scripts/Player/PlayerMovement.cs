@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelManager.OnLoadSave += LoadPosition;
+        LevelManager.OnLoadState += LoadPosition;
     }
 
     private void Start()
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        LevelManager.OnLoadSave -= LoadPosition;
+        LevelManager.OnLoadState -= LoadPosition;
     }
 
     public void SetDirection(Vector2 input)

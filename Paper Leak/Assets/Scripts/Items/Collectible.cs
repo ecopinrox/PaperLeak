@@ -1,22 +1,22 @@
 using UnityEngine;
 
-[RequireComponent(typeof(ItemPickup))]
+[RequireComponent(typeof(Pickup))]
 public class Collectible : MonoBehaviour
 {
     [SerializeField] int collectibleID;
     
-    ItemPickup itemPickup;
+    Pickup pickup;
 
     private void Awake()
     {
-        itemPickup = GetComponent<ItemPickup>();
+        pickup = GetComponent<Pickup>();
     }
 
     private void Start()
     {
-        itemPickup.OnPickup += (playerInventory) =>
+        pickup.OnPickup += (playerInventory) =>
         {
-            playerInventory.AddObject(collectibleID);
+            playerInventory.AddCollectible(collectibleID);
             Destroy(gameObject);
         };
     }
