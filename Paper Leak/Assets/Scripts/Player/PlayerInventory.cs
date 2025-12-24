@@ -51,7 +51,7 @@ public class PlayerInventory : MonoBehaviour
             }
 
             int space = MaxStackSize - Count;
-            Debug.Log("space = " + space);
+
             if(space <= 0)
             {
                 return false;
@@ -99,17 +99,22 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] int slotCount = 6;
     ItemSlot[] itemSlots;
-    int selectedItem = 0;
+    int selectedItemSlot = 0;
 
-    UIManager gameManager;
+    UIManager uiManager;
 
     private void Awake()
     {
-        gameManager = FindFirstObjectByType<UIManager>();
+        uiManager = FindFirstObjectByType<UIManager>();
 
         LevelManager.OnLoadState += LoadInventory;
 
         itemSlots = new ItemSlot[slotCount];
+    }
+
+    private void Start()
+    {
+        UpdateItemUI();
     }
 
     private void OnDisable()
@@ -121,7 +126,8 @@ public class PlayerInventory : MonoBehaviour
     {
         Collectibles = new(LevelManager.SaveState.collectibles);
 
-        gameManager.UpdateCollectibleIcons(Collectibles);
+        uiManager.UpdateCollectibleIcons(Collectibles);
+        UpdateItemUI();
     }
 
     #region Collectibles
@@ -130,7 +136,7 @@ public class PlayerInventory : MonoBehaviour
     {
         Collectibles.Add(id);
 
-        gameManager.UpdateCollectibleIcons(Collectibles);
+        uiManager.UpdateCollectibleIcons(Collectibles);
     }
 
     public bool HasCollectible(int id)
@@ -148,7 +154,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void UseSelectedItem()
     {
-        itemSlots[selectedItem].UseItem();
+        itemSlots[selectedItemSlot].UseItem();
+        UpdateItemUI();
     }
 
     /// <summary>
@@ -171,10 +178,22 @@ public class PlayerInventory : MonoBehaviour
                 continue;
             }
 
+            UpdateItemUI();
             return itemsAdded;
         }
 
+        UpdateItemUI();
         return 0;
+    }
+
+    void UpdateItemUI()
+    {
+        for(int i = 0; i < slotCount; i++)
+        {
+            ItemSlot current = itemSlots[i];
+            uiManager.UpdateItemSlot(current.ItemPrefab, current.Count, i);
+        }
+        uiManager.SelectItemSlot(selectedItemSlot);
     }
 
     #endregion
