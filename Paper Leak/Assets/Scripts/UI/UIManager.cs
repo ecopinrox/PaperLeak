@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject changeDifficultyPanel;
     [SerializeField] Button[] difficultyButtons;
 
+    [Header("Items")]
+    [SerializeField] List<ItemSlotUIElement> itemSlots;
+
     [Header("Collectibles")]
     [SerializeField] List<GameObject> collectibleIcons;
 
@@ -103,6 +106,21 @@ public class UIManager : MonoBehaviour
     public void SetDifficultyText(int difficulty)
     {
         SetDifficultyText();
+    }
+
+    public void UpdateItemSlot(GameObject itemPrefab, int count, int slotIndex)
+    {
+        Debug.Log("updating " + slotIndex);
+        itemSlots[slotIndex].UpdateSlot(itemPrefab, count);
+    }
+
+    public void SelectItemSlot(int slotIndex)
+    {
+        foreach(ItemSlotUIElement slot in itemSlots)
+        {
+            slot.DeselectSlot();
+        }
+        itemSlots[slotIndex].SelectSlot();
     }
 
     public void UpdateCollectibleIcons(HashSet<int> collectibleIDs)

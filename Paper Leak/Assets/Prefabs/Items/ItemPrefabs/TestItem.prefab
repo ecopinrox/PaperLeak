@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ceccdf4d074864f92834cda0e0bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestItem
-  <IsInfinite>k__BackingField: 1
+  <IsInfinite>k__BackingField: 0
   <MaxStackSize>k__BackingField: 4
 --- !u!1 &8488133875044343380
 GameObject:
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6520171, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

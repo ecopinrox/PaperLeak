@@ -7,7 +7,7 @@ public class ItemHolder : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] int itemCount = 1;
 
-    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     Pickup pickup;
 
@@ -29,7 +29,6 @@ public class ItemHolder : MonoBehaviour
     void AddToInventory(PlayerInventory playerInventory)
     {
         int itemsAdded = playerInventory.AddItems(itemPrefab, itemCount);
-        Debug.Log(itemsAdded + " items added");
 
         itemCount -= itemsAdded;
         if(itemCount <= 0)
@@ -45,6 +44,9 @@ public class ItemHolder : MonoBehaviour
             return;
         }
 
-        sprite.sprite = itemPrefab.GetComponentInChildren<SpriteRenderer>().sprite;
+        SpriteRenderer itemSpriteRenderer = itemPrefab.GetComponentInChildren<SpriteRenderer>();
+
+        spriteRenderer.sprite = itemSpriteRenderer.sprite;
+        spriteRenderer.color = itemSpriteRenderer.color;
     }
 }
