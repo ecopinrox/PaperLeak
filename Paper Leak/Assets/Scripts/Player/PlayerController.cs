@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +19,10 @@ public class PlayerController : MonoBehaviour
     InputAction interactAction;
     InputAction exitUIAction;
     InputAction useItemAction;
+    InputAction selectItem1Action;
+    InputAction selectItem2Action;
+    InputAction selectItem3Action;
+    InputAction selectItem4Action;
 
     const string movementActionMapName = "Player";
     const string uiActionMapName = "UI";
@@ -36,12 +39,16 @@ public class PlayerController : MonoBehaviour
         playerCameraRigHandler = GetComponent<PlayerCameraRigHandler>();
         uiManager = FindFirstObjectByType<UIManager>();
 
-        moveAction              = playerInput.actions["Move"                    ];
-        crawlAction             = playerInput.actions["Crawl"                   ];
-        peekAction              = playerInput.actions["Peek"                    ];
-        interactAction          = playerInput.actions["Interact"                ];
-        exitUIAction            = playerInput.actions["Exit"                    ];
-        useItemAction           = playerInput.actions["UseItem"                 ];
+        moveAction              = playerInput.actions["Move"            ];
+        crawlAction             = playerInput.actions["Crawl"           ];
+        peekAction              = playerInput.actions["Peek"            ];
+        interactAction          = playerInput.actions["Interact"        ];
+        exitUIAction            = playerInput.actions["Exit"            ];
+        useItemAction           = playerInput.actions["UseItem"         ];
+        selectItem1Action       = playerInput.actions["SelectItem1"     ];
+        selectItem2Action       = playerInput.actions["SelectItem2"     ];
+        selectItem3Action       = playerInput.actions["SelectItem3"     ];
+        selectItem4Action       = playerInput.actions["SelectItem4"     ];
     }
 
     //moving also counts as peeking for some odd reason but the vector read is (0,0) so it shouldn't(?) matter for my purposes
@@ -67,6 +74,11 @@ public class PlayerController : MonoBehaviour
 
         useItemAction.performed += UseItem;
 
+        selectItem1Action.performed += SelectItem1;
+        selectItem2Action.performed += SelectItem2;
+        selectItem3Action.performed += SelectItem3;
+        selectItem4Action.performed += SelectItem4;
+
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
 
         StartCoroutine(playerMovement.MovementHandler());
@@ -87,6 +99,11 @@ public class PlayerController : MonoBehaviour
         exitUIAction.performed -= ExitUI;
 
         useItemAction.performed -= UseItem;
+
+        selectItem1Action.performed -= SelectItem1;
+        selectItem2Action.performed -= SelectItem2;
+        selectItem3Action.performed -= SelectItem3;
+        selectItem4Action.performed -= SelectItem4;
 
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
     }
@@ -179,9 +196,29 @@ public class PlayerController : MonoBehaviour
         SwitchActionMap(movementActionMapName);
     }
 
-    void UseItem(InputAction.CallbackContext context)
+    void UseItem(InputAction.CallbackContext _)
     {
         playerInventory.UseSelectedItem();
+    }
+
+    void SelectItem1(InputAction.CallbackContext _)
+    {
+        playerInventory.SelectItemSlot(0);
+    }
+
+    void SelectItem2(InputAction.CallbackContext _)
+    {
+        playerInventory.SelectItemSlot(1);
+    }
+
+    void SelectItem3(InputAction.CallbackContext _)
+    {
+        playerInventory.SelectItemSlot(2);
+    }
+
+    void SelectItem4(InputAction.CallbackContext _)
+    {
+        playerInventory.SelectItemSlot(3);
     }
 
     #endregion

@@ -152,6 +152,12 @@ public class PlayerInventory : MonoBehaviour
 
     #region Items
 
+    public void SelectItemSlot(int slotIndex)
+    {
+        selectedItemSlot = slotIndex;
+        UpdateItemUI();
+    }
+
     public void UseSelectedItem()
     {
         itemSlots[selectedItemSlot].UseItem();
