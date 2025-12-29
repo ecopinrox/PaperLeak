@@ -7,8 +7,9 @@ public class ItemSlotUIElement : MonoBehaviour
     [SerializeField] Image itemImageRenderer;
     [SerializeField] TextMeshProUGUI itemCountText;
     [SerializeField] GameObject selectionPanel;
+    [SerializeField] Image cooldownOverlay;
 
-    public void UpdateSlot(GameObject itemPrefab, int count)
+    public void UpdateSlot(GameObject itemPrefab, int count, bool isInfinite)
     {
         if (itemPrefab == null)
         {
@@ -18,7 +19,13 @@ public class ItemSlotUIElement : MonoBehaviour
         {
             SpriteRenderer itemSpriteRenderer = itemPrefab.GetComponentInChildren<SpriteRenderer>();
             SetSlot(itemSpriteRenderer.sprite, itemSpriteRenderer.color, count);
+            itemCountText.enabled = !isInfinite;
         }
+    }
+
+    public void UpdateCooldownOverlay(float fill)
+    {
+        cooldownOverlay.fillAmount = fill;
     }
 
     public void SelectSlot()

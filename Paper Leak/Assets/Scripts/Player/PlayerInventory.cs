@@ -8,19 +8,30 @@ public class PlayerInventory : MonoBehaviour
     {
         public GameObject ItemPrefab { get; private set; }
         public int Count { get; private set; }
+        public float RemainingCooldownSeconds { get; private set; }
 
-        readonly bool IsInfinite 
+        public readonly bool IsInfinite 
         { 
             get 
             { 
+                if(ItemPrefab == null)
+                {
+                    return true;
+                }
+
                 return ItemPrefab.GetComponent<Item>().IsInfinite; 
             } 
         }
 
-        readonly int MaxStackSize 
+        public readonly int MaxStackSize 
         { 
             get 
             {
+                if(ItemPrefab == null)
+                {
+                    return 0;
+                }
+
                 if (IsInfinite)
                 {
                     return 1;
@@ -30,10 +41,40 @@ public class PlayerInventory : MonoBehaviour
             } 
         }
 
-        public ItemSlot(GameObject itemPrefab, int count)
+        readonly float MaxCooldownSeconds 
+        { 
+            get
+            {
+                return ItemPrefab.GetComponent<Item>().CooldownSeconds;
+            }
+        }
+
+        public readonly float CooldownFraction
         {
-            ItemPrefab = itemPrefab;
-            Count = count;
+            get
+            {
+                if(ItemPrefab == null)
+                {
+                    return 0;
+                }
+
+                if(MaxCooldownSeconds == 0)
+                {
+                    return 0;
+                }
+
+                return RemainingCooldownSeconds / MaxCooldownSeconds;
+            }
+        }
+
+        public void TickCooldown(float delta)
+        {
+            RemainingCooldownSeconds -= delta;
+
+            if(RemainingCooldownSeconds <= 0)
+            {
+                RemainingCooldownSeconds = 0;
+            }
         }
 
         public bool TryAddItems(GameObject item, int itemCount, out int itemsAdded)
@@ -69,7 +110,14 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
 
+            if (RemainingCooldownSeconds > 0)
+            {
+                return;
+            }
+
             ItemPrefab.GetComponent<Item>().Use();
+            RemainingCooldownSeconds = MaxCooldownSeconds;
+
             DecrementCount();
         }
 
@@ -91,7 +139,7 @@ public class PlayerInventory : MonoBehaviour
         {
             ItemPrefab = null;
             Count = 0;
-            Debug.Log("Slot empty");
+            RemainingCooldownSeconds = 0;
         }
     }
 
@@ -114,7 +162,12 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        UpdateItemUI();
+        UpdateItemSlotUI();
+    }
+
+    private void FixedUpdate()
+    {
+        TickItemCooldowns(Time.fixedDeltaTime);
     }
 
     private void OnDisable()
@@ -127,7 +180,7 @@ public class PlayerInventory : MonoBehaviour
         Collectibles = new(LevelManager.SaveState.collectibles);
 
         uiManager.UpdateCollectibleIcons(Collectibles);
-        UpdateItemUI();
+        UpdateItemSlotUI();
     }
 
     #region Collectibles
@@ -155,13 +208,13 @@ public class PlayerInventory : MonoBehaviour
     public void SelectItemSlot(int slotIndex)
     {
         selectedItemSlot = slotIndex;
-        UpdateItemUI();
+        UpdateItemSlotUI();
     }
 
     public void UseSelectedItem()
     {
         itemSlots[selectedItemSlot].UseItem();
-        UpdateItemUI();
+        UpdateItemSlotUI();
     }
 
     /// <summary>
@@ -184,23 +237,40 @@ public class PlayerInventory : MonoBehaviour
                 continue;
             }
 
-            UpdateItemUI();
+            UpdateItemSlotUI();
             return itemsAdded;
         }
 
-        UpdateItemUI();
+        UpdateItemSlotUI();
         return 0;
     }
 
-    void UpdateItemUI()
+    private void TickItemCooldowns(float delta)
+    {
+        for(int i = 0; i < slotCount; i++)
+        {
+            itemSlots[i].TickCooldown(delta);
+        }
+        UpdateCooldownUI();
+    }
+
+    void UpdateItemSlotUI()
     {
         for(int i = 0; i < slotCount; i++)
         {
             ItemSlot current = itemSlots[i];
-            uiManager.UpdateItemSlot(current.ItemPrefab, current.Count, i);
+            uiManager.UpdateItemSlot(current.ItemPrefab, current.Count, current.IsInfinite, i);
         }
         uiManager.SelectItemSlot(selectedItemSlot);
     }
+
+    void UpdateCooldownUI()
+    {
+        for(int i = 0; i < slotCount; i++)
+        {
+            uiManager.UpdateCooldownOverlay(itemSlots[i].CooldownFraction, i);
+        }
+    }    
 
     #endregion
 }

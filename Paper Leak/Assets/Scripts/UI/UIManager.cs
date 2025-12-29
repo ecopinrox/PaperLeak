@@ -108,10 +108,14 @@ public class UIManager : MonoBehaviour
         SetDifficultyText();
     }
 
-    public void UpdateItemSlot(GameObject itemPrefab, int count, int slotIndex)
+    public void UpdateItemSlot(GameObject itemPrefab, int count, bool isInfinite, int slotIndex)
     {
-        Debug.Log("updating " + slotIndex);
-        itemSlots[slotIndex].UpdateSlot(itemPrefab, count);
+        itemSlots[slotIndex].UpdateSlot(itemPrefab, count, isInfinite);
+    }
+
+    public void UpdateCooldownOverlay(float fill, int slotIndex)
+    {
+        itemSlots[slotIndex].UpdateCooldownOverlay(fill);
     }
 
     public void SelectItemSlot(int slotIndex)
