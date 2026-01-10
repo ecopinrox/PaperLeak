@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    struct ItemSlot
+    class ItemSlot
     {
         public GameObject ItemPrefab { get; private set; }
         public int Count { get; private set; }
         public float RemainingCooldownSeconds { get; private set; }
 
-        public readonly bool IsInfinite 
+        public bool IsInfinite 
         { 
             get 
             { 
@@ -23,7 +23,7 @@ public class PlayerInventory : MonoBehaviour
             } 
         }
 
-        public readonly int MaxStackSize 
+        public int MaxStackSize 
         { 
             get 
             {
@@ -41,15 +41,15 @@ public class PlayerInventory : MonoBehaviour
             } 
         }
 
-        readonly float MaxCooldownSeconds 
+        float MaxCooldownSeconds 
         { 
             get
             {
-                return ItemPrefab.GetComponent<Item>().CooldownSeconds;
+                return (ItemPrefab == null) ? 0 : ItemPrefab.GetComponent<Item>().CooldownSeconds;
             }
         }
 
-        public readonly float CooldownFraction
+        public float CooldownFraction
         {
             get
             {
@@ -65,6 +65,13 @@ public class PlayerInventory : MonoBehaviour
 
                 return RemainingCooldownSeconds / MaxCooldownSeconds;
             }
+        }
+
+        public ItemSlot()
+        {
+            ItemPrefab = null;
+            Count = 0;
+            RemainingCooldownSeconds = 0;
         }
 
         public void TickCooldown(float delta)
@@ -103,7 +110,7 @@ public class PlayerInventory : MonoBehaviour
             return true;
         }
 
-        public void UseItem()
+        public async Awaitable UseItem()
         {
             if (ItemPrefab == null)
             {
@@ -115,10 +122,11 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
 
-            ItemPrefab.GetComponent<Item>().Use();
-            RemainingCooldownSeconds = MaxCooldownSeconds;
-
-            DecrementCount();
+            if(await ItemPrefab.GetComponent<Item>().Use())
+            {
+                DecrementCount();
+                RemainingCooldownSeconds = MaxCooldownSeconds;
+            }
         }
 
         void DecrementCount()
@@ -158,6 +166,11 @@ public class PlayerInventory : MonoBehaviour
         LevelManager.OnLoadState += LoadInventory;
 
         itemSlots = new ItemSlot[slotCount];
+
+        for (int i = 0; i < slotCount; i++)
+        {
+            itemSlots[i] = new();
+        }
     }
 
     private void Start()
@@ -211,9 +224,10 @@ public class PlayerInventory : MonoBehaviour
         UpdateItemSlotUI();
     }
 
-    public void UseSelectedItem()
+    public async Awaitable UseSelectedItem()
     {
-        itemSlots[selectedItemSlot].UseItem();
+        await itemSlots[selectedItemSlot].UseItem();
+
         UpdateItemSlotUI();
     }
 

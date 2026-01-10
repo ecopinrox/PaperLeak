@@ -7,7 +7,6 @@ public class PlayerDistraction : Distraction
     PlayerInventory playerInventory;
     PlayerMovement playerMovement;
     UIManager uiManager;
-    AimingController aimingController;
     SoundManager soundManager;
 
     public float ViewDistanceMultiplier { get; private set; } = 1f;
@@ -22,7 +21,6 @@ public class PlayerDistraction : Distraction
         playerMovement = GetComponent<PlayerMovement>();
 
         uiManager = FindAnyObjectByType<UIManager>();
-        aimingController = uiManager.GetComponent<AimingController>();
         soundManager = uiManager.GetComponent<SoundManager>();
     }
 
@@ -35,10 +33,6 @@ public class PlayerDistraction : Distraction
     {
         ViewDistanceMultiplier = isCrouched ? crawlViewMultiplier : 1f;
     }
-
-    public void EnterAimMode() => aimingController.EnterAimMode();
-
-    public void ExitAimMode() => aimingController.ExitAimMode();
 
     public void Fart()
     {

@@ -1,55 +1,99 @@
+using System.Collections;
 using UnityEngine;
-using static UIManager;
 
 public class AimingController : MonoBehaviour
 {
-
     [SerializeField] float slowTimeFactor = 0.6f;
-    [SerializeField] GameObject tileHighlight;
+    [SerializeField] SpriteRenderer tileHighlight;
+    [SerializeField] Color validTargetColor = Color.greenYellow;
+    [SerializeField] Color invalidTargetColor = Color.red;
+
+    public static AimingController Instance { get; private set; }
 
     GridManager gridManager;
     UIManager uiManager;
+    PlayerController playerController;
 
-    bool isAiming = false;
-
-    public Vector2Int? SelectedPos { get { return tileHighlight.activeSelf ? Vector2Int.RoundToInt(tileHighlight.transform.position) : null; } }
+    public enum AimState { Aiming, Finished, Canceled }
+    public AimState AimingState { get; private set; } = AimState.Canceled;
 
     private void Awake()
     {
+        Instance = this;
+
+        playerController = FindAnyObjectByType<PlayerController>();
         gridManager = FindAnyObjectByType<GridManager>();
         uiManager = gridManager.GetComponent<UIManager>();
     }
 
-    bool IsLocationMarkable(Vector2 pos) => gridManager.IsWalkable(Vector2Int.RoundToInt(pos));
-
-    private void Update()
+    public async Awaitable<Vector2Int?> Aim(float radius)
     {
-        if (!isAiming) return;
+        //initial setup
+        Time.timeScale = slowTimeFactor;
+        uiManager.SetAimModePanelStatus(true);
+        playerController.SwitchToAimingActionMap();
+        tileHighlight.gameObject.SetActive(true);
 
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (IsLocationMarkable(mousePosition))
+        AimingState = AimState.Aiming;
+
+        Vector2Int? targetedTilePos = null;
+
+        //main aiming loop
+        while (AimingState == AimState.Aiming)
         {
-            tileHighlight.SetActive(true);
-            tileHighlight.transform.position = (Vector2)Vector2Int.RoundToInt(mousePosition);
+            Vector2Int mousePosition = Vector2Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            tileHighlight.transform.position = (Vector2)mousePosition;
+
+            if (IsLocationTargetable(mousePosition, radius))
+            {
+                tileHighlight.color = validTargetColor;
+
+                targetedTilePos = Vector2Int.RoundToInt(mousePosition);
+            }
+            else
+            {
+                tileHighlight.color = invalidTargetColor;
+
+                targetedTilePos = null;
+            }
+
+            await Awaitable.NextFrameAsync();
+        }
+
+        //check the nature of the conclusion of the loop
+        if(AimingState == AimState.Finished)
+        {
+            return targetedTilePos;
         }
         else
         {
-            tileHighlight.SetActive(false);
+            return null;
         }
     }
 
-    public void EnterAimMode()
+    public void FinishAiming()
     {
-        isAiming = true;
-        Time.timeScale = slowTimeFactor;
-        uiManager.SetAimModePanelStatus(true);
-    }
-
-    public void ExitAimMode()
-    {
-        isAiming = false;
         Time.timeScale = 1f;
         uiManager.SetAimModePanelStatus(false);
-        tileHighlight.SetActive(false);
+        tileHighlight.gameObject.SetActive(false);
+
+        AimingState = AimState.Finished;
+    }
+
+    public void CancelAiming()
+    {
+        Time.timeScale = 1f;
+        uiManager.SetAimModePanelStatus(false);
+        tileHighlight.gameObject.SetActive(false);
+
+        AimingState = AimState.Canceled;
+    }
+
+    bool IsLocationTargetable(Vector2Int pos, float radius)
+    {
+        bool isWalkable = gridManager.IsWalkable(Vector2Int.RoundToInt(pos));
+        bool isWithinRadius = Vector2.Distance(playerController.transform.position, pos) <= (radius + float.Epsilon);
+
+        return isWalkable && isWithinRadius;
     }
 }
