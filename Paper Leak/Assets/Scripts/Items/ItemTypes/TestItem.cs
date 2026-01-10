@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class TestItem : Item
 {
-    public override void Use()
+    public override async Awaitable<bool> Use()
     {
+        await Awaitable.NextFrameAsync();
         Debug.Log("item used");
+        return true;
     }
 }

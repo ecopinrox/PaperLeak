@@ -334,6 +334,54 @@
             ]
         },
         {
+            "name": "Aiming",
+            "id": "12756637-a589-4ec3-ab3c-74c09597945a",
+            "actions": [
+                {
+                    "name": "SelectTarget",
+                    "type": "Button",
+                    "id": "3735b64d-02c0-4c44-ac51-404d4332f5ae",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StopAiming",
+                    "type": "Button",
+                    "id": "6ed972d5-6ef0-4835-938e-1028870dd95e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1cda2944-5191-463e-8098-955d51c7ad62",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectTarget",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db358712-6e07-4b7c-a89a-1f1fdbf7adaf",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StopAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "UI",
             "id": "293a280c-01cd-45ea-9beb-a7bb56d16270",
             "actions": [

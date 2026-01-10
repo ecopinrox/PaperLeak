@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     PlayerDistraction playerDistraction;
     PlayerCameraRigHandler playerCameraRigHandler;
     UIManager uiManager;
+    AimingController aimingController;
 
     [SerializeField] DifficultySwitch playerDifficultySwitch;
     
@@ -24,7 +25,11 @@ public class PlayerController : MonoBehaviour
     InputAction selectItem3Action;
     InputAction selectItem4Action;
 
+    InputAction selectTargetAction;
+    InputAction stopAimingAction;
+
     const string movementActionMapName = "Player";
+    const string aimingActionMapName = "Aiming";
     const string uiActionMapName = "UI";
 
     Interactible interactible;
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
         playerDistraction = GetComponent<PlayerDistraction>();
         playerCameraRigHandler = GetComponent<PlayerCameraRigHandler>();
         uiManager = FindFirstObjectByType<UIManager>();
+        aimingController = uiManager.GetComponent<AimingController>();
 
         moveAction              = playerInput.actions["Move"            ];
         crawlAction             = playerInput.actions["Crawl"           ];
@@ -49,6 +55,9 @@ public class PlayerController : MonoBehaviour
         selectItem2Action       = playerInput.actions["SelectItem2"     ];
         selectItem3Action       = playerInput.actions["SelectItem3"     ];
         selectItem4Action       = playerInput.actions["SelectItem4"     ];
+
+        selectTargetAction      = playerInput.actions["SelectTarget"    ];
+        stopAimingAction        = playerInput.actions["StopAiming"      ];
     }
 
     //moving also counts as peeking for some odd reason but the vector read is (0,0) so it shouldn't(?) matter for my purposes
@@ -79,6 +88,9 @@ public class PlayerController : MonoBehaviour
         selectItem3Action.performed += SelectItem3;
         selectItem4Action.performed += SelectItem4;
 
+        selectTargetAction.performed += SelectTarget;
+        stopAimingAction.performed += StopAiming;
+
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
 
         StartCoroutine(playerMovement.MovementHandler());
@@ -105,6 +117,9 @@ public class PlayerController : MonoBehaviour
         selectItem3Action.performed -= SelectItem3;
         selectItem4Action.performed -= SelectItem4;
 
+        selectTargetAction.performed -= SelectTarget;
+        stopAimingAction.performed -= StopAiming;
+
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
     }
 
@@ -128,9 +143,14 @@ public class PlayerController : MonoBehaviour
         SwitchActionMap(movementActionMapName);
     }
 
+    public void SwitchToAimingActionMap()
+    {
+        SwitchActionMap(aimingActionMapName);
+    }
+
     void SwitchActionMap(string actionMapName)
     {
-        foreach(InputActionMap actionMap in playerInput.actions.actionMaps) 
+        foreach(InputActionMap actionMap in playerInput.actions.actionMaps)
         {
             actionMap.Disable();
         }
@@ -196,9 +216,9 @@ public class PlayerController : MonoBehaviour
         SwitchActionMap(movementActionMapName);
     }
 
-    void UseItem(InputAction.CallbackContext _)
+    async void UseItem(InputAction.CallbackContext _)
     {
-        playerInventory.UseSelectedItem();
+        await playerInventory.UseSelectedItem();
     }
 
     void SelectItem1(InputAction.CallbackContext _)
@@ -219,6 +239,18 @@ public class PlayerController : MonoBehaviour
     void SelectItem4(InputAction.CallbackContext _)
     {
         playerInventory.SelectItemSlot(3);
+    }
+
+    void SelectTarget(InputAction.CallbackContext _)
+    {
+        aimingController.FinishAiming();
+        SwitchActionMap(movementActionMapName);
+    }
+
+    void StopAiming(InputAction.CallbackContext _)
+    {
+        aimingController.CancelAiming();
+        SwitchActionMap(movementActionMapName);
     }
 
     #endregion

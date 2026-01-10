@@ -61,14 +61,14 @@ TagManager:
   - name: WallTilemap
     uniqueID: 1349843291
     locked: 0
-  - name: SpriteOverlay
-    uniqueID: 3746606929
-    locked: 0
   - name: TransparentTilemap
     uniqueID: 3216364961
     locked: 0
   - name: Icon
     uniqueID: 333012283
+    locked: 0
+  - name: SpriteOverlay
+    uniqueID: 3746606929
     locked: 0
   m_RenderingLayers:
   - Default
