@@ -39,6 +39,11 @@ public class ItemHolder : MonoBehaviour
 
     void AssignSprite()
     {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
+
         if(itemPrefab == null)
         {
             return;

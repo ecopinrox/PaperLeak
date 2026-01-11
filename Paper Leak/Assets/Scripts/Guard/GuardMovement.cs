@@ -11,7 +11,6 @@ public class GuardMovement : MonoBehaviour
     //manages guard movement logic
     //moves from 1 tile to another
 
-
     [Header("Movement")]
     float patrolSpeed = 1f;
     [SerializeField] float maxPositionalError = 0.01f;
@@ -26,7 +25,7 @@ public class GuardMovement : MonoBehaviour
     List<Node> path = new();
     IEnumerator<Node> pathIterator;
     public bool PathComplete { get; private set; } = true;
-    bool stopped = false;
+    bool shouldStopMoving = false;
 
     Pathfinder pathfinder;
 
@@ -84,7 +83,7 @@ public class GuardMovement : MonoBehaviour
         {
             while(pathIterator != null && pathIterator.MoveNext())
             {
-                if (stopped) 
+                if (shouldStopMoving) 
                 {
                     yield return null; 
                     continue; 
@@ -92,6 +91,12 @@ public class GuardMovement : MonoBehaviour
 
                 CurrentLocation = pathIterator.Current.pos;
                 yield return StartCoroutine(MoveTo(CurrentLocation));
+
+                if(shouldStopMoving)
+                {
+                    shouldStopMoving = false;
+                    break;
+                }
             }
 
             PathComplete = true;

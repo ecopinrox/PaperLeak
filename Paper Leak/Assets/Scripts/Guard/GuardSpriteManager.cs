@@ -8,6 +8,7 @@ public class GuardSpriteManager : MonoBehaviour
     Color defaultColor;
     [SerializeField] Color cautionColor = Color.yellow;
     [SerializeField] Color crouchColor = Color.green;
+    [SerializeField] Color freezeColor = Color.aliceBlue;
 
     private void Awake()
     {
@@ -32,5 +33,10 @@ public class GuardSpriteManager : MonoBehaviour
     public void ChangeToCrouchColor()
     {
         spriteRenderer.color = crouchColor;
+    }
+
+    public void ChangeToFreezeColor()
+    {
+        spriteRenderer.color = freezeColor;
     }
 }
