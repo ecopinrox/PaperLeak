@@ -6,6 +6,8 @@ namespace Behaviour
 
         public BState CurrentState { get { return _currentTask.state; } }
 
+        bool _isRunning = true;
+
         public BController(BTask initialTask)
         {
             SetCurrentTask(initialTask);
@@ -13,7 +15,7 @@ namespace Behaviour
 
         public void Tick()
         {
-            while(true)
+            while(_isRunning)
             {
                 BTask nextTask = _currentTask.Tick();
 
@@ -28,6 +30,11 @@ namespace Behaviour
         {
             _currentTask = task;
             _currentTask.Init();
+        }
+
+        public void SetActive(bool state)
+        {
+            _isRunning = state;
         }
     }
 }

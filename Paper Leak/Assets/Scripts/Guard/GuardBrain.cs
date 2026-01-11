@@ -14,7 +14,6 @@ public class GuardBrain : MonoBehaviour
     GuardSpriteManager guardVisualManager;
 
     GridManager gridMovementMonitor;
-    Pathfinder pathfinder;
 
     BController behaviourController;
 
@@ -27,6 +26,7 @@ public class GuardBrain : MonoBehaviour
     float examineDelay = 6f;
 
     bool canCrouch = false;
+    bool frozen = false;
 
     [Header("Layer masks")]
     [SerializeField] LayerMask crawlableLayerMask;
@@ -50,7 +50,6 @@ public class GuardBrain : MonoBehaviour
         guardVisualManager = GetComponent<GuardSpriteManager>();
 
         gridMovementMonitor = FindAnyObjectByType<GridManager>();
-        pathfinder = FindAnyObjectByType<Pathfinder>();
 
         patrolPath = new(patrolPathObject.GetComponentsInChildren<Waypoint>(true));
         if(patrolPath.Count == 0)
@@ -207,8 +206,18 @@ public class GuardBrain : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (frozen) return;
+
         GetOverridingDistraction();
         behaviourController.Tick();
+    }
+
+    public void Freeze()
+    {
+        //behaviourController.SetActive(false);
+        frozen = true;
+        guardMovement.StopMoving();
+        guardVisualManager.ChangeToFreezeColor();
     }
 
     void GetOverridingDistraction()
