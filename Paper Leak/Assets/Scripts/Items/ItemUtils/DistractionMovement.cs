@@ -1,17 +1,24 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class DistractionMovement : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float speed = 5f;
     [SerializeField] LayerMask crawlingMask;
 
     public event Action OnReached;
 
+    Collider2D selfCollider;
+
     bool isStopped;
     bool canPassUnderCrawlableAreas = false;
+
+    private void OnEnable()
+    {
+        selfCollider = GetComponent<Collider2D>();
+    }
 
     public void SetDestination(Vector2Int destination, bool canPassUnderCrawlableAreas)
     {
@@ -35,7 +42,7 @@ public class DistractionMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(!isStopped && collider.TryGetComponent(out GuardBrain guard))
+        if(!isStopped && collider.TryGetComponent(out GuardBrain _))
         {
             isStopped = true;
             DisableCollider();
@@ -48,6 +55,6 @@ public class DistractionMovement : MonoBehaviour
 
     void DisableCollider()
     {
-        GetComponent<Collider2D>().enabled = false;
+        selfCollider.enabled = false;
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+
     PlayerInput playerInput;
     PlayerMovement playerMovement;
     PlayerInventory playerInventory;
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
+
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
         playerInventory = GetComponent<PlayerInventory>();

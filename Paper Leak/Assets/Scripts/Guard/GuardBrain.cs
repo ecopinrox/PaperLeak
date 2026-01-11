@@ -52,7 +52,7 @@ public class GuardBrain : MonoBehaviour
         gridMovementMonitor = FindAnyObjectByType<GridManager>();
         pathfinder = FindAnyObjectByType<Pathfinder>();
 
-        patrolPath = new(patrolPathObject.GetComponentsInChildren<Waypoint>());
+        patrolPath = new(patrolPathObject.GetComponentsInChildren<Waypoint>(true));
         if(patrolPath.Count == 0)
         {
             Debug.LogError($"Patrol path of guard {gameObject.name} is empty.");
