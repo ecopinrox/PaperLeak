@@ -12,6 +12,11 @@ public class Distraction : MonoBehaviour
     {
         getPosition = () => Vector2Int.RoundToInt(transform.position);
     }
+
+    public void SetPriority(int priority)
+    {
+        Priority = priority;
+    }
 }
 
     

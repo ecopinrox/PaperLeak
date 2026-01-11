@@ -84,10 +84,8 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        public bool TryAddItems(GameObject item, int itemCount, out int itemsAdded)
+        public int AddItems(GameObject item, int itemCount)
         {
-            itemsAdded = 0;
-
             if(ItemPrefab == null)
             {
                 ItemPrefab = item;
@@ -95,19 +93,18 @@ public class PlayerInventory : MonoBehaviour
 
             if (item != ItemPrefab)
             {
-                return false;
+                return 0;
             }
 
             int space = MaxStackSize - Count;
 
             if(space <= 0)
             {
-                return false;
+                return 0;
             }
 
             Count = Mathf.Min(Count + itemCount, MaxStackSize);
-            itemsAdded = Mathf.Min(itemCount, space);
-            return true;
+            return Mathf.Min(itemCount, space);
         }
 
         public async Awaitable UseItem()
@@ -151,6 +148,8 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public static PlayerInventory Instance { get; private set; }
+
     public HashSet<int> Collectibles { get; private set; } = new();
 
     [SerializeField] int slotCount = 6;
@@ -161,6 +160,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         uiManager = FindFirstObjectByType<UIManager>();
 
         LevelManager.OnLoadState += LoadInventory;
@@ -244,14 +245,31 @@ public class PlayerInventory : MonoBehaviour
             throw new NullReferenceException("Attempted to add a null item prefab to inventory.");
         }
 
+        //find a slot containing itemPrefab - if found, insert and return
         for(int i = 0; i < slotCount; i++)
         {
-            if(!itemSlots[i].TryAddItems(itemPrefab, count, out int itemsAdded))
+            if (itemSlots[i].ItemPrefab != itemPrefab)
             {
                 continue;
             }
 
+            int itemsAdded = itemSlots[i].AddItems(itemPrefab, count);
             UpdateItemSlotUI();
+
+            return itemsAdded;
+        }
+
+        //find an empty slot - if found, insert and return
+        for(int i = 0; i < slotCount; i++)
+        {
+            if (itemSlots[i].ItemPrefab != null)
+            {
+                continue;
+            }
+
+            int itemsAdded = itemSlots[i].AddItems(itemPrefab, count);
+            UpdateItemSlotUI();
+
             return itemsAdded;
         }
 

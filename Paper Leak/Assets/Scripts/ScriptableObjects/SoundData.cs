@@ -7,4 +7,5 @@ public class SoundData : ScriptableObject
 {
     public List<AudioClip> audioClips;
     public float distractionRadius;
+    public int priority;
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SoundDistraction : Distraction 
@@ -10,8 +11,9 @@ public class SoundDistraction : Distraction
         soundManager = FindAnyObjectByType<SoundManager>();
     }
 
-    public Coroutine PlaySound(SoundData sfx)
+    public void PlaySound(SoundData sfx)
     {
-        return soundManager.PlaySound(sfx, transform.position, this);
+        SetPriority(sfx.priority);
+        soundManager.PlaySound(sfx, transform.position, this);
     }
 }

@@ -46,27 +46,6 @@ public class PlayerMovement : MonoBehaviour
         else CurrentDirection = Direction.None;
     }
 
-    IEnumerator WalkCoroutine(Vector2 destination)
-    {
-        LookAt(destination - (Vector2)transform.position);
-        float delay = walkSFXDelay;
-
-        while (transform.position != (Vector3)destination)
-        {
-            float speed = (IsCrawling) ? crawlSpeed : moveSpeed;
-            transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.fixedDeltaTime);
-            if (delay >= walkSFXDelay && !IsCrawling)
-            {
-                playerDistraction.PlayWalkSFX();
-                delay = 0;
-            }
-            else delay += Time.fixedDeltaTime;
-
-            yield return new WaitForFixedUpdate();
-        }
-        yield return null;
-    }
-
     public IEnumerator MovementHandler()
     {
         while (true)
@@ -87,6 +66,27 @@ public class PlayerMovement : MonoBehaviour
 
             yield return StartCoroutine(WalkCoroutine((Vector2)transform.position + displacement));
         }
+    }
+
+    IEnumerator WalkCoroutine(Vector2 destination)
+    {
+        LookAt(destination - (Vector2)transform.position);
+        float delay = walkSFXDelay;
+
+        while (transform.position != (Vector3)destination)
+        {
+            float speed = IsCrawling ? crawlSpeed : moveSpeed;
+            transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.fixedDeltaTime);
+            if (delay >= walkSFXDelay && !IsCrawling)
+            {
+                playerDistraction.PlayWalkSFX();
+                delay = 0;
+            }
+            else delay += Time.fixedDeltaTime;
+
+            yield return new WaitForFixedUpdate();
+        }
+        yield return null;
     }
 
     public void ToggleProne()
