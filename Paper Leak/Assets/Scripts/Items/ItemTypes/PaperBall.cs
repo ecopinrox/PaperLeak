@@ -10,7 +10,7 @@ public class PaperBall : Item
 
     public override async Awaitable<bool> Use()
     {
-        Vector2Int? target = await AimingController.Instance.Aim(aimRadius, blockingMask);
+        Vector2Int? target = await AimingController.Instance.Aim(aimRadius, blockingMask, blockingMask);
         if (target == null)
         {
             return false;

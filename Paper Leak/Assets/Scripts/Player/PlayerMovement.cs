@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float walkSFXDelay = 0.3f;
 
     public bool IsCrawling { get; private set; }
-    public Vector2Int GridBasedPosition {  get; private set; }
+    public Vector2Int GridBasedPosition { get; private set; }
 
     public enum Direction { None, Up,  Down, Left, Right };
     public Direction CurrentDirection { get; private set; } = Direction.None;
+
+    bool shouldStopMoving = false;
 
     void Awake()
     {
@@ -84,9 +86,23 @@ public class PlayerMovement : MonoBehaviour
             }
             else delay += Time.fixedDeltaTime;
 
+            if(shouldStopMoving)
+            {
+                shouldStopMoving = false;
+                transform.position = (Vector2)Vector2Int.RoundToInt(transform.position);
+                break;
+            }
+
             yield return new WaitForFixedUpdate();
         }
         yield return null;
+    }
+
+    public void SnapToPosition(Vector2Int pos)
+    {
+        shouldStopMoving = true;
+        transform.position = (Vector2)pos;
+        GridBasedPosition = pos;
     }
 
     public void ToggleProne()

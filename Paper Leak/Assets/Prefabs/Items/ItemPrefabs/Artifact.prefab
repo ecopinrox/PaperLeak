@@ -138,4 +138,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Artifact
   <IsInfinite>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
-  <CooldownSeconds>k__BackingField: 2
+  <CooldownSeconds>k__BackingField: 1
+  radius: 10
+  targetBlockingMask:
+    serializedVersion: 2
+    m_Bits: 12544
+  rayBlockingMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  soundDistractionPrefab: {fileID: 2373735561752840355, guid: cd1b6146ad54d4540962387b25743030, type: 3}
+  teleportSFX: {fileID: 11400000, guid: b7721bdde8e8ee24b962a33d7b20cf7a, type: 2}

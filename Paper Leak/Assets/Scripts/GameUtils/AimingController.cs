@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class AimingController : MonoBehaviour
@@ -29,7 +30,7 @@ public class AimingController : MonoBehaviour
         uiManager = gridManager.GetComponent<UIManager>();
     }
 
-    public async Awaitable<Vector2Int?> Aim(float radius, LayerMask blockingMask)
+    public async Awaitable<Vector2Int?> Aim(float radius, LayerMask targetBlockingMask, LayerMask rayBlockingMask)
     {
         //initial setup
         Time.timeScale = slowTimeFactor;
@@ -47,7 +48,7 @@ public class AimingController : MonoBehaviour
             Vector2Int mousePosition = Vector2Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             tileHighlight.transform.position = (Vector2)mousePosition;
 
-            if (IsLocationTargetable(mousePosition, radius, blockingMask))
+            if (IsLocationTargetable(mousePosition, radius, targetBlockingMask, rayBlockingMask))
             {
                 tileHighlight.color = validTargetColor;
 
@@ -92,16 +93,14 @@ public class AimingController : MonoBehaviour
         AimingState = AimState.Canceled;
     }
 
-    bool IsLocationTargetable(Vector2Int targetedPos, float radius, LayerMask blockingMask)
+    bool IsLocationTargetable(Vector2Int targetedPos, float radius, LayerMask targetBlockingMask, LayerMask rayBlockingMask)
     {
         Vector2 playerPos = playerController.transform.position;
 
-        bool isWithinRadius = Vector2.Distance(playerPos, targetedPos) <= radius + maxPositionalError;
+        bool isWithinRadius     = Vector2.Distance(playerPos, targetedPos) <= radius + maxPositionalError;
+        bool isTargetBlocked    = gridManager.IsLocationInMask(targetedPos, targetBlockingMask);
+        bool isRayBlocked       = Physics2D.Raycast(playerPos, targetedPos - playerPos, Vector2.Distance(playerPos, targetedPos), rayBlockingMask);
 
-        RaycastHit2D hit = Physics2D.Raycast(playerPos, targetedPos - playerPos, Vector2.Distance(playerPos, targetedPos), blockingMask);
-        //Debug.Log($"{playerPos} -> {targetedPos} [{Vector2.Distance(playerPos, targetedPos)}]: {hit.collider}", hit.collider);
-        bool isBlocked = hit;
-
-        return isWithinRadius && !isBlocked;
+        return isWithinRadius && !isTargetBlocked && !isRayBlocked;
     }
 }
