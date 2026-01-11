@@ -1,46 +1,34 @@
 using UnityEngine;
 
+[RequireComponent(typeof(DistractionMovement))]
 public class PaperBall : Item
 {
     [SerializeField] float aimRadius = 18f;
+    [SerializeField] LayerMask blockingMask;
+
+    DistractionMovement distractionMovement;
 
     public override async Awaitable<bool> Use()
     {
-        Vector2Int? target = await AimingController.Instance.Aim(aimRadius);
-        if(target == null)
+        Vector2Int? target = await AimingController.Instance.Aim(aimRadius, blockingMask);
+        if (target == null)
         {
-            Debug.Log("no target");
-        }
-        else
-        {
-            Debug.Log("target: " + target);
+            return false;
         }
 
-        return target != null;
+        PaperBall instance = Instantiate(gameObject, PlayerController.Instance.transform.position, Quaternion.identity).GetComponent<PaperBall>();
+        instance.Throw((Vector2Int)target);
+
+        return true;
     }
 
-    //async Awaitable<Vector2Int?> Aim()
-    //{
-    //    if (playerController == null)
-    //    {
-    //        playerController = FindAnyObjectByType<PlayerController>();
-    //    }
+    private void OnEnable()
+    {
+        distractionMovement = GetComponent<DistractionMovement>();
+    }
 
-    //    if (aimingController == null)
-    //    {
-    //        //aimingController = FindAnyObjectByType<AimingController>();
-    //        aimingController = AimingController.Instance;
-    //    }
-
-    //    await playerController.SwitchToAimingActionMap(5f);
-
-    //    if(aimingController.AimingState == AimingController.AimState.Finished)
-    //    {
-    //        return aimingController.selectedPos;
-    //    }
-    //    else
-    //    {
-    //        return null;
-    //    }
-    //}
+    public void Throw(Vector2Int target)
+    {
+        distractionMovement.SetDestination(target, true);
+    }
 }
