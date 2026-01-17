@@ -24,19 +24,9 @@ public class PlayerMovement : MonoBehaviour
         playerDistraction = GetComponent<PlayerDistraction>();
     }
 
-    private void OnEnable()
-    {
-        LevelManager.OnLoadState += LoadPosition;
-    }
-
     private void Start()
     {
         GridBasedPosition = Vector2Int.RoundToInt(transform.position);
-    }
-
-    private void OnDisable()
-    {
-        LevelManager.OnLoadState -= LoadPosition;
     }
 
     public void SetDirection(Vector2 input)
@@ -114,10 +104,5 @@ public class PlayerMovement : MonoBehaviour
     void LookAt(Vector2 direction)
     {
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
-    }
-
-    void LoadPosition()
-    {
-        transform.position = (Vector2)LevelManager.SaveState.playerPos;
     }
 }
