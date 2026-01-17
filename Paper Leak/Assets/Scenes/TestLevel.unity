@@ -8288,7 +8288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5923624950599809522, guid: 9180ee774b3f448439ecdad1b51bf331, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6594816526766690666, guid: 9180ee774b3f448439ecdad1b51bf331, type: 3}
       propertyPath: waitTime

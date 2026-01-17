@@ -21,4 +21,4 @@ MonoBehaviour:
   dangerZoneMultiplier: 0.6
   soundAlertDistanceMultiplier: 1.75
   canCrouch: 1
-  patrolSpeed: 2.5
+  patrolSpeed: 3

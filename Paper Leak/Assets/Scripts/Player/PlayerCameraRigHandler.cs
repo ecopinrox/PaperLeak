@@ -11,9 +11,9 @@ public class PlayerCameraRigHandler : MonoBehaviour
         currentRig.ActivateRig();
     }
 
-    public void SetActiveCamera(Vector2 input)
+    public void SetActiveCamera(Vector2 input, bool peeking)
     {
-        currentRig.SwitchCamera(GetDirection(input));
+        currentRig.SwitchCamera(GetDirection(input), peeking);
     }
 
     public void SetCameraRig(CameraRig newRig)
