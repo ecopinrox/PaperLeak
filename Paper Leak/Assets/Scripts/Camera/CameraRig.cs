@@ -1,6 +1,5 @@
 using Cinemachine;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -9,15 +8,26 @@ public class CameraRig : MonoBehaviour
     Transform playerTransform = null;
 
     [Header("Camera settings")]
-    [SerializeField] List<CinemachineVirtualCamera> cameras;
     [SerializeField] int cameraSize;
+    [SerializeField] CinemachineVirtualCamera originCamera;
+
+    /// <summary>
+    /// Movement cameras are in the order N, E, S, W.
+    /// </summary>
+    [SerializeField] CinemachineVirtualCamera[] movementCameras;
+    [SerializeField] int lookaheadTileOffset = 4;
+
+    /// <summary>
+    /// SetPeekingCamera cameras are in the order N, NE, E, SE, S, SW, W, NW. 
+    /// </summary>
+    [SerializeField] CinemachineVirtualCamera[] peekCameras;
     [SerializeField] int peekingTileOffset = 10;
 
     [Header("Confiner settings")]
     [SerializeField] PolygonCollider2D confiner;
     [SerializeField] Transform bottomLeftTile;
     [SerializeField] Transform topRightTile;
-    [SerializeField] bool centerOnTopRight = false;
+    [SerializeField] bool pivotOnTopRight = false;
 
     static readonly float aspectRatio = 1.25f;
 
@@ -43,7 +53,7 @@ public class CameraRig : MonoBehaviour
 
     public void SetConfinerBounds()
     {
-        if (centerOnTopRight)
+        if (pivotOnTopRight)
         {
             Vector2 adjustedBottomLeftCorner = bottomLeftTile.position;
             if(topRightTile.position.x - bottomLeftTile.position.x < cameraSize - 1)
@@ -90,30 +100,52 @@ public class CameraRig : MonoBehaviour
         }
     }
 
-    public void SwitchCamera(Direction direction)
+    public void SwitchCamera(Direction direction, bool peeking)
     {
-        for (int i = 0; i < cameras.Count; i++)
+        Debug.Log($"Switch camera (peeking: {peeking}): {direction}");
+        originCamera.Priority = (direction == Direction.O) ? 1 : 0;
+
+        for(int i = 0; i < movementCameras.Length; i++)
         {
-            cameras[i].Priority = (i == (int)direction) ? 1 : 0;
+            movementCameras[i].Priority = (!peeking && (2 * i + 1) == (int)direction) ? 1 : 0;
+        }
+
+        for (int i = 0; i < peekCameras.Length; i++)
+        {
+            peekCameras[i].Priority = (peeking && (i + 1) == (int)direction) ? 1 : 0;
         }
     }
 
     public void DeactivateRig()
     {
-        for (int i = 0; i < cameras.Count; i++)
+        originCamera.Priority = 0;
+
+        foreach(CinemachineVirtualCamera cam in movementCameras)
         {
-            cameras[i].Priority = 0;
+            cam.Priority = 0;
+        }
+
+        foreach(CinemachineVirtualCamera cam in peekCameras)
+        {
+            cam.Priority = 0;
         }
     }
 
     public void ActivateRig()
     {
-        SwitchCamera(Direction.O);
+        SwitchCamera(Direction.O, false);
     }
 
     void SetFollowTarget()
     {
-        foreach (CinemachineVirtualCamera cam in cameras)
+        originCamera.Follow = playerTransform;
+
+        foreach (CinemachineVirtualCamera cam in movementCameras)
+        {
+            cam.Follow = playerTransform;
+        }
+
+        foreach (CinemachineVirtualCamera cam in peekCameras)
         {
             cam.Follow = playerTransform;
         }
@@ -121,7 +153,14 @@ public class CameraRig : MonoBehaviour
 
     void SetCameraSizes()
     {
-        foreach(CinemachineVirtualCamera cam in cameras)
+        originCamera.m_Lens.OrthographicSize = cameraSize / 2f;
+
+        foreach(CinemachineVirtualCamera cam in movementCameras)
+        {
+            cam.m_Lens.OrthographicSize = cameraSize / 2f;
+        }
+
+        foreach(CinemachineVirtualCamera cam in peekCameras)
         {
             cam.m_Lens.OrthographicSize = cameraSize / 2f;
         }
@@ -134,43 +173,74 @@ public class CameraRig : MonoBehaviour
 
         try
         {
-            float offsetFraction = (float)peekingTileOffset / cameraSize;
+            //origin offsets
+            originCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = defaultX;
+            originCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = defaultY;
 
-            float posXOffset = defaultX - offsetFraction / aspectRatio;
-            float negXOffset = defaultX + offsetFraction / aspectRatio;
-            float posYOffset = defaultY + offsetFraction;
-            float negYOffset = defaultY - offsetFraction;
+            //lookahead offsets
+            float lookaheadOffsetFraction = (float)lookaheadTileOffset / cameraSize;
+            float posXLookOffset = defaultX - lookaheadOffsetFraction / aspectRatio;
+            float negXLookOffset = defaultX + lookaheadOffsetFraction / aspectRatio;
+            float posYLookOffset = defaultY + lookaheadOffsetFraction;
+            float negYLookOffset = defaultY - lookaheadOffsetFraction;
 
-            for (int i = 0; i < cameras.Count; i++)
+            for(int i = 0; i < movementCameras.Length; i++)
             {
-                float xOffset = i switch
+                float xLookOffset = (2 * i + 1) switch
                 {
-                    (int)Direction.NE => posXOffset,
-                    (int)Direction.E => posXOffset,
-                    (int)Direction.SE => posXOffset,
+                    (int)Direction.E => posXLookOffset,
+                    (int)Direction.W => negXLookOffset,
+                    _ => defaultX
+                };
 
-                    (int)Direction.SW => negXOffset,
-                    (int)Direction.W => negXOffset,
-                    (int)Direction.NW => negXOffset,
+                float yLookOffset = (2 * i + 1) switch
+                {
+                    (int)Direction.N => posYLookOffset,
+                    (int)Direction.S => negYLookOffset,
+                    _ => defaultY
+                };
+
+                movementCameras[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = xLookOffset;
+                movementCameras[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = yLookOffset;
+            }
+
+            //peek offsets
+            float peekOffsetFraction = (float)peekingTileOffset / cameraSize;
+            float posXPeekOffset = defaultX - peekOffsetFraction / aspectRatio;
+            float negXPeekOffset = defaultX + peekOffsetFraction / aspectRatio;
+            float posYPeekOffset = defaultY + peekOffsetFraction;
+            float negYPeekOffset = defaultY - peekOffsetFraction;
+
+            for (int i = 0; i < peekCameras.Length; i++)
+            {
+                float xPeekOffset = (i + 1) switch
+                {
+                    (int)Direction.NE   => posXPeekOffset,
+                    (int)Direction.E    => posXPeekOffset,
+                    (int)Direction.SE   => posXPeekOffset,
+
+                    (int)Direction.SW   => negXPeekOffset,
+                    (int)Direction.W    => negXPeekOffset,
+                    (int)Direction.NW   => negXPeekOffset,
 
                     _ => defaultX
                 };
 
-                float yOffset = i switch
+                float yPeekOffset = (i + 1) switch
                 {
-                    (int)Direction.NW => posYOffset,
-                    (int)Direction.N => posYOffset,
-                    (int)Direction.NE => posYOffset,
+                    (int)Direction.NW   => posYPeekOffset,
+                    (int)Direction.N    => posYPeekOffset,
+                    (int)Direction.NE   => posYPeekOffset,
 
-                    (int)Direction.SE => negYOffset,
-                    (int)Direction.S => negYOffset,
-                    (int)Direction.SW => negYOffset,
+                    (int)Direction.SE   => negYPeekOffset,
+                    (int)Direction.S    => negYPeekOffset,
+                    (int)Direction.SW   => negYPeekOffset,
 
                     _ => defaultY
                 };
 
-                cameras[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = xOffset;
-                cameras[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = yOffset;
+                peekCameras[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = xPeekOffset;
+                peekCameras[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = yPeekOffset;
             }
         }
         catch (NullReferenceException)

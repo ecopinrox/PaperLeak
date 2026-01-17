@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         moveAction.performed += SetDirection;
         moveAction.canceled += SetDirection;
 
-        peekAction.performed += SetCameras;
+        peekAction.performed += SetPeekingCamera;
 
         crawlAction.performed += ToggleCrawl;
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         moveAction.performed -= SetDirection;
         moveAction.canceled -= SetDirection;
 
-        peekAction.performed -= SetCameras;
+        peekAction.performed -= SetPeekingCamera;
 
         crawlAction.performed -= ToggleCrawl;
 
@@ -191,16 +191,29 @@ public class PlayerController : MonoBehaviour
         }
 
         //CameraSwitcher.SetCamera(Vector2.zero);
-        playerCameraRigHandler.SetActiveCamera(Vector2.zero);
+        playerCameraRigHandler.SetActiveCamera(Vector2.zero, false);
         playerDistraction.UpdateViewMultiplier(playerMovement.IsCrawling);
     }
 
-    void SetDirection(InputAction.CallbackContext ctx) => playerMovement.SetDirection(ctx.ReadValue<Vector2>());
+    void SetDirection(InputAction.CallbackContext ctx)
+    {
+        Vector2 direction = ctx.ReadValue<Vector2>();
 
-    void SetCameras(InputAction.CallbackContext ctx) 
+        playerMovement.SetDirection(direction);
+        SetMovementCamera(direction);
+    }
+
+    void SetMovementCamera(Vector2 direction)
+    {
+        playerCameraRigHandler.SetActiveCamera(direction, false);
+    }
+
+    void SetPeekingCamera(InputAction.CallbackContext ctx) 
     { 
-        //CameraSwitcher.SetCamera(ctx.ReadValue<Vector2>()); 
-        playerCameraRigHandler.SetActiveCamera(ctx.ReadValue<Vector2>());
+        Vector2 direction = ctx.ReadValue<Vector2>();
+        if (direction == Vector2.zero) return;
+
+        playerCameraRigHandler.SetActiveCamera(direction, true);
     }
 
     void Interact(InputAction.CallbackContext ctx) 
