@@ -14,13 +14,6 @@ public class LockedDoor : Interactible
     {
         gridManager = FindFirstObjectByType<GridManager>();
         pathfinder = FindFirstObjectByType<Pathfinder>();
-
-        LevelManager.OnLoadState += CheckIfKeyUsed;
-    }
-
-    private void OnDisable()
-    {
-        LevelManager.OnLoadState -= CheckIfKeyUsed;
     }
 
     public override void Interact(out bool uiEnabled)
@@ -34,12 +27,6 @@ public class LockedDoor : Interactible
         }
     }
 
-    private void CheckIfKeyUsed()
-    {
-        if (LevelManager.SaveState.openedDoors.Contains(GridPos))
-            OpenDoor();
-    }
-
     void OpenDoor()
     {
         List<Vector2Int> tiles = GetWallTiles();
@@ -51,8 +38,6 @@ public class LockedDoor : Interactible
 
         pathfinder.AddDoorTilesToRegionList(tiles);
 
-        LevelManager.Instance.RegisterOpenDoor(GridPos);
-        
         Destroy(gameObject);
     }
 

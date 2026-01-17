@@ -164,8 +164,6 @@ public class PlayerInventory : MonoBehaviour
 
         uiManager = FindFirstObjectByType<UIManager>();
 
-        LevelManager.OnLoadState += LoadInventory;
-
         itemSlots = new ItemSlot[slotCount];
 
         for (int i = 0; i < slotCount; i++)
@@ -184,15 +182,8 @@ public class PlayerInventory : MonoBehaviour
         TickItemCooldowns(Time.fixedDeltaTime);
     }
 
-    private void OnDisable()
-    {
-        LevelManager.OnLoadState -= LoadInventory;
-    }
-
     void LoadInventory()
     {
-        Collectibles = new(LevelManager.SaveState.collectibles);
-
         uiManager.UpdateCollectibleIcons(Collectibles);
         UpdateItemSlotUI();
     }

@@ -102,7 +102,6 @@ public class CameraRig : MonoBehaviour
 
     public void SwitchCamera(Direction direction, bool peeking)
     {
-        Debug.Log($"Switch camera (peeking: {peeking}): {direction}");
         originCamera.Priority = (direction == Direction.O) ? 1 : 0;
 
         for(int i = 0; i < movementCameras.Length; i++)
