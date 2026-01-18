@@ -136,18 +136,18 @@ public class GuardDistractionSensor : MonoBehaviour
                 distraction = se.GetOriginDistraction();
                 float maxWalkingDistance = se.GetDistractionRadius() * soundAlertDistanceMultiplier;
 
-                Vector2Int? dest = pathfinder.GetClosestReachableCardinalLocation(guardMovement.CurrentLocation, distraction.Position);
+                Vector2Int? dest = pathfinder.GetClosestReachableCardinalLocation(guardMovement.GridBasedPosition, distraction.Position);
                 if (dest == null)
                 {
                     continue;
                 }
                 
-                if(!pathfinder.IsReachable(guardMovement.CurrentLocation, (Vector2Int)dest))
+                if(!pathfinder.IsReachable(guardMovement.GridBasedPosition, (Vector2Int)dest))
                 {
                     continue;
                 }
 
-                int distance = pathfinder.GetRealDistance(guardMovement.CurrentLocation, (Vector2Int)dest); 
+                int distance = pathfinder.GetRealDistance(guardMovement.GridBasedPosition, (Vector2Int)dest); 
                 if (distance > maxWalkingDistance)
                 {
                     continue;
@@ -196,7 +196,7 @@ public class GuardDistractionSensor : MonoBehaviour
 
     bool IsDistractionReachable(Distraction distraction)
     {
-        return pathfinder.IsReachableCardinal(guardMovement.CurrentLocation, distraction.Position);
+        return pathfinder.IsReachableCardinal(guardMovement.GridBasedPosition, distraction.Position);
     }
 
     public void LoadSettings(GuardSettings guardSettings)

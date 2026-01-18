@@ -22,4 +22,5 @@ public class SaveState : ScriptableObject
     public HashSet<Vector2Int> mineLocations = new();
 
     //frozen guards
+    public Dictionary<Vector2Int, ValueTuple<Vector2Int, Quaternion>> frozenGuards = new();
 }

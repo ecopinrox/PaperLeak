@@ -28,6 +28,9 @@ public class GuardBrain : MonoBehaviour
     bool canCrouch = false;
     bool frozen = false;
 
+    //used to uniquely identify guards when saving
+    Vector2Int spawnLoc;
+
     [Header("Layer masks")]
     [SerializeField] LayerMask crawlableLayerMask;
 
@@ -57,16 +60,24 @@ public class GuardBrain : MonoBehaviour
             Debug.LogError($"Patrol path of guard {gameObject.name} is empty.");
         }
         patrolIterator = patrolPath.GetEnumerator();
+
+        spawnLoc = Vector2Int.RoundToInt(transform.position);
     }
 
     private void OnEnable()
     {
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
+
+        LevelManager.OnStateLoad += LoadFrozenState;
+        LevelManager.OnStateSave += SaveFrozenState;
     }
 
     private void OnDisable()
     {
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
+
+        LevelManager.OnStateLoad -= LoadFrozenState;
+        LevelManager.OnStateSave -= SaveFrozenState;
     }
 
     private void Start()
@@ -121,7 +132,7 @@ public class GuardBrain : MonoBehaviour
             BState.Alert,
             () =>
             {
-                interruptLocation = guardMovement.CurrentLocation;
+                interruptLocation = guardMovement.GridBasedPosition;
             });
 
         BAction enterAlertState = new(
@@ -180,7 +191,7 @@ public class GuardBrain : MonoBehaviour
             });
 
         //Patrolling states
-        getNextWaypoint.SetNext(goToWaypoint);
+        getNextWaypoint             .SetNext(goToWaypoint);
         goToWaypoint                .SetNext(waitAtWaypoint);
         waitAtWaypoint              .SetNext(getNextWaypoint);
         returnToInterruptLocation   .SetNext(goToWaypoint);
@@ -188,7 +199,6 @@ public class GuardBrain : MonoBehaviour
         //Alert states
         saveInterruptLocation       .SetNext(enterAlertState);
         enterAlertState             .SetNext(waitOnAlert);
-        //waitOnAlert                 .SetNext(isDistractionUnderTable);
         waitOnAlert                 .SetNext(goToDistraction);
 
         //Investigating states
@@ -214,7 +224,6 @@ public class GuardBrain : MonoBehaviour
 
     public void Freeze()
     {
-        //behaviourController.SetActive(false);
         frozen = true;
         guardMovement.StopMoving();
         guardVisualManager.ChangeToFreezeColor();
@@ -278,5 +287,27 @@ public class GuardBrain : MonoBehaviour
 
         guardDistractionSensor.LoadSettings(settings);
         guardMovement.LoadSettings(settings);
+    }
+
+    void LoadFrozenState(SaveState saveState)
+    {
+        if(saveState.frozenGuards.ContainsKey(spawnLoc))
+        {
+            guardMovement.SetPosition(saveState.frozenGuards[spawnLoc].Item1);
+            transform.rotation = saveState.frozenGuards[spawnLoc].Item2;
+            Freeze();
+        }
+    }
+
+    void SaveFrozenState(SaveState saveState)
+    {
+        if(frozen)
+        {
+            saveState.frozenGuards.TryAdd(spawnLoc, new(guardMovement.GridBasedPosition, transform.rotation));
+        }
+        else
+        {
+            saveState.frozenGuards.Remove(spawnLoc);
+        }
     }
 }
