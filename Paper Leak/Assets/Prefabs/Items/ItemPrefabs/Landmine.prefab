@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8360966630116037639}
   - component: {fileID: 7806761111654484437}
   - component: {fileID: 8500044224121541417}
-  - component: {fileID: 683507864455416287}
   m_Layer: 0
   m_Name: Landmine
   m_TagString: Untagged
@@ -84,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf3699053b24364a904b4c6816c5ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Landmine
+  LandmineSetterPrefab: {fileID: 4157299677636091896, guid: f5cf75d4252ac0d44966f0d9d2977420, type: 3}
 --- !u!114 &8500044224121541417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,21 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1615565bdf0fd5341b3d335959d2ea61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
---- !u!114 &683507864455416287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853784646503526476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0b5ed3b76e6aa4785c80a98fc59f33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemHolder
-  itemPrefab: {fileID: 4157299677636091896, guid: f5cf75d4252ac0d44966f0d9d2977420, type: 3}
-  itemCount: 1
-  spriteRenderer: {fileID: 0}
 --- !u!1 &5635681600363402595
 GameObject:
   m_ObjectHideFlags: 0

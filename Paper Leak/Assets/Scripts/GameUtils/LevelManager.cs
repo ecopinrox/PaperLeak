@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +7,8 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     [SerializeField] SaveState saveState;
+
+    [SerializeField] GameObject landminePrefab;
 
     public static Action<SaveState> OnStateLoad;
     public static Action<SaveState> OnStateSave;
@@ -30,6 +29,17 @@ public class LevelManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private void OnEnable()
+    {
+        //landmine loading
+        OnStateLoad += LoadLandmines;
+    }
+
+    private void OnDisable()
+    {
+        OnStateLoad -= LoadLandmines;
     }
 
     private void Start()
@@ -88,5 +98,13 @@ public class LevelManager : MonoBehaviour
     {
         currentDifficultySetting = difficulty;
         LoadDifficultySettings();
+    }
+
+    void LoadLandmines(SaveState _)
+    {
+        foreach (Vector2Int loc in saveState.mineLocations)
+        {
+            Instantiate(landminePrefab, (Vector2)loc, Quaternion.identity);
+        }
     }
 }
