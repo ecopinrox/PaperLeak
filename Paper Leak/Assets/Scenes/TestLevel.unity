@@ -12436,7 +12436,7 @@ PrefabInstance:
     - target: {fileID: 4898158056362579717, guid: 3c37a0918279bd84fae57f54435bca9e, type: 3}
       propertyPath: walkSFX
       value: 
-      objectReference: {fileID: 11400000, guid: 5e2047c0220e26149b1aec10b14be892, type: 2}
+      objectReference: {fileID: 11400000, guid: 1709533c7e1558d488803b72baeb3c9e, type: 2}
     - target: {fileID: 4898158056362579717, guid: 3c37a0918279bd84fae57f54435bca9e, type: 3}
       propertyPath: crawlViewMultiplier
       value: 0.9

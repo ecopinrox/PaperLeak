@@ -21,7 +21,7 @@ public class GameStateManager : MonoBehaviour
         };
     }
 
-    public void Save()          => LevelManager.Instance.Save();
-    public void ReloadLevel()   => LevelManager.Instance.ReloadLevel();
-    public void RestartLevel()  => LevelManager.Instance.RestartLevel();
+    public void Save()          => LevelManager.Instance.SaveLevelState();
+    public void ReloadLevel()   => _ = LevelManager.Instance.LoadLevelState();
+    public void RestartLevel()  => _ = LevelManager.Instance.RestartLevel();
 }

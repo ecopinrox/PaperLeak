@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("player: awake");
+
         Instance = this;
 
         playerInput = GetComponent<PlayerInput>();
@@ -97,6 +99,9 @@ public class PlayerController : MonoBehaviour
 
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
 
+        LevelManager.OnStateLoad += LoadPosision;
+        LevelManager.OnStateSave += SavePosition;
+
         StartCoroutine(playerMovement.MovementHandler());
     }
 
@@ -123,6 +128,9 @@ public class PlayerController : MonoBehaviour
 
         selectTargetAction.performed -= SelectTarget;
         stopAimingAction.performed -= StopAiming;
+
+        LevelManager.OnStateLoad -= LoadPosision;
+        LevelManager.OnStateSave -= SavePosition;
 
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
     }
@@ -166,6 +174,18 @@ public class PlayerController : MonoBehaviour
         PlayerSettings settings = playerDifficultySwitch.GetDifficultySettings<PlayerSettings>(level);
 
         playerDistraction.LoadSettings(settings);
+    }
+
+    void SavePosition(SaveState saveState)
+    {
+        saveState.playerPos = playerMovement.GridBasedPosition;
+        Debug.Log("saved position: " + playerMovement.GridBasedPosition);
+    }
+
+    void LoadPosision(SaveState saveState)
+    {
+        Debug.Log("loading position: " + saveState.playerPos);
+        transform.position = (Vector2)saveState.playerPos;
     }
 
     #region InputMethods
