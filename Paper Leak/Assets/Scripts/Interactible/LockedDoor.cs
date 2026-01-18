@@ -16,12 +16,23 @@ public class LockedDoor : Interactible
         pathfinder = FindFirstObjectByType<Pathfinder>();
     }
 
+    private void OnEnable()
+    {
+        LevelManager.OnStateLoad += LoadState;
+        LevelManager.OnStateSave += SaveState;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.OnStateLoad -= LoadState;
+        LevelManager.OnStateSave -= SaveState;
+    }
+
     public override void Interact(out bool uiEnabled)
     {
         uiEnabled = false;
 
-        PlayerInventory playerInventory = FindFirstObjectByType<PlayerInventory>();
-        if (playerInventory.HasCollectible(keyID))
+        if (PlayerInventory.Instance.HasCollectible(keyID))
         {
             OpenDoor();
         }
@@ -38,7 +49,7 @@ public class LockedDoor : Interactible
 
         pathfinder.AddDoorTilesToRegionList(tiles);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     List<Vector2Int> GetWallTiles()
@@ -60,5 +71,25 @@ public class LockedDoor : Interactible
         }
         
         return tiles;
+    }
+
+    void LoadState(SaveState saveState)
+    {
+        if(saveState.openedDoors.Contains(GridPos))
+        {
+            OpenDoor();
+        }
+    }
+
+    void SaveState(SaveState saveState)
+    {
+        if(gameObject.activeSelf)
+        {
+            saveState.openedDoors.Remove(GridPos);
+        }
+        else
+        {
+            saveState.openedDoors.Add(GridPos);
+        }
     }
 }

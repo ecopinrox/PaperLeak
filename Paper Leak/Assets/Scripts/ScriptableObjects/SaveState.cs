@@ -16,6 +16,7 @@ public class SaveState : ScriptableObject
     public Dictionary<Vector2Int, int> itemHolders = new();
 
     //doors
+    public HashSet<Vector2Int> openedDoors = new();
 
     //mines
 
