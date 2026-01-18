@@ -19,6 +19,7 @@ public class SaveState : ScriptableObject
     public HashSet<Vector2Int> openedDoors = new();
 
     //mines
+    public HashSet<Vector2Int> mineLocations = new();
 
     //frozen guards
 }

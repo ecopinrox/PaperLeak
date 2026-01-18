@@ -11731,11 +11731,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7215626261512447131, guid: 5db67912f12d4a14db915d03b84c7989, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7215626261512447131, guid: 5db67912f12d4a14db915d03b84c7989, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 7215626261512447131, guid: 5db67912f12d4a14db915d03b84c7989, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13562,6 +13562,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
+      propertyPath: landminePrefab
+      value: 
+      objectReference: {fileID: 853784646503526476, guid: c8f21bfffebdae245abbd45379b13f96, type: 3}
     - target: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
       propertyPath: currentDifficultySetting
       value: 0
