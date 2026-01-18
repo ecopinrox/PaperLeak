@@ -16,7 +16,7 @@ MonoBehaviour:
   examineDelay: 7
   frontalViewAngle: 30
   peripheralViewAngle: 60
-  frontalViewRadius: 12
+  frontalViewRadius: 7
   peripheralViewRadius: 3.5
   dangerZoneMultiplier: 0.6
   soundAlertDistanceMultiplier: 1.75

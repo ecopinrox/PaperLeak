@@ -46,11 +46,13 @@ public class Landmine : MonoBehaviour
 
     void SaveState(SaveState saveState)
     {
-        if (saveState.mineLocations.Contains(pickup.GridPos))
+        if(!gameObject.activeSelf)
         {
-            return;
+            saveState.mineLocations.Remove(pickup.GridPos);
         }
-
-        saveState.mineLocations.Add(pickup.GridPos);
+        else if (!saveState.mineLocations.Contains(pickup.GridPos))
+        {
+            saveState.mineLocations.Add(pickup.GridPos);
+        }
     }
 }

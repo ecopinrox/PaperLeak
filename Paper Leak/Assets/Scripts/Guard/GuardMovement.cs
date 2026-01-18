@@ -20,7 +20,7 @@ public class GuardMovement : MonoBehaviour
     /// <summary>
     /// Holds the location of the tile that the guard is at/currently travelling to.
     /// </summary>
-    public Vector2Int CurrentLocation { get; private set; }
+    public Vector2Int GridBasedPosition { get; private set; }
 
     List<Node> path = new();
     IEnumerator<Node> pathIterator;
@@ -37,7 +37,7 @@ public class GuardMovement : MonoBehaviour
     void Start()
     {
         SetSpeed();
-        CurrentLocation = Vector2Int.RoundToInt(transform.position);
+        GridBasedPosition = Vector2Int.RoundToInt(transform.position);
 
         StartCoroutine(GuardMovementHandler());
     }
@@ -51,7 +51,7 @@ public class GuardMovement : MonoBehaviour
     {
         if (path != null && path.Count > 0 && path[^1].pos == loc) return;
 
-        List<Node> newPath = pathfinder.GetDirectPath(CurrentLocation, loc);
+        List<Node> newPath = pathfinder.GetDirectPath(GridBasedPosition, loc);
         if (newPath == null) return;
         path = newPath;
 
@@ -61,15 +61,21 @@ public class GuardMovement : MonoBehaviour
 
     public void SetCardinalDestination(Vector2Int loc)
     {
-        Vector2Int? destination = pathfinder.GetClosestReachableCardinalLocation(CurrentLocation, loc);
+        Vector2Int? destination = pathfinder.GetClosestReachableCardinalLocation(GridBasedPosition, loc);
         if(destination == null) return;
 
         SetDestination((Vector2Int)destination);
     }
 
+    public void SetPosition(Vector2 pos)
+    {
+        transform.position = pos;
+        GridBasedPosition = Vector2Int.RoundToInt(pos);
+    }
+
     public void StopMoving()
     {
-        SetDestination(CurrentLocation);
+        SetDestination(GridBasedPosition);
     }
 
     public void LookAt(Vector2 loc)
@@ -89,8 +95,8 @@ public class GuardMovement : MonoBehaviour
                     continue; 
                 }
 
-                CurrentLocation = pathIterator.Current.pos;
-                yield return StartCoroutine(MoveTo(CurrentLocation));
+                GridBasedPosition = pathIterator.Current.pos;
+                yield return StartCoroutine(MoveTo(GridBasedPosition));
 
                 if(shouldStopMoving)
                 {
