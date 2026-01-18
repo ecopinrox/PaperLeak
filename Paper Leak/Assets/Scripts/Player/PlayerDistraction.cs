@@ -4,7 +4,6 @@ public class PlayerDistraction : Distraction
 {
     [SerializeField] float crawlViewMultiplier = 0.6f;
 
-    PlayerInventory playerInventory;
     PlayerMovement playerMovement;
     UIManager uiManager;
     SoundManager soundManager;
@@ -12,12 +11,10 @@ public class PlayerDistraction : Distraction
     public float ViewDistanceMultiplier { get; private set; } = 1f;
 
     [SerializeField] SoundData fartSFX;
-    SoundData walkSFX;
-    SoundData paperTearingSFX;
+    [SerializeField] SoundData walkSFX;
 
     void Awake()
     {
-        playerInventory = GetComponent<PlayerInventory>();
         playerMovement = GetComponent<PlayerMovement>();
 
         uiManager = FindAnyObjectByType<UIManager>();
@@ -46,7 +43,7 @@ public class PlayerDistraction : Distraction
 
     public void LoadSettings(PlayerSettings playerSettings)
     {
+        Debug.Log("loaded " + playerSettings.walkSFX.name + ", formerly " + walkSFX.name);
         walkSFX = playerSettings.walkSFX;
-        paperTearingSFX = playerSettings.paperTearingSFX;
     }
 }

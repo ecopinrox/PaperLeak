@@ -16,6 +16,8 @@ public class LevelBorder : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
-            levelManager.LoadLevel(levelName);
+        {
+            _ = levelManager.LoadLevel(levelName);
+        }
     }
 }

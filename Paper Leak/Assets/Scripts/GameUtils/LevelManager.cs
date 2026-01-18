@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,15 +10,21 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     [SerializeField] SaveState saveState;
-    public static SaveState SaveState { get { return Instance.saveState; } }
 
+    public static Action<SaveState> OnStateLoad;
+    public static Action<SaveState> OnStateSave;
+
+    //0 = easy, 1 = normal, 2 = hard
     public static int currentDifficultySetting = 1;
 
     public float TimeElapsed { get; private set; } = 0;
 
     private void Awake()
     {
-        if(Instance != null) Destroy(gameObject);
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
         else
         {
             Instance = this;
@@ -30,7 +37,7 @@ public class LevelManager : MonoBehaviour
         LoadDifficultySettings();
 
         //Clear save
-        Save();
+        SaveLevelState();
     }
 
     private void Update()
@@ -43,33 +50,38 @@ public class LevelManager : MonoBehaviour
         DifficultySwitch.loadDifficultySettings(currentDifficultySetting);
     }
 
-    public void ReloadLevel()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void LoadLevel(string levelName)
+    public async Awaitable LoadLevel(string levelName)
     {
         TimeElapsed = 0;
         SceneManager.LoadScene(levelName);
+
+        await Awaitable.EndOfFrameAsync();
+        SaveLevelState();
     }
 
-    public void RestartLevel() 
+    public async Awaitable RestartLevel() 
     {
-        LoadLevel(SceneManager.GetActiveScene().name);
-        StartCoroutine(ExecuteAfterDelay(LoadDifficultySettings));
+        _ = LoadLevel(SceneManager.GetActiveScene().name);
+        
+        await Awaitable.EndOfFrameAsync();
+
+        LoadDifficultySettings();
     }
 
-    IEnumerator ExecuteAfterDelay(Action action)
+    public void SaveLevelState()
     {
-        yield return null;
-        action?.Invoke();
+        OnStateSave?.Invoke(saveState);
     }
 
-    public void Save()
+    public async Awaitable LoadLevelState()
     {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+        await Awaitable.NextFrameAsync();
+
+        OnStateLoad?.Invoke(saveState);
+        LoadDifficultySettings();
     }
 
     public void SetDifficulty(int difficulty)

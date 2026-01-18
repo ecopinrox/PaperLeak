@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         playerDistraction = GetComponent<PlayerDistraction>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         GridBasedPosition = Vector2Int.RoundToInt(transform.position);
     }
@@ -69,12 +70,16 @@ public class PlayerMovement : MonoBehaviour
         {
             float speed = IsCrawling ? crawlSpeed : moveSpeed;
             transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.fixedDeltaTime);
+
             if (delay >= walkSFXDelay && !IsCrawling)
             {
                 playerDistraction.PlayWalkSFX();
                 delay = 0;
             }
-            else delay += Time.fixedDeltaTime;
+            else
+            {
+                delay += Time.fixedDeltaTime;
+            }
 
             if(shouldStopMoving)
             {
