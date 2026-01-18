@@ -12,12 +12,44 @@ public class Collectible : MonoBehaviour
         pickup = GetComponent<Pickup>();
     }
 
+    private void OnEnable()
+    {
+        LevelManager.OnStateLoad += LoadState;
+        LevelManager.OnStateSave += SaveState;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.OnStateLoad -= LoadState;
+        LevelManager.OnStateSave -= SaveState;
+    }
+
     private void Start()
     {
         pickup.OnPickup += (playerInventory) =>
         {
             playerInventory.AddCollectible(collectibleID);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         };
+    }
+
+    void LoadState(SaveState saveState)
+    {
+        if(saveState.heldCollectibles.Contains(collectibleID))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    void SaveState(SaveState saveState)
+    {
+        if(gameObject.activeSelf && !saveState.heldCollectibles.Contains(collectibleID))
+        {
+            saveState.heldCollectibles.Add(collectibleID);
+        }
+        else if(!gameObject.activeSelf && saveState.heldCollectibles.Contains(collectibleID))
+        {
+            saveState.heldCollectibles.Remove(collectibleID);
+        }
     }
 }
