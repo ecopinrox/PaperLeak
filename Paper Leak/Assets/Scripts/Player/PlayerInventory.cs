@@ -67,11 +67,16 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        public ItemSlot()
+        public ItemSlot(GameObject itemPrefab, int count)
         {
-            ItemPrefab = null;
-            Count = 0;
+            ItemPrefab = itemPrefab;
+            Count = count;
             RemainingCooldownSeconds = 0;
+        }
+
+        public ItemSlot() : this(null, 0)
+        {
+
         }
 
         public void TickCooldown(float delta)
@@ -196,14 +201,30 @@ public class PlayerInventory : MonoBehaviour
 
     void SaveInventory(SaveState saveState)
     {
+        //collectibles
         saveState.heldCollectibles = new(HeldCollectibles);
+
+        //items
+        saveState.heldItems = new();
+        for(int i = 0; i < slotCount; i++)
+        {
+            saveState.heldItems.Add(new ValueTuple<GameObject, int>(itemSlots[i].ItemPrefab, itemSlots[i].Count));
+        }
     }
 
     void LoadInventory(SaveState saveState)
     {
+        //collectibles
         HeldCollectibles = new(saveState.heldCollectibles);
 
         uiManager.UpdateCollectibleIcons(HeldCollectibles);
+
+        //items
+        for(int i = 0; i < slotCount; i++)
+        {
+            itemSlots[i] = new(saveState.heldItems[i].Item1, saveState.heldItems[i].Item2); 
+        }
+
         UpdateItemSlotUI();
     }
 

@@ -16,6 +16,18 @@ public class ItemHolder : MonoBehaviour
         pickup = GetComponent<Pickup>();
     }
 
+    private void OnEnable()
+    {
+        LevelManager.OnStateLoad += LoadState;
+        LevelManager.OnStateSave += SaveState;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.OnStateLoad -= LoadState;
+        LevelManager.OnStateSave -= SaveState;
+    }
+
     private void Start()
     {
         pickup.OnPickup += AddToInventory;
@@ -33,7 +45,8 @@ public class ItemHolder : MonoBehaviour
         itemCount -= itemsAdded;
         if(itemCount <= 0)
         {
-            Destroy(gameObject);
+            itemCount = 0;
+            gameObject.SetActive(false);
         }
     }
 
@@ -53,5 +66,36 @@ public class ItemHolder : MonoBehaviour
 
         spriteRenderer.sprite = itemSpriteRenderer.sprite;
         spriteRenderer.color = itemSpriteRenderer.color;
+    }
+
+    void LoadState(SaveState saveState)
+    {
+        if(saveState.itemHolders.TryGetValue(pickup.GridPos, out int count))
+        {
+            itemCount = count;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    void SaveState(SaveState saveState)
+    {
+        if(gameObject.activeSelf)
+        {
+            if(saveState.itemHolders.ContainsKey(pickup.GridPos))
+            {
+                saveState.itemHolders[pickup.GridPos] = itemCount;
+            }
+            else
+            {
+                saveState.itemHolders.Add(pickup.GridPos, itemCount);
+            }
+        }
+        else
+        {
+            saveState.itemHolders.Remove(pickup.GridPos);
+        }
     }
 }

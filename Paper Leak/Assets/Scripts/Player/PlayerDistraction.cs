@@ -43,7 +43,6 @@ public class PlayerDistraction : Distraction
 
     public void LoadSettings(PlayerSettings playerSettings)
     {
-        Debug.Log("loaded " + playerSettings.walkSFX.name + ", formerly " + walkSFX.name);
         walkSFX = playerSettings.walkSFX;
     }
 }

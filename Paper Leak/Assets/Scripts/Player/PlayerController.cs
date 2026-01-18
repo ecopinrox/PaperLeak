@@ -38,8 +38,6 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("player: awake");
-
         Instance = this;
 
         playerInput = GetComponent<PlayerInput>();
@@ -179,12 +177,10 @@ public class PlayerController : MonoBehaviour
     void SavePosition(SaveState saveState)
     {
         saveState.playerPos = playerMovement.GridBasedPosition;
-        Debug.Log("saved position: " + playerMovement.GridBasedPosition);
     }
 
     void LoadPosision(SaveState saveState)
     {
-        Debug.Log("loading position: " + saveState.playerPos);
         transform.position = (Vector2)saveState.playerPos;
     }
 
