@@ -150,7 +150,7 @@ public class PlayerInventory : MonoBehaviour
 
     public static PlayerInventory Instance { get; private set; }
 
-    public HashSet<int> Collectibles { get; private set; } = new();
+    public HashSet<int> HeldCollectibles { get; private set; } = new();
 
     [SerializeField] int slotCount = 6;
     ItemSlot[] itemSlots;
@@ -172,6 +172,18 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        LevelManager.OnStateLoad += LoadInventory;
+        LevelManager.OnStateSave += SaveInventory;
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.OnStateLoad -= LoadInventory;
+        LevelManager.OnStateSave -= SaveInventory;
+    }
+
     private void Start()
     {
         UpdateItemSlotUI();
@@ -182,9 +194,16 @@ public class PlayerInventory : MonoBehaviour
         TickItemCooldowns(Time.fixedDeltaTime);
     }
 
-    void LoadInventory()
+    void SaveInventory(SaveState saveState)
     {
-        uiManager.UpdateCollectibleIcons(Collectibles);
+        saveState.heldCollectibles = new(HeldCollectibles);
+    }
+
+    void LoadInventory(SaveState saveState)
+    {
+        HeldCollectibles = new(saveState.heldCollectibles);
+
+        uiManager.UpdateCollectibleIcons(HeldCollectibles);
         UpdateItemSlotUI();
     }
 
@@ -192,14 +211,14 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddCollectible(int id)
     {
-        Collectibles.Add(id);
+        HeldCollectibles.Add(id);
 
-        uiManager.UpdateCollectibleIcons(Collectibles);
+        uiManager.UpdateCollectibleIcons(HeldCollectibles);
     }
 
     public bool HasCollectible(int id)
     {
-        if (Collectibles.Contains(id))
+        if (HeldCollectibles.Contains(id))
         {
             return true;
         }
