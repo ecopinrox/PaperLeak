@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: alt_ground_0
+  m_Name: ground_1P
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1031905127, guid: cb551c965e3cae0438e25f54b2d5d550, type: 3}
-  m_Color: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+  m_Sprite: {fileID: -1081799680, guid: 1e4ccc4cff686d946bbcba49e64e45fc, type: 3}
+  m_Color: {r: 0.36, g: 0.16036364, b: 0.30010906, a: 1}
   m_Transform:
     e00: 1
     e01: 0

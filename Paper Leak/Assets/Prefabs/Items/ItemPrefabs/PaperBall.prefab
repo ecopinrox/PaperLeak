@@ -51,8 +51,11 @@ MonoBehaviour:
   <IsInfinite>k__BackingField: 0
   <MaxStackSize>k__BackingField: 5
   <CooldownSeconds>k__BackingField: 0.8
-  aimRadius: 11
-  blockingMask:
+  aimRadius: 15
+  targetBlockingMask:
+    serializedVersion: 2
+    m_Bits: 12544
+  rayBlockingMask:
     serializedVersion: 2
     m_Bits: 12288
 --- !u!58 &5584640839717504153

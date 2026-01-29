@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LandmineSetter
   <IsInfinite>k__BackingField: 0
-  <MaxStackSize>k__BackingField: 4
+  <MaxStackSize>k__BackingField: 99
   <CooldownSeconds>k__BackingField: 3
   landminePrefab: {fileID: 853784646503526476, guid: c8f21bfffebdae245abbd45379b13f96, type: 3}
   radius: 1
