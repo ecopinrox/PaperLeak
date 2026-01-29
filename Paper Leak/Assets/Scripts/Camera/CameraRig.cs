@@ -174,7 +174,7 @@ public class CameraRig : MonoBehaviour
         {
             //origin offsets
             originCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = defaultX;
-            originCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenX = defaultY;
+            originCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = defaultY;
 
             //lookahead offsets
             float lookaheadOffsetFraction = (float)lookaheadTileOffset / cameraSize;

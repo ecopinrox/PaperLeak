@@ -4,13 +4,14 @@ using UnityEngine;
 public class PaperBall : Item
 {
     [SerializeField] float aimRadius = 18f;
-    [SerializeField] LayerMask blockingMask;
+    [SerializeField] LayerMask targetBlockingMask;
+    [SerializeField] LayerMask rayBlockingMask;
 
     DistractionMovement distractionMovement;
 
     public override async Awaitable<bool> Use()
     {
-        Vector2Int? target = await AimingController.Instance.Aim(aimRadius, blockingMask, blockingMask);
+        Vector2Int? target = await AimingController.Instance.Aim(aimRadius, targetBlockingMask, rayBlockingMask);
         if (target == null)
         {
             return false;

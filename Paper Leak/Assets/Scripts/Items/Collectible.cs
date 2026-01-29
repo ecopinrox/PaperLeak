@@ -43,13 +43,6 @@ public class Collectible : MonoBehaviour
 
     void SaveState(SaveState saveState)
     {
-        if(gameObject.activeSelf && !saveState.heldCollectibles.Contains(collectibleID))
-        {
-            saveState.heldCollectibles.Add(collectibleID);
-        }
-        else if(!gameObject.activeSelf && saveState.heldCollectibles.Contains(collectibleID))
-        {
-            saveState.heldCollectibles.Remove(collectibleID);
-        }
+        //nothing to be done here
     }
 }

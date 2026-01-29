@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216fffaacb569644ba2444b35b08ed45, type: 3}
   m_Name: GuardSettings_Normal
   m_EditorClassIdentifier: Assembly-CSharp::GuardSettings
-  investigationRoutineDelay: 1
+  investigationRoutineDelay: 0.5
   examineDelay: 7
   frontalViewAngle: 30
-  peripheralViewAngle: 60
-  frontalViewRadius: 7
-  peripheralViewRadius: 3.5
-  dangerZoneMultiplier: 0.6
+  peripheralViewAngle: 70
+  frontalViewRadius: 8
+  peripheralViewRadius: 5
+  dangerZoneMultiplier: 0.65
   soundAlertDistanceMultiplier: 1.75
   canCrouch: 1
   patrolSpeed: 3
