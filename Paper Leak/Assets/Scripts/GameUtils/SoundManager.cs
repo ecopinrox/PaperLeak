@@ -8,7 +8,14 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] GameObject soundEmitter;
 
+    public static SoundManager Instance { get; private set; }
+
     readonly Stack<GameObject> soundPool = new();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public Coroutine PlaySound(SoundData data, Vector2 position, Distraction source)
     {

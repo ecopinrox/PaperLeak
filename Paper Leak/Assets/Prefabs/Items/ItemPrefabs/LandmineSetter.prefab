@@ -50,9 +50,12 @@ MonoBehaviour:
   <CooldownSeconds>k__BackingField: 3
   landminePrefab: {fileID: 853784646503526476, guid: c8f21bfffebdae245abbd45379b13f96, type: 3}
   radius: 1
-  blockingMask:
+  targetBlockingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 12544
+  rayBlockingMask:
+    serializedVersion: 2
+    m_Bits: 12288
 --- !u!1 &5349419349554680371
 GameObject:
   m_ObjectHideFlags: 0
