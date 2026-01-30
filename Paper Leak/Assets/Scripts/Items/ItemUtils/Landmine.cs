@@ -5,6 +5,7 @@ using UnityEngine;
 public class Landmine : MonoBehaviour
 {
     [SerializeField] GameObject LandmineSetterPrefab;
+    [SerializeField] SoundData freezeSFX;
 
     Pickup pickup;
 
@@ -33,6 +34,7 @@ public class Landmine : MonoBehaviour
         if(collision.TryGetComponent(out GuardBrain guardBrain))
         {
             guardBrain.Freeze();
+            SoundManager.Instance.PlaySound(freezeSFX, transform.position, null);
             gameObject.SetActive(false);
         }
     }

@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Landmine
   LandmineSetterPrefab: {fileID: 4157299677636091896, guid: f5cf75d4252ac0d44966f0d9d2977420, type: 3}
+  freezeSFX: {fileID: 11400000, guid: 466854e250379d14894e28d95ce34834, type: 2}
 --- !u!114 &8500044224121541417
 MonoBehaviour:
   m_ObjectHideFlags: 0
