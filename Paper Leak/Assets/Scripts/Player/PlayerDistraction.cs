@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PlayerDistraction : Distraction
 {
-    [SerializeField] float crawlViewMultiplier = 0.6f;
-
     PlayerMovement playerMovement;
     UIManager uiManager;
     SoundManager soundManager;
 
     public float ViewDistanceMultiplier { get; private set; } = 1f;
+
+    float walkViewMultiplier;
+    float crawlViewMultiplier;
 
     [SerializeField] SoundData fartSFX;
     [SerializeField] SoundData walkSFX;
@@ -26,9 +27,9 @@ public class PlayerDistraction : Distraction
         getPosition = () => playerMovement.GridBasedPosition;
     }
 
-    public void UpdateViewMultiplier(bool isCrouched)
+    public void UpdateViewMultiplier()
     {
-        ViewDistanceMultiplier = isCrouched ? crawlViewMultiplier : 1f;
+        ViewDistanceMultiplier = playerMovement.IsCrawling ? crawlViewMultiplier : walkViewMultiplier;
     }
 
     public void Fart()
@@ -44,5 +45,10 @@ public class PlayerDistraction : Distraction
     public void LoadSettings(PlayerSettings playerSettings)
     {
         walkSFX = playerSettings.walkSFX;
+
+        walkViewMultiplier = playerSettings.walkingViewDistanceMultiplier;
+        crawlViewMultiplier = playerSettings.crawlingViewDistanceMultiplier;
+
+        UpdateViewMultiplier();
     }
 }

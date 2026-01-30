@@ -249,6 +249,8 @@ public class GuardBrain : MonoBehaviour
                 {
                     break; 
                 }
+
+                guardDistractionSensor.RegisterDistraction(currentDistraction);
                 nextTask = alertOrInvestigatingToAlertTask;
                 break;
 
@@ -262,6 +264,7 @@ public class GuardBrain : MonoBehaviour
                 }
                 else 
                 { 
+                    guardDistractionSensor.RegisterDistraction(currentDistraction);
                     nextTask = alertOrInvestigatingToAlertTask; 
                 }
                 break;

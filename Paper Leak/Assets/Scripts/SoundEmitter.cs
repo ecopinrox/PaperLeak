@@ -25,14 +25,7 @@ public class SoundEmitter : MonoBehaviour
         List<AudioClip> list = soundData.audioClips;
         AudioClip clip = list[UnityEngine.Random.Range(0, list.Count)];
 
-        if (soundData.distractionRadius > Mathf.Epsilon)
-        {
-            circleCollider.radius = soundData.distractionRadius;
-        }
-        else
-        {
-            circleCollider.enabled = false;
-        }
+        circleCollider.enabled = (originDistraction != null);
 
         audioSource.PlayOneShot(clip);
         this.originDistraction = originDistraction;

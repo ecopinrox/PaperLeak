@@ -15,3 +15,4 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 6d1729a46141aef40a16726f1bd6619d, type: 3}
   distractionRadius: 2.5
+  priority: 0
