@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Artifact
   <IsInfinite>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
-  <CooldownSeconds>k__BackingField: 20
+  <CooldownSeconds>k__BackingField: 23
   radius: 10
   targetBlockingMask:
     serializedVersion: 2

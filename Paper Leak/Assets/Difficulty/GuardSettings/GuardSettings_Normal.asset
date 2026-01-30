@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GuardSettings_Normal
   m_EditorClassIdentifier: Assembly-CSharp::GuardSettings
   investigationRoutineDelay: 0.5
-  examineDelay: 7
+  examineDelay: 8
   frontalViewAngle: 30
   peripheralViewAngle: 70
   frontalViewRadius: 8
