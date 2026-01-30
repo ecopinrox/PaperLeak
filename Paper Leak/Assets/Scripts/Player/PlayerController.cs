@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
         //CameraSwitcher.SetCamera(Vector2.zero);
         playerCameraRigHandler.SetActiveCamera(Vector2.zero, false);
-        playerDistraction.UpdateViewMultiplier(playerMovement.IsCrawling);
+        playerDistraction.UpdateViewMultiplier();
     }
 
     void SetDirection(InputAction.CallbackContext ctx)
