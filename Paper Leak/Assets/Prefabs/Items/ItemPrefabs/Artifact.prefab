@@ -139,7 +139,7 @@ MonoBehaviour:
   <IsInfinite>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
   <CooldownSeconds>k__BackingField: 23
-  radius: 10
+  radius: 13
   targetBlockingMask:
     serializedVersion: 2
     m_Bits: 12544
