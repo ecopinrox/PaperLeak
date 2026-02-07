@@ -12,6 +12,9 @@ public class AimingController : MonoBehaviour
     [SerializeField] Color validTargetColor = Color.greenYellow;
     [SerializeField] Color invalidTargetColor = Color.red;
 
+    [Header("Aiming FOV")]
+    [SerializeField] AimFOVHandler aimFOVHandler;
+
     public static AimingController Instance { get; private set; }
 
     GridManager gridManager;
@@ -37,6 +40,7 @@ public class AimingController : MonoBehaviour
         uiManager.SetAimModePanelStatus(true);
         playerController.SwitchToAimingActionMap();
         tileHighlight.gameObject.SetActive(true);
+        aimFOVHandler.RenderAimFOV();
 
         AimingState = AimState.Aiming;
 
@@ -79,6 +83,7 @@ public class AimingController : MonoBehaviour
     {
         Time.timeScale = 1f;
         uiManager.SetAimModePanelStatus(false);
+        aimFOVHandler.ClearAimFOV();    
         tileHighlight.gameObject.SetActive(false);
 
         AimingState = AimState.Finished;
@@ -88,6 +93,7 @@ public class AimingController : MonoBehaviour
     {
         Time.timeScale = 1f;
         uiManager.SetAimModePanelStatus(false);
+        aimFOVHandler.ClearAimFOV();    
         tileHighlight.gameObject.SetActive(false);
 
         AimingState = AimState.Canceled;
