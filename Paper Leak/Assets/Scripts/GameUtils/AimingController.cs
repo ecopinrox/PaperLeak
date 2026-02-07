@@ -20,6 +20,7 @@ public class AimingController : MonoBehaviour
     GridManager gridManager;
     UIManager uiManager;
     PlayerController playerController;
+    PlayerMovement playerMovement;
 
     public enum AimState { Aiming, Finished, Canceled }
     public AimState AimingState { get; private set; } = AimState.Canceled;
@@ -29,6 +30,8 @@ public class AimingController : MonoBehaviour
         Instance = this;
 
         playerController = FindAnyObjectByType<PlayerController>();
+        playerMovement = playerController.GetComponent<PlayerMovement>();
+
         gridManager = FindAnyObjectByType<GridManager>();
         uiManager = gridManager.GetComponent<UIManager>();
     }
@@ -40,7 +43,7 @@ public class AimingController : MonoBehaviour
         uiManager.SetAimModePanelStatus(true);
         playerController.SwitchToAimingActionMap();
         tileHighlight.gameObject.SetActive(true);
-        aimFOVHandler.RenderAimFOV();
+        aimFOVHandler.RenderAimFOV(playerMovement.GridBasedPosition, radius, rayBlockingMask);
 
         AimingState = AimState.Aiming;
 
@@ -101,7 +104,7 @@ public class AimingController : MonoBehaviour
 
     bool IsLocationTargetable(Vector2Int targetedPos, float radius, LayerMask targetBlockingMask, LayerMask rayBlockingMask)
     {
-        Vector2 playerPos = playerController.transform.position;
+        Vector2 playerPos = playerMovement.GridBasedPosition;
 
         bool isWithinRadius     = Vector2.Distance(playerPos, targetedPos) <= radius + maxPositionalError;
         bool isTargetBlocked    = gridManager.IsLocationInMask(targetedPos, targetBlockingMask);
