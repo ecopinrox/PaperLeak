@@ -70,5 +70,8 @@ TagManager:
   - name: SpriteOverlay
     uniqueID: 3746606929
     locked: 0
+  - name: AimFOV
+    uniqueID: 2061088763
+    locked: 0
   m_RenderingLayers:
   - Default
