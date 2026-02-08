@@ -14,8 +14,6 @@ public class AimFOVHandler : MonoBehaviour
 
     public void RenderAimFOV(Vector2 origin, float radius, LayerMask rayBlockingMask)
     {
-        Debug.Log("render aim FOV");
-
         Mesh fovMesh = new();
 
         Vector3[] vertices  = new Vector3[resolution + 1 ];
@@ -52,8 +50,6 @@ public class AimFOVHandler : MonoBehaviour
 
     public void ClearAimFOV()
     {
-        Debug.Log("clear aim FOV");
-
         meshFilter.mesh = null;
     }
 
