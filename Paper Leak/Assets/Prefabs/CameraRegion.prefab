@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3875007909859961299}
   - component: {fileID: 1890767119335909978}
   - component: {fileID: 7358171852202283505}
-  m_Layer: 0
-  m_Name: RoomFocusedCamera
+  m_Layer: 17
+  m_Name: CameraRegion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd107bf6f450a3e49a3ca3b8f7b24fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomFocusedCamera
-  cameraRig: {fileID: 207621474224262354}
+  <Rig>k__BackingField: {fileID: 207621474224262354}
 --- !u!61 &3875007909859961299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -253,9 +253,21 @@ PrefabInstance:
       propertyPath: m_Lens.OrthographicSize
       value: 11.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1089123286873476843, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260018408187557802, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1391226709413057024, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: cameraSize
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391226709413057024, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: <Priority>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1694605576265811212, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_ScreenX
@@ -281,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Lens.OrthographicSize
       value: 11.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2284404542934881942, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2998433661998006325, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.875
@@ -293,9 +309,17 @@ PrefabInstance:
       propertyPath: m_Lens.OrthographicSize
       value: 11.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4074419479169954475, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4427893223680890717, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_ScreenY
       value: 0.065217406
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659902944781811277, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.53913045
       objectReference: {fileID: 0}
     - target: {fileID: 5032999139980615821, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -341,9 +365,21 @@ PrefabInstance:
       propertyPath: m_ScreenY
       value: 0.9347826
       objectReference: {fileID: 0}
+    - target: {fileID: 6833072920298622714, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_ScreenY
+      value: 0.32608694
+      objectReference: {fileID: 0}
     - target: {fileID: 6946632699053730139, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_ScreenX
       value: 0.7478261
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023442611570061297, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137542687998854326, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.26086956
       objectReference: {fileID: 0}
     - target: {fileID: 7219408113107127596, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_ScreenX
@@ -428,6 +464,10 @@ PrefabInstance:
     - target: {fileID: 8840788358028779828, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979735922962558095, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
+      propertyPath: m_ScreenY
+      value: 0.67391306
       objectReference: {fileID: 0}
     - target: {fileID: 9091488762148515952, guid: 2c3edcbad59512148b9dcc164f84c73b, type: 3}
       propertyPath: m_Lens.OrthographicSize

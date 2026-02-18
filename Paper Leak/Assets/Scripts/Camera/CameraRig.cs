@@ -7,6 +7,8 @@ public class CameraRig : MonoBehaviour
 {
     Transform playerTransform = null;
 
+    [field: SerializeField] public int Priority { get; private set; } = 0;
+
     [Header("Camera settings")]
     [SerializeField] int cameraSize;
     [SerializeField] CinemachineVirtualCamera originCamera;

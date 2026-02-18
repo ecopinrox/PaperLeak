@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCameraRigHandler : MonoBehaviour
 {
     [SerializeField] CameraRig defaultRig;
+    [SerializeField] LayerMask cameraRegionMask;
     CameraRig currentRig;
 
     void Start()
@@ -11,23 +12,43 @@ public class PlayerCameraRigHandler : MonoBehaviour
         currentRig.ActivateRig();
     }
 
+    private void FixedUpdate()
+    {
+        SetActiveCameraRig();
+    }
+
     public void SetActiveCamera(Vector2 input, bool peeking)
     {
         currentRig.SwitchCamera(GetDirection(input), peeking);
     }
 
-    public void SetCameraRig(CameraRig newRig)
+    void SetActiveCameraRig()
     {
-        SwitchRig(newRig);
+        CameraRig[] rigs = GetOverlappingRigs(transform.position);
+        CameraRig highestPriorityRig = defaultRig;
+
+        foreach (CameraRig rig in rigs)
+        {
+            if (rig.Priority > highestPriorityRig.Priority)
+            {
+                highestPriorityRig = rig;
+            }
+        }
+
+        SwitchRig(highestPriorityRig);
     }
 
-    public void ResetCameraRig(CameraRig rig)
+    CameraRig[] GetOverlappingRigs(Vector2 pos)
     {
-        if (currentRig != rig) 
+        Collider2D[] rigColliders = Physics2D.OverlapPointAll(pos, cameraRegionMask);
+        CameraRig[] rigs = new CameraRig[rigColliders.Length];
+
+        for (int i = 0; i < rigColliders.Length; i++)
         {
-            return; 
+            rigs[i] = rigColliders[i].GetComponent<CameraRegion>().Rig;
         }
-        SwitchRig(defaultRig);
+
+        return rigs;
     }
 
     CameraRig.Direction GetDirection(Vector2 rawDir)
@@ -56,6 +77,11 @@ public class PlayerCameraRigHandler : MonoBehaviour
 
     void SwitchRig(CameraRig newRig)
     {
+        if(newRig == currentRig)
+        {
+            return;
+        }
+
         newRig.ActivateRig();
         currentRig.DeactivateRig();
         currentRig = newRig;
