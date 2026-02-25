@@ -10,9 +10,6 @@ public class Pathfinder : MonoBehaviour
     [SerializeField] LayerMask opaqueMask;
     [SerializeField] LayerMask unwalkableMask;
 
-    [Header("Region mapping")]
-    [SerializeField] Vector2Int startPos = new(1, 1);
-
     [Header("Debug")]
     [SerializeField] bool showRegionMappings;
 
@@ -35,7 +32,8 @@ public class Pathfinder : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(DebugMarkTiles(new(6, 45)));
-        MarkTiles(startPos);
+        Vector2Int playerPos = Vector2Int.RoundToInt(PlayerController.Instance.transform.position);
+        MarkTiles(playerPos);
     }
 
     void MarkTiles(Vector2Int startPos)
