@@ -55,31 +55,13 @@ public class CameraRig : MonoBehaviour
 
     public void SetConfinerBounds()
     {
-        if (pivotOnTopRight)
+        int width = Mathf.Abs(Mathf.RoundToInt(topRightTile.position.x - bottomLeftTile.position.x));
+        int height = Mathf.Abs(Mathf.RoundToInt(topRightTile.position.y - bottomLeftTile.position.y));
+        int leastSize = (width < height ? width : height) + 1;
+        if (cameraSize > leastSize)
         {
-            Vector2 adjustedBottomLeftCorner = bottomLeftTile.position;
-            if(topRightTile.position.x - bottomLeftTile.position.x < cameraSize - 1)
-            {
-                adjustedBottomLeftCorner.x = topRightTile.position.x - cameraSize + 1;
-            }
-            if(topRightTile.position.y - bottomLeftTile.position.y < cameraSize - 1)
-            {
-                adjustedBottomLeftCorner.y = topRightTile.position.y - cameraSize + 1;
-            }
-            bottomLeftTile.position = adjustedBottomLeftCorner;
-        }
-        else
-        {
-            Vector2 adjustedTopRightCorner = topRightTile.position;
-            if(topRightTile.position.x - bottomLeftTile.position.x < cameraSize - 1)
-            {
-                adjustedTopRightCorner.x = cameraSize + bottomLeftTile.position.x - 1;
-            }
-            if(topRightTile.position.y - bottomLeftTile.position.y < cameraSize - 1)
-            {
-                adjustedTopRightCorner.y = cameraSize + bottomLeftTile.position.y - 1;
-            }
-            topRightTile.position = adjustedTopRightCorner;
+            cameraSize = leastSize;
+            Debug.Log(gameObject.name + ": Adjusted camera size based on confiner bounds.");
         }
 
         try
