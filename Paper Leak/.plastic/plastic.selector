@@ -1,3 +1,0 @@
-repository "Cloud Repositories/Paper Leak@13469402963355@cloud"
-  path "/"
-    smartbranch "/main/without FSM bullshit"
