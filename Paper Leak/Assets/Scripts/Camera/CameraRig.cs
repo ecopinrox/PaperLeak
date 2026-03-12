@@ -29,7 +29,6 @@ public class CameraRig : MonoBehaviour
     [SerializeField] PolygonCollider2D confiner;
     [SerializeField] Transform bottomLeftTile;
     [SerializeField] Transform topRightTile;
-    [SerializeField] bool pivotOnTopRight = false;
 
     static readonly float aspectRatio = 1.25f;
 
