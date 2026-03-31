@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746d6896bd3e8d478d9de4ca439715c, type: 3}
   m_Name: Save State
   m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0}
+  playerPos: {x: 9, y: 2}

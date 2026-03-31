@@ -2,6 +2,7 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 
 public class JsonSaver
 {
@@ -34,7 +35,11 @@ public class JsonSaver
     static JsonSerializerSettings GetSerializerSettings()
     {       
         JsonSerializerSettings settings = new();
-        settings.Converters.Add(new Vector2IntConverter());
+        settings.Converters.Add( new Vector2IntConverter()                                      );
+        settings.Converters.Add( new DictionaryConverter<int>()                                 );
+        settings.Converters.Add( new QuaternionConverter()                                      );
+        settings.Converters.Add( new ValueTupleConverter<Vector2Int, Quaternion>()              );
+        settings.Converters.Add( new DictionaryConverter<ValueTuple<Vector2Int, Quaternion>>()  );
         return settings;
     }
 

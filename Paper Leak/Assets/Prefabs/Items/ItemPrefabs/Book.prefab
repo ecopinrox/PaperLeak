@@ -48,7 +48,7 @@ MonoBehaviour:
   <IsInfinite>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
   <CooldownSeconds>k__BackingField: 10
-  paperBallPrefab: {fileID: 2262790725876887020, guid: f7287c3e50709bd4ebdd9a4599ee9304, type: 3}
+  paperBallIndex: 2
   paperBallAdditionCount: 3
   pointSoundDistractionPrefab: {fileID: 2373735561752840355, guid: cd1b6146ad54d4540962387b25743030, type: 3}
   paperTearingSFX: {fileID: 11400000, guid: eb012e99f7cb9fa46b4ffe22987b3e5d, type: 2}

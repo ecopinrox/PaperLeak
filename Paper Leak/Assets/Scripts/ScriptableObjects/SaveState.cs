@@ -12,7 +12,7 @@ public class SaveState : ScriptableObject
     public HashSet<int> heldCollectibles = new();
 
     //items
-    public List<ValueTuple<GameObject, int>> heldItems = new();
+    public List<ValueTuple<int, int>> heldItems = new();
     public Dictionary<Vector2Int, int> itemHolders = new();
 
     //doors

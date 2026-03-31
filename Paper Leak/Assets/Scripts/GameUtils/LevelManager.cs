@@ -7,8 +7,14 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     [SerializeField] SaveState saveState;
+    [field: SerializeField] public ItemIndexer ItemIndexer { get; private set; }
 
-    [SerializeField] GameObject landminePrefab;
+    enum LevelLoadOptions { JsonLoad, SkipLoad, SaveOnLoad };
+    [SerializeField] LevelLoadOptions levelLoadOption;
+
+    [SerializeField] int landmineIndex;
+
+    [SerializeField] string saveFileName;
 
     public static Action<SaveState> OnStateLoad;
     public static Action<SaveState> OnStateSave;
@@ -46,8 +52,15 @@ public class LevelManager : MonoBehaviour
     {
         LoadDifficultySettings();
 
-        //Clear save
-        SaveLevelState();
+        if (levelLoadOption == LevelLoadOptions.JsonLoad)
+        {
+            JsonSaver.Load(saveState, saveFileName);
+            _ = LoadLevelState();
+        }
+        else if (levelLoadOption == LevelLoadOptions.SaveOnLoad)
+        {
+            SaveLevelState();
+        }
     }
 
     private void Update()
@@ -81,13 +94,19 @@ public class LevelManager : MonoBehaviour
     public void SaveLevelState()
     {
         OnStateSave?.Invoke(saveState);
+        JsonSaver.Save(saveState, saveFileName);
     }
 
-    public async Awaitable LoadLevelState()
+    public async Awaitable ReloadLevelState()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+        await LoadLevelState();
+    }
+
+    public async Awaitable LoadLevelState()
+    {
         await Awaitable.NextFrameAsync();
 
         OnStateLoad?.Invoke(saveState);
@@ -104,7 +123,8 @@ public class LevelManager : MonoBehaviour
     {
         foreach (Vector2Int loc in saveState.mineLocations)
         {
-            Instantiate(landminePrefab, (Vector2)loc, Quaternion.identity);
+            Instantiate(ItemIndexer.GetItem(landmineIndex), (Vector2)loc, Quaternion.identity);
         }
     }
 }
+

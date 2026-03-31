@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D), typeof(Pickup))]
 public class Landmine : MonoBehaviour
 {
-    [SerializeField] GameObject LandmineSetterPrefab;
+    [SerializeField] int landmineSetterIndex;
     [SerializeField] SoundData freezeSFX;
 
     Pickup pickup;
@@ -41,7 +41,7 @@ public class Landmine : MonoBehaviour
 
     private void ReturnToInventory(PlayerInventory playerInventory)
     {
-        playerInventory.AddItems(LandmineSetterPrefab, 1);
+        playerInventory.AddItems(landmineSetterIndex, 1);
 
         gameObject.SetActive(false);
     }

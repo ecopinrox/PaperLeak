@@ -31,7 +31,6 @@ public class Pathfinder : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(DebugMarkTiles(new(6, 45)));
         Vector2Int playerPos = Vector2Int.RoundToInt(PlayerController.Instance.transform.position);
         MarkTiles(playerPos);
     }

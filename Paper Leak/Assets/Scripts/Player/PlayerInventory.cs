@@ -6,9 +6,19 @@ public class PlayerInventory : MonoBehaviour
 {
     class ItemSlot
     {
-        public GameObject ItemPrefab { get; private set; }
+        readonly ItemIndexer itemIndexer;
+
+        public int ItemIndex { get; private set; }
         public int Count { get; private set; }
         public float RemainingCooldownSeconds { get; private set; }
+
+        public GameObject ItemPrefab 
+        { 
+            get
+            {
+                return itemIndexer.GetItem(ItemIndex);
+            }
+        }
 
         public bool IsInfinite 
         { 
@@ -67,14 +77,20 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        public ItemSlot(GameObject itemPrefab, int count)
+        public ItemSlot(int itemIndex, int count, ItemIndexer itemIndexer)
         {
-            ItemPrefab = itemPrefab;
+            if(itemIndexer == null)
+            {
+                throw new NullReferenceException("Item indexer cannot be null");
+            }
+            this.itemIndexer = itemIndexer;
+
+            ItemIndex = itemIndex;
             Count = count;
             RemainingCooldownSeconds = 0;
         }
 
-        public ItemSlot() : this(null, 0)
+        public ItemSlot(ItemIndexer itemIndexer) : this(-1, 0, itemIndexer)
         {
 
         }
@@ -89,14 +105,14 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        public int AddItems(GameObject item, int itemCount)
+        public int AddItems(int itemIndex, int itemCount)
         {
             if(ItemPrefab == null)
             {
-                ItemPrefab = item;
+                ItemIndex = itemIndex;
             }
 
-            if (item != ItemPrefab)
+            if (itemIndex != ItemIndex)
             {
                 return 0;
             }
@@ -147,7 +163,7 @@ public class PlayerInventory : MonoBehaviour
 
         public void ClearSlot()
         {
-            ItemPrefab = null;
+            ItemIndex = -1;
             Count = 0;
             RemainingCooldownSeconds = 0;
         }
@@ -173,7 +189,7 @@ public class PlayerInventory : MonoBehaviour
 
         for (int i = 0; i < slotCount; i++)
         {
-            itemSlots[i] = new();
+            itemSlots[i] = new(LevelManager.Instance.ItemIndexer);
         }
     }
 
@@ -208,7 +224,7 @@ public class PlayerInventory : MonoBehaviour
         saveState.heldItems = new();
         for(int i = 0; i < slotCount; i++)
         {
-            saveState.heldItems.Add(new ValueTuple<GameObject, int>(itemSlots[i].ItemPrefab, itemSlots[i].Count));
+            saveState.heldItems.Add(new ValueTuple<int, int>(itemSlots[i].ItemIndex, itemSlots[i].Count));
         }
     }
 
@@ -222,7 +238,14 @@ public class PlayerInventory : MonoBehaviour
         //items
         for(int i = 0; i < slotCount; i++)
         {
-            itemSlots[i] = new(saveState.heldItems[i].Item1, saveState.heldItems[i].Item2); 
+            if(i >= saveState.heldItems.Count)
+            {
+                itemSlots[i] = new(LevelManager.Instance.ItemIndexer);
+            }
+            else
+            {
+                itemSlots[i] = new(saveState.heldItems[i].Item1, saveState.heldItems[i].Item2, LevelManager.Instance.ItemIndexer); 
+            }
         }
 
         UpdateItemSlotUI();
@@ -266,12 +289,12 @@ public class PlayerInventory : MonoBehaviour
     /// <summary>
     /// Returns the number of items added.
     /// </summary>
-    /// <param name="itemPrefab"></param>
+    /// <param name="itemIndex"></param>
     /// <param name="count"></param>
     /// <returns></returns>
-    public int AddItems(GameObject itemPrefab, int count)
+    public int AddItems(int itemIndex, int count)
     {
-        if(itemPrefab == null)
+        if(itemIndex < 0)
         {
             throw new NullReferenceException("Attempted to add a null item prefab to inventory.");
         }
@@ -279,12 +302,12 @@ public class PlayerInventory : MonoBehaviour
         //find a slot containing itemPrefab - if found, insert and return
         for(int i = 0; i < slotCount; i++)
         {
-            if (itemSlots[i].ItemPrefab != itemPrefab)
+            if (itemSlots[i].ItemIndex != itemIndex)
             {
                 continue;
             }
 
-            int itemsAdded = itemSlots[i].AddItems(itemPrefab, count);
+            int itemsAdded = itemSlots[i].AddItems(itemIndex, count);
             UpdateItemSlotUI();
 
             return itemsAdded;
@@ -298,7 +321,7 @@ public class PlayerInventory : MonoBehaviour
                 continue;
             }
 
-            int itemsAdded = itemSlots[i].AddItems(itemPrefab, count);
+            int itemsAdded = itemSlots[i].AddItems(itemIndex, count);
             UpdateItemSlotUI();
 
             return itemsAdded;

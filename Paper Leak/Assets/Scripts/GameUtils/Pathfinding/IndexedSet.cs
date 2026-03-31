@@ -76,7 +76,7 @@ public class IndexedSet<T>
             }
         }
 
-        throw new KeyNotFoundException("The specified item does not exist in the indexed set.");
+        throw new KeyNotFoundException($"The specified item {item} does not exist in the indexed set.");
     }
 
     public bool TryGetIndex(T item, out int index)

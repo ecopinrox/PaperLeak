@@ -4,16 +4,18 @@ using UnityEngine;
 [ExecuteAlways]
 public class ItemHolder : MonoBehaviour
 {
-    [SerializeField] GameObject itemPrefab;
+    [SerializeField] int itemIndex;
     [SerializeField] int itemCount = 1;
 
     [SerializeField] SpriteRenderer spriteRenderer;
 
     Pickup pickup;
+    GameObject itemPrefab;
 
     private void Awake()
     {
         pickup = GetComponent<Pickup>();
+        itemPrefab = LevelManager.Instance.ItemIndexer.GetItem(itemIndex);
     }
 
     private void OnEnable()
@@ -40,7 +42,7 @@ public class ItemHolder : MonoBehaviour
 
     void AddToInventory(PlayerInventory playerInventory)
     {
-        int itemsAdded = playerInventory.AddItems(itemPrefab, itemCount);
+        int itemsAdded = playerInventory.AddItems(itemIndex, itemCount);
 
         itemCount -= itemsAdded;
         if(itemCount <= 0)
