@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -54,7 +55,15 @@ public class LevelManager : MonoBehaviour
 
         if (levelLoadOption == LevelLoadOptions.JsonLoad)
         {
-            JsonSaver.Load(saveState, saveFileName);
+            try
+            {
+                JsonSaver.Load(saveState, saveFileName);
+            }
+            catch(FileNotFoundException)
+            {
+                SaveLevelState();
+            }
+
             _ = LoadLevelState();
         }
         else if (levelLoadOption == LevelLoadOptions.SaveOnLoad)

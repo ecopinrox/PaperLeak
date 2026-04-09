@@ -16,10 +16,11 @@ public class JsonSaver
 
     public static void Load(SaveState save, string filename)
     {
+        string path = BuildPath(filename);
         try
         {
             string json;
-            using (StreamReader reader = new(BuildPath(filename)))
+            using (StreamReader reader = new(path))
             {
                 json = reader.ReadToEnd();
             }
@@ -28,7 +29,7 @@ public class JsonSaver
         }
         catch(FileNotFoundException)
         {
-            //do nothing
+            throw new FileNotFoundException($"Save file \"{path}\" not found.");
         }
     }
 
