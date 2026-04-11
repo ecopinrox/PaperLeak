@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Save State", menuName = "Scriptable Objects/Save State")]
 public class SaveState : ScriptableObject
 {
+    //difficulty
+    public int difficulty;
+
     //player position
     public Vector2Int playerPos;
 

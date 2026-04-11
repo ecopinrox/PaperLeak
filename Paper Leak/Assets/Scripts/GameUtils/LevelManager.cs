@@ -42,11 +42,17 @@ public class LevelManager : MonoBehaviour
     {
         //landmine loading
         OnStateLoad += LoadLandmines;
+
+        OnStateSave += SaveDifficulty;
+        OnStateLoad += LoadDifficulty;
     }
 
     private void OnDisable()
     {
         OnStateLoad -= LoadLandmines;
+
+        OnStateSave -= SaveDifficulty;
+        OnStateLoad -= LoadDifficulty;
     }
 
     private void Start()
@@ -134,6 +140,16 @@ public class LevelManager : MonoBehaviour
         {
             Instantiate(ItemIndexer.GetItem(landmineIndex), (Vector2)loc, Quaternion.identity);
         }
+    }
+
+    void SaveDifficulty(SaveState saveState)
+    {
+        saveState.difficulty = currentDifficultySetting;
+    }
+
+    void LoadDifficulty(SaveState saveState)
+    {
+        currentDifficultySetting = saveState.difficulty;
     }
 }
 

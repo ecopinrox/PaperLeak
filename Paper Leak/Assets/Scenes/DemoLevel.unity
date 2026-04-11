@@ -140394,7 +140394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
       propertyPath: levelLoadOption
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
       propertyPath: currentDifficultySetting
