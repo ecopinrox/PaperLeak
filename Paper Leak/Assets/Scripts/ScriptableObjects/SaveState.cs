@@ -8,6 +8,9 @@ public class SaveState : ScriptableObject
     //difficulty
     public int difficulty;
 
+    //time
+    public float timeElapsed;
+
     //player position
     public Vector2Int playerPos;
 

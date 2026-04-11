@@ -45,6 +45,9 @@ public class LevelManager : MonoBehaviour
 
         OnStateSave += SaveDifficulty;
         OnStateLoad += LoadDifficulty;
+
+        OnStateSave += SaveTimeElapsed;
+        OnStateLoad += LoadTimeElapsed;
     }
 
     private void OnDisable()
@@ -53,6 +56,9 @@ public class LevelManager : MonoBehaviour
 
         OnStateSave -= SaveDifficulty;
         OnStateLoad -= LoadDifficulty;
+
+        OnStateSave -= SaveTimeElapsed;
+        OnStateLoad -= LoadTimeElapsed;
     }
 
     private void Start()
@@ -150,6 +156,16 @@ public class LevelManager : MonoBehaviour
     void LoadDifficulty(SaveState saveState)
     {
         currentDifficultySetting = saveState.difficulty;
+    }
+
+    void SaveTimeElapsed(SaveState saveState)
+    {
+        saveState.timeElapsed = TimeElapsed;
+    }
+
+    void LoadTimeElapsed(SaveState saveState)
+    {
+        TimeElapsed = saveState.timeElapsed;
     }
 }
 
