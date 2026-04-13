@@ -6,7 +6,7 @@ using System;
 
 public class JsonSaver
 {
-    public static void Save(SaveState save, string filename)
+    public static void Save(MasterSave save, string filename)
     {
         string json = JsonConvert.SerializeObject(save, Formatting.Indented, GetSerializerSettings());
 
@@ -14,7 +14,7 @@ public class JsonSaver
         writer.Write(json);
     }
 
-    public static void Load(SaveState save, string filename)
+    public static void Load(MasterSave save, string filename)
     {
         string path = BuildPath(filename);
         try

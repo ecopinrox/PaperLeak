@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    [SerializeField] SaveState saveState;
+    [SerializeField] MasterSave masterSave;
     [field: SerializeField] public ItemIndexer ItemIndexer { get; private set; }
 
     enum LevelLoadOptions { JsonLoad, SkipLoad, SaveOnLoad };
@@ -69,7 +69,7 @@ public class LevelManager : MonoBehaviour
         {
             try
             {
-                JsonSaver.Load(saveState, saveFileName);
+                JsonSaver.Load(masterSave, saveFileName);
             }
             catch(FileNotFoundException)
             {
@@ -114,8 +114,11 @@ public class LevelManager : MonoBehaviour
 
     public void SaveLevelState()
     {
+        SaveState saveState = masterSave.GetCurrentLevelState();
+        masterSave.visited.Add(masterSave.currentLevelIndex);
+
         OnStateSave?.Invoke(saveState);
-        JsonSaver.Save(saveState, saveFileName);
+        JsonSaver.Save(masterSave, saveFileName);
     }
 
     public async Awaitable ReloadLevelState()
@@ -130,6 +133,7 @@ public class LevelManager : MonoBehaviour
     {
         await Awaitable.NextFrameAsync();
 
+        SaveState saveState = masterSave.GetCurrentLevelState();
         OnStateLoad?.Invoke(saveState);
         LoadDifficultySettings();
     }
@@ -140,7 +144,7 @@ public class LevelManager : MonoBehaviour
         LoadDifficultySettings();
     }
 
-    void LoadLandmines(SaveState _)
+    void LoadLandmines(SaveState saveState)
     {
         foreach (Vector2Int loc in saveState.mineLocations)
         {
@@ -150,12 +154,12 @@ public class LevelManager : MonoBehaviour
 
     void SaveDifficulty(SaveState saveState)
     {
-        saveState.difficulty = currentDifficultySetting;
+        masterSave.difficulty = currentDifficultySetting;
     }
 
     void LoadDifficulty(SaveState saveState)
     {
-        currentDifficultySetting = saveState.difficulty;
+        currentDifficultySetting = masterSave.difficulty;
     }
 
     void SaveTimeElapsed(SaveState saveState)

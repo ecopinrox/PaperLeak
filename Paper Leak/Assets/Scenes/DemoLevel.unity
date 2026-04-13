@@ -140385,6 +140385,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
+      propertyPath: masterSave
+      value: 
+      objectReference: {fileID: 11400000, guid: b1a6f607562eff34d9f21a986270e472, type: 2}
+    - target: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
       propertyPath: saveFileName
       value: save.json
       objectReference: {fileID: 0}

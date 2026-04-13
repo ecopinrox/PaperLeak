@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Save State", menuName = "Scriptable Objects/Save State")]
 public class SaveState : ScriptableObject
 {
-    //difficulty
-    public int difficulty;
-
     //time
     public float timeElapsed;
 
