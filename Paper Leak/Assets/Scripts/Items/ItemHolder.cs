@@ -33,10 +33,6 @@ public class ItemHolder : MonoBehaviour
     private void Start()
     {
         pickup.OnPickup += AddToInventory;
-    }
-
-    private void OnValidate()
-    {
         AssignSprite();
     }
 
