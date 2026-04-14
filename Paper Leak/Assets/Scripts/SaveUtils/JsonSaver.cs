@@ -3,6 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
+using UnityEditor;
 
 public class JsonSaver
 {
@@ -30,6 +31,18 @@ public class JsonSaver
         catch(FileNotFoundException)
         {
             throw new FileNotFoundException($"Save file \"{path}\" not found.");
+        }
+    }
+
+    public static void DeleteSaveFile(string filename)
+    {
+        try
+        {
+            File.Delete(BuildPath(filename));
+        }
+        catch (Exception e) 
+        { 
+            throw e; 
         }
     }
 

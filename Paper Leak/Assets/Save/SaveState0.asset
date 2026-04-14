@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746d6896bd3e8d478d9de4ca439715c, type: 3}
   m_Name: SaveState0
   m_EditorClassIdentifier: 
-  difficulty: 0
+  timeElapsed: 0
   playerPos: {x: 9, y: 2}

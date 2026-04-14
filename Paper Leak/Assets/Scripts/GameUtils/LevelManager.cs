@@ -144,6 +144,23 @@ public class LevelManager : MonoBehaviour
         LoadDifficultySettings();
     }
 
+    public void DeleteSave()
+    {
+        try
+        {
+            JsonSaver.DeleteSaveFile(saveFileName);
+            Debug.LogWarning($"Deleted {saveFileName}.");
+        }
+        catch(DirectoryNotFoundException)
+        {
+            Debug.Log("Save file not found.");
+        }
+        catch(IOException)
+        {
+            Debug.Log("Unable to delete save file as it is currently in use.");
+        }
+    }
+
     void LoadLandmines(SaveState saveState)
     {
         foreach (Vector2Int loc in saveState.mineLocations)
