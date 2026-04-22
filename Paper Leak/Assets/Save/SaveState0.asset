@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SaveState0
   m_EditorClassIdentifier: 
   timeElapsed: 0
-  playerPos: {x: 9, y: 2}
+  playerPos: {x: 9, y: 5}

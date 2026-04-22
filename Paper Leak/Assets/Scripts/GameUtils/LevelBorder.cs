@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelBorder : MonoBehaviour
 {
-    [SerializeField] string levelName;
+    [SerializeField] int levelBuildIndex;
 
     LevelManager levelManager;
 
@@ -17,7 +17,7 @@ public class LevelBorder : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            _ = levelManager.LoadLevel(levelName);
+            _ = levelManager.LoadLevelFromScratch(levelBuildIndex);
         }
     }
 }

@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
 
     public float TimeElapsed { get; private set; } = 0;
 
+    int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
+
     private void Awake()
     {
         if (Instance != null)
@@ -69,14 +71,14 @@ public class LevelManager : MonoBehaviour
         {
             try
             {
-                JsonSaver.Load(masterSave, saveFileName);
+                JsonSaver.Load(ref masterSave, saveFileName);
             }
             catch(FileNotFoundException)
             {
                 SaveLevelState();
             }
 
-            _ = LoadLevelState();
+            LoadLevelFromSave();
         }
         else if (levelLoadOption == LevelLoadOptions.SaveOnLoad)
         {
@@ -94,27 +96,35 @@ public class LevelManager : MonoBehaviour
         DifficultySwitch.loadDifficultySettings(currentDifficultySetting);
     }
 
-    public async Awaitable LoadLevel(string levelName)
+    public async Awaitable LoadLevelFromScratch(int buildIndex)
     {
         TimeElapsed = 0;
-        SceneManager.LoadScene(levelName);
 
-        await Awaitable.EndOfFrameAsync();
+        SceneManager.LoadScene(buildIndex);
+
+        await Awaitable.NextFrameAsync();
+
         SaveLevelState();
+        LoadDifficultySettings();
     }
 
-    public async Awaitable RestartLevel() 
+    public async Awaitable ReloadLevelFromScratch() 
     {
-        _ = LoadLevel(SceneManager.GetActiveScene().name);
-        
-        await Awaitable.EndOfFrameAsync();
-
-        LoadDifficultySettings();
+        await LoadLevelFromScratch(CurrentSceneIndex);
     }
 
     public void SaveLevelState()
     {
+        masterSave.currentLevelIndex = CurrentSceneIndex;
+
         SaveState saveState = masterSave.GetCurrentLevelState();
+        if (saveState == null)
+        { 
+            Debug.LogWarning("Save error: No SaveState exists for the current scene.");
+            JsonSaver.Save(masterSave, saveFileName);
+            return;
+        }
+
         masterSave.visited.Add(masterSave.currentLevelIndex);
 
         OnStateSave?.Invoke(saveState);
@@ -124,17 +134,34 @@ public class LevelManager : MonoBehaviour
     public async Awaitable ReloadLevelState()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(CurrentSceneIndex);
 
-        await LoadLevelState();
-    }
-
-    public async Awaitable LoadLevelState()
-    {
         await Awaitable.NextFrameAsync();
 
-        SaveState saveState = masterSave.GetCurrentLevelState();
-        OnStateLoad?.Invoke(saveState);
+        LoadLevelFromSave();
+    }
+
+    public void LoadLevelFromSave()
+    {
+        //if this level has a saved state
+        if (masterSave.visited.Contains(CurrentSceneIndex)) 
+        {
+            //load the saved state
+            SaveState saveState = masterSave.GetCurrentLevelState();
+            if (saveState != null)
+            {
+                OnStateLoad?.Invoke(saveState);
+            }
+            else
+            {
+                Debug.LogWarning("Load error: No SaveState exists for the current scene.");
+            }
+        }
+        else
+        {
+            //do not load anything
+        }
+
         LoadDifficultySettings();
     }
 
@@ -169,6 +196,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    #region DifficultySavingAndLoading
     void SaveDifficulty(SaveState saveState)
     {
         masterSave.difficulty = currentDifficultySetting;
@@ -178,7 +206,9 @@ public class LevelManager : MonoBehaviour
     {
         currentDifficultySetting = masterSave.difficulty;
     }
+    #endregion
 
+    #region TimeElapsedSavingAndLoading
     void SaveTimeElapsed(SaveState saveState)
     {
         saveState.timeElapsed = TimeElapsed;
@@ -188,5 +218,6 @@ public class LevelManager : MonoBehaviour
     {
         TimeElapsed = saveState.timeElapsed;
     }
+    #endregion
 }
 

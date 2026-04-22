@@ -15,7 +15,7 @@ public class JsonSaver
         writer.Write(json);
     }
 
-    public static void Load(MasterSave save, string filename)
+    public static void Load(ref MasterSave save, string filename)
     {
         string path = BuildPath(filename);
         try
@@ -26,7 +26,7 @@ public class JsonSaver
                 json = reader.ReadToEnd();
             }
 
-            JsonConvert.PopulateObject(json, save, GetSerializerSettings());
+            save = JsonConvert.DeserializeObject<MasterSave>(json, GetSerializerSettings());
         }
         catch(FileNotFoundException)
         {
@@ -54,6 +54,7 @@ public class JsonSaver
         settings.Converters.Add( new QuaternionConverter()                                      );
         settings.Converters.Add( new ValueTupleConverter<Vector2Int, Quaternion>()              );
         settings.Converters.Add( new DictionaryConverter<ValueTuple<Vector2Int, Quaternion>>()  );
+        settings.Converters.Add( new MasterSaveConverter()                                      );
         return settings;
     }
 

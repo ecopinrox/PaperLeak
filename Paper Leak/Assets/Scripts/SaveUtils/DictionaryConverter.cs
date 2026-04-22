@@ -31,7 +31,7 @@ namespace Newtonsoft.Json.Converters
 
         public override void WriteJson(JsonWriter writer, Dictionary<Vector2Int, T> value, JsonSerializer serializer)
         {
-            if (value is not Dictionary<Vector2Int, T>)
+            if (value is null)
             {
                 writer.WriteNull();
                 return;

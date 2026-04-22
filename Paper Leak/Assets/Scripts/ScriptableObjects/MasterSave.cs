@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
@@ -10,5 +11,15 @@ public class MasterSave : ScriptableObject
     public HashSet<int> visited = new();
     public SaveState[] levelStates;
 
-    public SaveState GetCurrentLevelState() => levelStates[currentLevelIndex]; 
+    public SaveState GetCurrentLevelState()
+    {
+        try
+        {
+            return levelStates[currentLevelIndex];
+        }
+        catch(IndexOutOfRangeException)
+        {
+            return null;
+        }
+    }
 }
