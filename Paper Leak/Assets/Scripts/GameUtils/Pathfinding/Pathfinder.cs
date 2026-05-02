@@ -29,7 +29,7 @@ public class Pathfinder : MonoBehaviour
         tileRegionMarker = FindFirstObjectByType<TileRegionMarker>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Vector2Int playerPos = Vector2Int.RoundToInt(PlayerController.Instance.transform.position);
         MarkTiles(playerPos);

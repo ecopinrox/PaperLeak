@@ -34,6 +34,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &375459450505246846
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -77,8 +78,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -548360367
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0, g: 0, b: 1, a: 0.5019608}
   m_FlipX: 0
@@ -88,7 +90,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4116409034449952273
 GameObject:
@@ -124,6 +125,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1400863214181023032
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -169,6 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 412747615
   m_SortingLayer: 3
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -178,7 +181,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5863282246003978895
 GameObject:
@@ -194,6 +196,7 @@ GameObject:
   - component: {fileID: 1826417022393311396}
   - component: {fileID: 2106342919487560287}
   - component: {fileID: 3586897788279094284}
+  - component: {fileID: 6284161746899175215}
   - component: {fileID: 4898158056362579717}
   - component: {fileID: 8087699750491492199}
   - component: {fileID: 5921539633761715476}
@@ -256,26 +259,6 @@ MonoBehaviour:
     m_ActionName: 'Player/Crawl[/Keyboard/shift]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 3dc2b2d2-a5c1-4676-831c-c9695a2e5a70
-    m_ActionName: 'Player/Throw[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 264b7554-2f4c-4361-84e7-4e28745acd78
-    m_ActionName: 'Aiming/Throw[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: aae32a81-b78e-475f-b66e-258072fba9f6
-    m_ActionName: 'Player/SelectVisualDistraction[/Keyboard/1]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 950f7b3f-edf9-4c35-b2b2-45d1d3e0c236
-    m_ActionName: 'Player/SelectSoundDistraction[/Keyboard/2]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7a625c79-788a-4730-9c7b-7cacd35e83e1
-    m_ActionName: 'Aiming/Cancel[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 57b779e1-06c0-4856-b606-01609371beea
     m_ActionName: 'Player/Peek[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/ctrl]'
   - m_PersistentCalls:
@@ -288,14 +271,34 @@ MonoBehaviour:
     m_ActionName: 'UI/Exit[/Keyboard/f]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 5c81b284-4f19-4b18-aeef-c74462109927
-    m_ActionName: 'Player/MakePaperBalls[/Keyboard/r]'
+    m_ActionId: 3efa992f-e04b-4617-9dc3-5a47f0ff37cb
+    m_ActionName: 'Player/UseItem[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 367743a6-9a60-43e0-9948-9115adc309dc
-    m_ActionName: 'Player/Fart[/Keyboard/e]'
+    m_ActionId: 945819ae-25c9-4d1c-b543-f677f35ff858
+    m_ActionName: 'Player/SelectItem1[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2f07eed4-4ccf-4ac8-b2b6-f672d995fde7
+    m_ActionName: 'Player/SelectItem2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 78c4a764-9496-4bbd-8466-c6fea8ca6d82
+    m_ActionName: 'Player/SelectItem3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc5339bd-e49d-41d7-93c1-30c66dab43f0
+    m_ActionName: 'Player/SelectItem4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3735b64d-02c0-4c44-ac51-404d4332f5ae
+    m_ActionName: 'Aiming/SelectTarget[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6ed972d5-6ef0-4835-938e-1028870dd95e
+    m_ActionName: 'Aiming/StopAiming[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -324,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdd9db006b7bc54a887643282e39fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  crawlSpeed: 1.5
+  moveSpeed: 3.5
+  crawlSpeed: 1.25
   walkSFXDelay: 0.75
 --- !u!114 &2106342919487560287
 MonoBehaviour:
@@ -339,9 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e9558099f025944aab91cdf52ff2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PaperBallCount>k__BackingField: 5
-  <PopPopCount>k__BackingField: 3
-  paperBallLimit: 5
+  slotCount: 4
 --- !u!114 &3586897788279094284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +358,22 @@ MonoBehaviour:
   mainSR: {fileID: 1400863214181023032}
   overlaySR: {fileID: 375459450505246846}
   overlayAlphaValue: 0.5
+--- !u!114 &6284161746899175215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5863282246003978895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205554c9feddc01408d1403f599a05e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCameraRigHandler
+  defaultRig: {fileID: 0}
+  cameraRegionMask:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!114 &4898158056362579717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,13 +386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032fc13a22f2f7647ac491d5ff410e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Priority>k__BackingField: 0
-  crawlViewMultiplier: 0.8
-  paperBall: {fileID: 8604367565504563446, guid: 83d0ccdaea08c9e48972ff2e5f0956c2, type: 3}
-  popPop: {fileID: 6837708996109229603, guid: b8f73a4ea0f952d47a5da5b53e27836f, type: 3}
-  isPopPop: 0
-  paperBallIncrementCount: 3
+  <Priority>k__BackingField: 8
   fartSFX: {fileID: 11400000, guid: 70d78f0428e473349a8c988e9fe913aa, type: 2}
+  walkSFX: {fileID: 11400000, guid: 5e2047c0220e26149b1aec10b14be892, type: 2}
 --- !u!61 &8087699750491492199
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -420,7 +433,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
 --- !u!50 &5921539633761715476
 Rigidbody2D:

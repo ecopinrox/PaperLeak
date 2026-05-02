@@ -65,13 +65,13 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        LoadDifficultySettings();
+        OnStateSave?.Invoke(masterSave.GetCurrentLevelState());
 
         if (levelLoadOption == LevelLoadOptions.JsonLoad)
         {
             try
             {
-                JsonSaver.Load(ref masterSave, saveFileName);
+                JsonSaver.Load(masterSave, saveFileName);
             }
             catch(FileNotFoundException)
             {
