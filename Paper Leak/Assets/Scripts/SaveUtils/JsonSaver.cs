@@ -77,12 +77,24 @@ public class JsonSaver
         dto.difficulty = save.difficulty;
         dto.visited = save.visited;
 
-        dto.levelStates ??= new SaveStateDto[save.levelStates.Length];
+        if (dto.levelStates == null || dto.levelStates.Length < save.levelStates.Length)
+        {
+            SaveStateDto[] newStateArr = new SaveStateDto[save.levelStates.Length];
+            dto.levelStates?.CopyTo(newStateArr, 0);
+            dto.levelStates = newStateArr;
+        }
+
+        if (dto.levelStates[save.currentLevelIndex] == null)
+        {
+            dto.levelStates[save.currentLevelIndex] = new();
+        }
+
         WriteLevelToDto(save.levelStates[save.currentLevelIndex], dto.levelStates[save.currentLevelIndex]);
     }
 
     static void WriteLevelToDto(SaveState save, SaveStateDto dto)
     {
+        Debug.Log($"save: {save == null}, dto: {dto == null}");
         dto.timeElapsed = save.timeElapsed;
 
         dto.playerPos = save.playerPos;

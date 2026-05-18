@@ -78,7 +78,7 @@ public class LevelManager : MonoBehaviour
                 SaveLevelState();
             }
 
-            LoadLevelFromSave();
+            LoadOrInitializeLevelState();
         }
         else if (levelLoadOption == LevelLoadOptions.SaveOnLoad)
         {
@@ -106,6 +106,15 @@ public class LevelManager : MonoBehaviour
 
         SaveLevelState();
         LoadDifficultySettings();
+    }
+
+    public async Awaitable SwitchLevel(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
+
+        await Awaitable.NextFrameAsync();
+
+        LoadOrInitializeLevelState();
     }
 
     public async Awaitable ReloadLevelFromScratch() 
@@ -138,11 +147,13 @@ public class LevelManager : MonoBehaviour
 
         await Awaitable.NextFrameAsync();
 
-        LoadLevelFromSave();
+        LoadOrInitializeLevelState();
     }
 
-    public void LoadLevelFromSave()
+    public void LoadOrInitializeLevelState()
     {
+        masterSave.currentLevelIndex = CurrentSceneIndex;
+
         //if this level has a saved state
         if (masterSave.visited.Contains(CurrentSceneIndex)) 
         {
@@ -159,7 +170,8 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            //do not load anything
+            masterSave.visited.Add(CurrentSceneIndex);
+            SaveLevelState();
         }
 
         LoadDifficultySettings();

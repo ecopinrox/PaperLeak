@@ -17,7 +17,7 @@ public class LevelBorder : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            _ = levelManager.LoadLevelFromScratch(levelBuildIndex);
+            _ = levelManager.SwitchLevel(levelBuildIndex);
         }
     }
 }

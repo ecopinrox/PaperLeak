@@ -31,7 +31,8 @@ public class Pathfinder : MonoBehaviour
 
     private void OnEnable()
     {
-        Vector2Int playerPos = Vector2Int.RoundToInt(PlayerController.Instance.transform.position);
+        Transform playerTransform = FindAnyObjectByType<PlayerController>().transform;
+        Vector2Int playerPos = Vector2Int.RoundToInt(playerTransform.position);
         MarkTiles(playerPos);
     }
 
