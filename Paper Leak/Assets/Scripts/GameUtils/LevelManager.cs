@@ -23,8 +23,6 @@ public class LevelManager : MonoBehaviour
     //0 = easy, 1 = normal, 2 = hard
     public static int currentDifficultySetting = 1;
 
-    public float TimeElapsed { get; private set; } = 0;
-
     int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
 
     private void Awake()
@@ -47,9 +45,6 @@ public class LevelManager : MonoBehaviour
 
         OnStateSave += SaveDifficulty;
         OnStateLoad += LoadDifficulty;
-
-        OnStateSave += SaveTimeElapsed;
-        OnStateLoad += LoadTimeElapsed;
     }
 
     private void OnDisable()
@@ -58,9 +53,6 @@ public class LevelManager : MonoBehaviour
 
         OnStateSave -= SaveDifficulty;
         OnStateLoad -= LoadDifficulty;
-
-        OnStateSave -= SaveTimeElapsed;
-        OnStateLoad -= LoadTimeElapsed;
     }
 
     private void Start()
@@ -86,11 +78,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        TimeElapsed += Time.deltaTime;
-    }
-
     void LoadDifficultySettings()
     {
         DifficultySwitch.loadDifficultySettings(currentDifficultySetting);
@@ -98,8 +85,6 @@ public class LevelManager : MonoBehaviour
 
     public async Awaitable LoadLevelFromScratch(int buildIndex)
     {
-        TimeElapsed = 0;
-
         SceneManager.LoadScene(buildIndex);
 
         await Awaitable.NextFrameAsync();
@@ -217,18 +202,6 @@ public class LevelManager : MonoBehaviour
     void LoadDifficulty(SaveState saveState)
     {
         currentDifficultySetting = masterSave.difficulty;
-    }
-    #endregion
-
-    #region TimeElapsedSavingAndLoading
-    void SaveTimeElapsed(SaveState saveState)
-    {
-        saveState.timeElapsed = TimeElapsed;
-    }
-
-    void LoadTimeElapsed(SaveState saveState)
-    {
-        TimeElapsed = saveState.timeElapsed;
     }
     #endregion
 }

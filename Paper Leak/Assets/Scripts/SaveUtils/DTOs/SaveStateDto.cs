@@ -10,8 +10,6 @@ using UnityEngine;
 
 public class SaveStateDto
 {
-    public float? timeElapsed;
-
     public Vector2Int? playerPos;
 
     public HashSet<int> heldCollectibles;

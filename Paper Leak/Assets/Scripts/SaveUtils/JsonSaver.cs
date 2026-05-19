@@ -3,7 +3,6 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using UnityEditor;
 
 public class JsonSaver
 {
@@ -19,7 +18,7 @@ public class JsonSaver
         }
         catch (FileNotFoundException)
         {
-            throw new FileNotFoundException($"Save file \"{BuildPath(filename)}\" not found.");
+            Debug.LogWarning($"Save file \"{BuildPath(filename)}\" not found. Creating a new save file.");
         }
 
         //overwrite current level's data along with commmon MasterSave fields
@@ -94,9 +93,6 @@ public class JsonSaver
 
     static void WriteLevelToDto(SaveState save, SaveStateDto dto)
     {
-        Debug.Log($"save: {save == null}, dto: {dto == null}");
-        dto.timeElapsed = save.timeElapsed;
-
         dto.playerPos = save.playerPos;
 
         dto.heldCollectibles = save.heldCollectibles;
@@ -136,12 +132,6 @@ public class JsonSaver
 
     static void ReadLevelFromDto(SaveState save, SaveStateDto dto)
     {
-        //time
-        if(dto.timeElapsed is float timeElapsed)
-        {
-            save.timeElapsed = timeElapsed;
-        }
-
         //player position
         if(dto.playerPos is Vector2Int playerPos)
         {

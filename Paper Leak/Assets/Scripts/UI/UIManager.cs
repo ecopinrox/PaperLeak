@@ -21,9 +21,6 @@ public class UIManager : MonoBehaviour
     [Header("Collectibles")]
     [SerializeField] List<GameObject> collectibleIcons;
 
-    [Header("Timer")]
-    [SerializeField] TextMeshProUGUI timerText;
-
     [Header("Difficulty")]
     [SerializeField] TextMeshProUGUI difficultyText;
 
@@ -42,24 +39,6 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         DifficultySwitch.loadDifficultySettings -= SetDifficultyText;
-    }
-
-    private void Start()
-    {
-        foreach(GameObject obj in collectibleIcons)
-        {
-            obj.SetActive(false);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        UpdateTimerText();
-    }
-
-    private void UpdateTimerText()
-    {
-        timerText.text = TimeSpan.FromSeconds(LevelManager.Instance.TimeElapsed).ToString(@"hh\:mm\:ss");  
     }
 
     public void SetGameOverPanelStatus(bool active) => gameOverPanel.SetActive(active);

@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Save State", menuName = "Scriptable Objects/Save State")]
 public class SaveState : ScriptableObject
 {
-    //time
-    public float timeElapsed;
-
     //player position
     public Vector2Int playerPos;
 
