@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelBorder : MonoBehaviour
 {
     [SerializeField] int levelBuildIndex;
+    [Tooltip("The game saves when the player exits the level. This position is assigned to the player's position in the save file.")]
+    [SerializeField] Transform exitPlayerPos;
 
     LevelManager levelManager;
 
@@ -17,7 +19,13 @@ public class LevelBorder : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            _ = levelManager.SwitchLevel(levelBuildIndex);
+            SwitchLevel();
         }
+    }
+
+    void SwitchLevel()
+    {
+        PlayerController.Instance.GetComponent<PlayerMovement>().SnapToPosition(Vector2Int.RoundToInt(exitPlayerPos.position));
+        _ = levelManager.SwitchLevel(levelBuildIndex);
     }
 }

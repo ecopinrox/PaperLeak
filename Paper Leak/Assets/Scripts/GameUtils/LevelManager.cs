@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        masterSave.currentLevelIndex = CurrentSceneIndex;
         OnStateSave?.Invoke(masterSave.GetCurrentLevelState());
 
         if (levelLoadOption == LevelLoadOptions.JsonLoad)
@@ -95,6 +96,8 @@ public class LevelManager : MonoBehaviour
 
     public async Awaitable SwitchLevel(int buildIndex)
     {
+        SaveLevelState();
+
         SceneManager.LoadScene(buildIndex);
 
         await Awaitable.NextFrameAsync();
