@@ -149,6 +149,9 @@ public class LevelManager : MonoBehaviour
             SaveState saveState = masterSave.GetCurrentLevelState();
             if (saveState != null)
             {
+                OnStateSave?.Invoke(saveState);
+                JsonSaver.Load(masterSave, saveFileName);
+
                 OnStateLoad?.Invoke(saveState);
             }
             else
