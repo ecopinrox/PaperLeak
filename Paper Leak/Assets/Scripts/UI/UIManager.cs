@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject aimModeFilterPanel;
 
     [Header("Menus")]
+    [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject checkpointPanel;
     [SerializeField] GameObject changeDifficultyPanel;
     [SerializeField] Button[] difficultyButtons;
@@ -49,6 +50,11 @@ public class UIManager : MonoBehaviour
     {
         playerController.EnterUIActionMap();
         checkpointPanel.SetActive(active); 
+    }
+
+    public void SetPausePanelStatus(bool active)
+    {
+        pausePanel.SetActive(active);
     }
 
     public void SetChangeDifficultyPanelStatus(bool active)

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     PlayerCameraRigHandler playerCameraRigHandler;
     UIManager uiManager;
     AimingController aimingController;
+    GameStateManager gameStateManager;
 
     [SerializeField] DifficultySwitch playerDifficultySwitch;
     
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     InputAction selectTargetAction;
     InputAction stopAimingAction;
+
+    InputAction pauseAction;
 
     const string movementActionMapName = "Player";
     const string aimingActionMapName = "Aiming";
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
         playerCameraRigHandler = GetComponent<PlayerCameraRigHandler>();
         uiManager = FindFirstObjectByType<UIManager>();
         aimingController = uiManager.GetComponent<AimingController>();
+        gameStateManager = uiManager.GetComponent<GameStateManager>();
 
         moveAction              = playerInput.actions["Move"            ];
         crawlAction             = playerInput.actions["Crawl"           ];
@@ -62,6 +66,8 @@ public class PlayerController : MonoBehaviour
 
         selectTargetAction      = playerInput.actions["SelectTarget"    ];
         stopAimingAction        = playerInput.actions["StopAiming"      ];
+
+        pauseAction             = playerInput.actions["Pause"           ];
     }
 
     //moving also counts as peeking for some odd reason but the vector read is (0,0) so it shouldn't(?) matter for my purposes
@@ -95,9 +101,11 @@ public class PlayerController : MonoBehaviour
         selectTargetAction.performed += SelectTarget;
         stopAimingAction.performed += StopAiming;
 
+        pauseAction.performed += TogglePause;
+
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
 
-        LevelManager.OnStateLoad += LoadPosision;
+        LevelManager.OnStateLoad += LoadPosition;
         LevelManager.OnStateSave += SavePosition;
 
         StartCoroutine(playerMovement.MovementHandler());
@@ -127,7 +135,9 @@ public class PlayerController : MonoBehaviour
         selectTargetAction.performed -= SelectTarget;
         stopAimingAction.performed -= StopAiming;
 
-        LevelManager.OnStateLoad -= LoadPosision;
+        pauseAction.performed -= TogglePause;
+
+        LevelManager.OnStateLoad -= LoadPosition;
         LevelManager.OnStateSave -= SavePosition;
 
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
@@ -179,7 +189,7 @@ public class PlayerController : MonoBehaviour
         saveState.playerPos = playerMovement.GridBasedPosition;
     }
 
-    void LoadPosision(SaveState saveState)
+    void LoadPosition(SaveState saveState)
     {
         transform.position = (Vector2)saveState.playerPos;
     }
@@ -284,6 +294,18 @@ public class PlayerController : MonoBehaviour
     {
         aimingController.CancelAiming();
         SwitchActionMap(movementActionMapName);
+    }
+
+    void TogglePause(InputAction.CallbackContext _)
+    {
+        if(gameStateManager.Paused)
+        {
+            gameStateManager.ResumeGame();
+        }
+        else
+        {
+            gameStateManager.PauseGame();
+        }
     }
 
     #endregion

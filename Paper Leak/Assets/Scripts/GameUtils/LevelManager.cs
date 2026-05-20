@@ -89,10 +89,17 @@ public class LevelManager : MonoBehaviour
         LoadDifficultySettings();
     }
 
-    //for main menu only
+    //main menu only
     public void StartGame()
     {
         _ = SwitchScene(masterSave.currentLevelIndex + firstLevelIndex);
+    }
+
+
+    //pause menu only
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public async Awaitable SwitchScene(int buildIndex)
@@ -146,6 +153,11 @@ public class LevelManager : MonoBehaviour
 
     public void LoadOrInitializeLevelState()
     {
+        if(CurrentLevelIndex < 0)
+        {
+            return;
+        }
+
         masterSave.currentLevelIndex = CurrentLevelIndex;
 
         //if this level has a saved state
