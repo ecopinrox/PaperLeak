@@ -19,6 +19,7 @@ public class MasterSave : ScriptableObject
         }
         catch(IndexOutOfRangeException)
         {
+            Debug.LogError($"SaveState does not exist for index {currentLevelIndex}.");
             return null;
         }
     }

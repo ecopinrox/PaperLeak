@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MasterSave
   m_EditorClassIdentifier: Assembly-CSharp::MasterSave
   currentLevelIndex: 0
-  difficulty: 1
+  difficulty: 0
   levelStates:
   - {fileID: 11400000, guid: b65725b939df1b84991f5b3b67203fad, type: 2}
-  - {fileID: 11400000, guid: 3e081d2c3803c5b479aa2873668c9fea, type: 2}
+  - {fileID: 11400000, guid: 585708507ef98dd459f824c9bb107546, type: 2}

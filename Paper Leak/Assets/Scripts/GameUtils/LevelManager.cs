@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
+    [Tooltip("The build index of the first level. The order of the levels must match the order of the SaveStates in the MasterSave. The class corridor does not count as a level.")]
+    [SerializeField] int firstLevelIndex = 1;
+
     [SerializeField] MasterSave masterSave;
     [field: SerializeField] public ItemIndexer ItemIndexer { get; private set; }
 
@@ -24,6 +27,7 @@ public class LevelManager : MonoBehaviour
     public static int currentDifficultySetting = 1;
 
     int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
+    int CurrentLevelIndex => CurrentSceneIndex - firstLevelIndex;
 
     private void Awake()
     {
@@ -57,25 +61,16 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        masterSave.currentLevelIndex = CurrentSceneIndex;
-        OnStateSave?.Invoke(masterSave.GetCurrentLevelState());
-
-        if (levelLoadOption == LevelLoadOptions.JsonLoad)
+        //Load the masterSave
+        try
         {
-            try
-            {
-                JsonSaver.Load(masterSave, saveFileName);
-            }
-            catch(FileNotFoundException)
-            {
-                SaveLevelState();
-            }
-
-            LoadOrInitializeLevelState();
+            JsonSaver.Load(masterSave, saveFileName);
         }
-        else if (levelLoadOption == LevelLoadOptions.SaveOnLoad)
+        catch(FileNotFoundException)
         {
-            SaveLevelState();
+            //If no save file is found (new game), write a new save file with default data
+            Debug.LogWarning($"Save file not found at {saveFileName}. Creating new saveFile.");
+            JsonSaver.Save(masterSave, saveFileName);
         }
     }
 
@@ -94,7 +89,13 @@ public class LevelManager : MonoBehaviour
         LoadDifficultySettings();
     }
 
-    public async Awaitable SwitchLevel(int buildIndex)
+    //for main menu only
+    public void StartGame()
+    {
+        _ = SwitchScene(masterSave.currentLevelIndex + firstLevelIndex);
+    }
+
+    public async Awaitable SwitchScene(int buildIndex)
     {
         SaveLevelState();
 
@@ -112,7 +113,12 @@ public class LevelManager : MonoBehaviour
 
     public void SaveLevelState()
     {
-        masterSave.currentLevelIndex = CurrentSceneIndex;
+        if(CurrentLevelIndex < 0)
+        {
+            return;
+        }
+
+        masterSave.currentLevelIndex = CurrentLevelIndex;
 
         SaveState saveState = masterSave.GetCurrentLevelState();
         if (saveState == null)
@@ -140,10 +146,10 @@ public class LevelManager : MonoBehaviour
 
     public void LoadOrInitializeLevelState()
     {
-        masterSave.currentLevelIndex = CurrentSceneIndex;
+        masterSave.currentLevelIndex = CurrentLevelIndex;
 
         //if this level has a saved state
-        if (masterSave.visited.Contains(CurrentSceneIndex)) 
+        if (masterSave.visited.Contains(CurrentLevelIndex)) 
         {
             //load the saved state
             SaveState saveState = masterSave.GetCurrentLevelState();
@@ -161,7 +167,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            masterSave.visited.Add(CurrentSceneIndex);
+            masterSave.visited.Add(CurrentLevelIndex);
             SaveLevelState();
         }
 
