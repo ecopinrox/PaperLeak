@@ -87,6 +87,8 @@ public class GuardMovement : MonoBehaviour
 
     IEnumerator GuardMovementHandler()
     {
+        gridManager.BlockTile(GridBasedPosition);
+
         while (true)
         {
             while(pathIterator != null && pathIterator.MoveNext())
@@ -97,8 +99,16 @@ public class GuardMovement : MonoBehaviour
                     continue; 
                 }
 
-                GridBasedPosition = pathIterator.Current.pos;
-                yield return StartCoroutine(MoveTo(GridBasedPosition));
+                if(pathIterator.Current.pos != GridBasedPosition)
+                {
+                    while(!gridManager.CanMove(pathIterator.Current.pos, false))
+                    {
+                        yield return new WaitForFixedUpdate();
+                    }
+
+                    GridBasedPosition = pathIterator.Current.pos;
+                    yield return StartCoroutine(MoveTo(GridBasedPosition));
+                }
 
                 if(shouldStopMoving)
                 {
@@ -114,17 +124,18 @@ public class GuardMovement : MonoBehaviour
 
     IEnumerator MoveTo(Vector2Int loc)
     {
+        Vector2Int prevTile = Vector2Int.RoundToInt(transform.position);
+        gridManager.BlockTile(loc);
+
         while(Vector2.Distance((Vector2)transform.position, loc) > maxPositionalError)
         {
             LookAt(loc);
-            while(!gridManager.CanMove(loc, false))
-            {
-                yield return new WaitForFixedUpdate();
-            }
 
             transform.position = Vector2.MoveTowards(transform.position, loc, Time.fixedDeltaTime * speed);
             yield return new WaitForFixedUpdate();
         }
+
+        gridManager.UnblockTile(prevTile);
     }
 
     public void LoadSettings(GuardSettings settings)
