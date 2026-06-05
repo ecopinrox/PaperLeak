@@ -11,6 +11,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] Tilemap glassTilemap;
     [SerializeField] Tilemap moveBlockingTilemap;
 
+    [SerializeField] TileBase blockingTile;
+
     /// <summary>
     /// Checks if the next tile (given by <paramref name="currentLoc"/> and <paramref name="direction"/>) can currently be moved to. Does not ignore MoveBlockingTilemap.
     /// </summary>
@@ -60,6 +62,16 @@ public class GridManager : MonoBehaviour
     public void RemoveWallTile(Vector2Int loc)
     {
         wallTilemap.SetTile((Vector3Int)loc - new Vector3Int(1, 1, 0), null);
+    }
+
+    public void BlockTile(Vector2Int loc)
+    {
+        moveBlockingTilemap.SetTile((Vector3Int)loc - new Vector3Int(1, 1, 0), blockingTile);
+    }
+
+    public void UnblockTile(Vector2Int loc)
+    {
+        moveBlockingTilemap.SetTile((Vector3Int)loc - new Vector3Int(1, 1, 0), null);
     }
 }
 

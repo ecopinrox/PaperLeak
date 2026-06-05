@@ -139713,6 +139713,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1242489316}
     - target: {fileID: 306977694609308822, guid: a75b5b6bcd5783547b91b47485577e5b, type: 3}
+      propertyPath: blockingTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 92842d6bebd2da644810702175fb11ce, type: 2}
+    - target: {fileID: 306977694609308822, guid: a75b5b6bcd5783547b91b47485577e5b, type: 3}
       propertyPath: crawlTilemap
       value: 
       objectReference: {fileID: 1036998806}
