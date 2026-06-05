@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator MovementHandler()
     {
+        gridMovementMonitor.BlockTile(GridBasedPosition);
+
         while (true)
         {
             yield return new WaitForEndOfFrame();
@@ -54,10 +56,19 @@ public class PlayerMovement : MonoBehaviour
                 _               => Vector2Int.zero
             };
 
-            GridBasedPosition = Vector2Int.RoundToInt(transform.position) + displacement;
-            if (!gridMovementMonitor.CanMove(GridBasedPosition, IsCrawling)) continue;
+            Vector2Int nextPosition = Vector2Int.RoundToInt(transform.position) + displacement;
+            if (!gridMovementMonitor.CanMove(nextPosition, IsCrawling))
+            {
+                continue;
+            }
 
-            yield return StartCoroutine(WalkCoroutine((Vector2)transform.position + displacement));
+            Vector2Int prevPosition = GridBasedPosition;
+            GridBasedPosition = nextPosition;
+            gridMovementMonitor.BlockTile(GridBasedPosition);
+
+            yield return StartCoroutine(WalkCoroutine(GridBasedPosition));
+
+            gridMovementMonitor.UnblockTile(prevPosition);
         }
     }
 
