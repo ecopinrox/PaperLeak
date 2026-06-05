@@ -54,8 +54,8 @@ public class PlayerMovement : MonoBehaviour
                 _               => Vector2Int.zero
             };
 
-            if (!gridMovementMonitor.CanMove(transform.position, displacement, IsCrawling)) continue;
             GridBasedPosition = Vector2Int.RoundToInt(transform.position) + displacement;
+            if (!gridMovementMonitor.CanMove(GridBasedPosition, IsCrawling)) continue;
 
             yield return StartCoroutine(WalkCoroutine((Vector2)transform.position + displacement));
         }

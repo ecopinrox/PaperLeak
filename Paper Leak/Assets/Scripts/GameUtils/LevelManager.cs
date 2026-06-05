@@ -72,6 +72,23 @@ public class LevelManager : MonoBehaviour
             Debug.LogWarning($"Save file not found at {saveFileName}. Creating new saveFile.");
             JsonSaver.Save(masterSave, saveFileName);
         }
+
+        if(CurrentLevelIndex >= 0)
+        {
+            _ = DevInitLevel();
+        }
+    }
+
+    /// <summary>
+    /// The actions this function carries out would normally be executed when a level is loaded from the main menu. This function is ideally ONLY used in development, when a scene is loaded directly in play mode.
+    /// </summary>
+    /// <returns></returns>
+    async Awaitable DevInitLevel()
+    {
+        await Awaitable.NextFrameAsync();
+
+        SaveLevelState();
+        LoadDifficultySettings();
     }
 
     void LoadDifficultySettings()

@@ -28,10 +28,12 @@ public class GuardMovement : MonoBehaviour
     bool shouldStopMoving = false;
 
     Pathfinder pathfinder;
+    GridManager gridManager;
 
     void Awake()
     {
         pathfinder = FindFirstObjectByType<Pathfinder>();
+        gridManager = pathfinder.GetComponent<GridManager>();
     }
 
     void Start()
@@ -115,6 +117,11 @@ public class GuardMovement : MonoBehaviour
         while(Vector2.Distance((Vector2)transform.position, loc) > maxPositionalError)
         {
             LookAt(loc);
+            while(!gridManager.CanMove(loc, false))
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
             transform.position = Vector2.MoveTowards(transform.position, loc, Time.fixedDeltaTime * speed);
             yield return new WaitForFixedUpdate();
         }

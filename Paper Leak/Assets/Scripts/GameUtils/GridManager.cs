@@ -18,14 +18,14 @@ public class GridManager : MonoBehaviour
     /// <param name="direction"></param>
     /// <param name="isCrawling"></param>
     /// <returns></returns>
-    public bool CanMove(Vector3 currentLoc, Vector2 direction, bool isCrawling)
+    public bool CanMove(Vector2Int position, bool isCrawling)
     {
-        Vector3Int gridPosition = groundTilemap.WorldToCell(currentLoc + (Vector3)direction);
+        Vector3Int gridPosition = groundTilemap.WorldToCell((Vector2)position);
         if (!groundTilemap.HasTile(gridPosition)
             || wallTilemap.HasTile(gridPosition)
             || glassTilemap.HasTile(gridPosition)
             || moveBlockingTilemap.HasTile(gridPosition)
-            || (!isCrawling && crawlTilemap.HasTile(gridPosition))) 
+            || (!isCrawling && crawlTilemap.HasTile(gridPosition)))
             return false;
         return true;
     }
@@ -49,17 +49,17 @@ public class GridManager : MonoBehaviour
     public bool IsLocationInMask(Vector2Int loc, LayerMask mask)
     {
         Vector3Int gridPosition = groundTilemap.WorldToCell((Vector2)loc);
-        if (((mask.value & 1 << groundTilemap.gameObject.layer) != 0)       && groundTilemap        .HasTile(gridPosition)) return true;
-        if (((mask.value & 1 << crawlTilemap.gameObject.layer) != 0)        && crawlTilemap         .HasTile(gridPosition)) return true;
-        if (((mask.value & 1 << wallTilemap.gameObject.layer) != 0)         && wallTilemap          .HasTile(gridPosition)) return true;
-        if (((mask.value & 1 << glassTilemap.gameObject.layer) != 0)        && glassTilemap         .HasTile(gridPosition)) return true;
-        if (((mask.value & 1 << moveBlockingTilemap.gameObject.layer) != 0) && moveBlockingTilemap  .HasTile(gridPosition)) return true;
+        if (((mask.value & 1 << groundTilemap.gameObject.layer) != 0) && groundTilemap.HasTile(gridPosition)) return true;
+        if (((mask.value & 1 << crawlTilemap.gameObject.layer) != 0) && crawlTilemap.HasTile(gridPosition)) return true;
+        if (((mask.value & 1 << wallTilemap.gameObject.layer) != 0) && wallTilemap.HasTile(gridPosition)) return true;
+        if (((mask.value & 1 << glassTilemap.gameObject.layer) != 0) && glassTilemap.HasTile(gridPosition)) return true;
+        if (((mask.value & 1 << moveBlockingTilemap.gameObject.layer) != 0) && moveBlockingTilemap.HasTile(gridPosition)) return true;
         return false;
     }
 
     public void RemoveWallTile(Vector2Int loc)
     {
-        wallTilemap.SetTile((Vector3Int)loc - new Vector3Int(1,1,0), null);
+        wallTilemap.SetTile((Vector3Int)loc - new Vector3Int(1, 1, 0), null);
     }
 }
 
