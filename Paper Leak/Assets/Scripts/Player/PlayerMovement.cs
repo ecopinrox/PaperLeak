@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 { 
     GridManager gridMovementMonitor;
     PlayerDistraction playerDistraction;
+    PlayerAnimation playerAnimation;
 
     [SerializeField] float moveSpeed = 4f;
     [SerializeField] float crawlSpeed = 2f;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gridMovementMonitor = FindFirstObjectByType<GridManager>();
         playerDistraction = GetComponent<PlayerDistraction>();
+        playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void OnEnable()
@@ -56,12 +58,16 @@ public class PlayerMovement : MonoBehaviour
                 _               => Vector2Int.zero
             };
 
+            playerAnimation.SetDirection(displacement);
+
             Vector2Int nextPosition = Vector2Int.RoundToInt(transform.position) + displacement;
             if (!gridMovementMonitor.CanMove(nextPosition, IsCrawling))
             {
+                playerAnimation.SetMoving(false);
                 continue;
             }
 
+            playerAnimation.SetMoving(true);
             Vector2Int prevPosition = GridBasedPosition;
             GridBasedPosition = nextPosition;
             gridMovementMonitor.BlockTile(GridBasedPosition);
@@ -74,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator WalkCoroutine(Vector2 destination)
     {
-        LookAt(destination - (Vector2)transform.position);
         float delay = walkSFXDelay;
 
         while (transform.position != (Vector3)destination)
@@ -101,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+
         yield return null;
     }
 
@@ -115,10 +121,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gridMovementMonitor.IsLocationInMask(GridBasedPosition, LayerMask.GetMask("Crawlable"))) return;
         IsCrawling = !IsCrawling;
-    }
-
-    void LookAt(Vector2 direction)
-    {
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        playerAnimation.SetCrouching(IsCrawling);
     }
 }
