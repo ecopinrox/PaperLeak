@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] Animator mainAnimator;
-    [SerializeField] Animator overlayAnimator;
+    [SerializeField] GameObject mainSprite;
+
+    SpriteRenderer mainSpriteRenderer;
+    Animator mainAnimator;
+
+    void Awake()
+    {
+        mainSpriteRenderer = mainSprite.GetComponent<SpriteRenderer>();
+        mainAnimator = mainSprite.GetComponent<Animator>();
+    }
 
     public void SetDirection(Vector2Int direction)
     {
@@ -24,6 +32,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetCrouching(bool isCrouching)
     {
+        mainSpriteRenderer.sortingLayerName = isCrouching ? "CharacterCrouching" : "Character";
         mainAnimator.SetBool("IsCrouching", isCrouching);
     }
 }

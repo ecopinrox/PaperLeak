@@ -55,11 +55,14 @@ TagManager:
   - name: Icon
     uniqueID: 333012283
     locked: 0
-  - name: Character
-    uniqueID: 412747615
+  - name: CharacterCrouching
+    uniqueID: 3417042157
     locked: 0
   - name: CrawlTilemap
     uniqueID: 1358633753
+    locked: 0
+  - name: Character
+    uniqueID: 412747615
     locked: 0
   - name: Distraction
     uniqueID: 3665376683
