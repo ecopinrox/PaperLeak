@@ -207,12 +207,10 @@ public class PlayerController : MonoBehaviour
         playerMovement.ToggleProne();
         if (playerMovement.IsCrawling)
         {
-            spriteRenderer.color = Color.red;
             gameObject.layer = playerProneLayerIndex;
         }
         else
         {
-            if (spriteRenderer != null) spriteRenderer.color = Color.blue;
             gameObject.layer = playerLayerIndex;
         }
 
