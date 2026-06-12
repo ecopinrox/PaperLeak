@@ -26,14 +26,19 @@ public class GuardMovement : MonoBehaviour
     IEnumerator<Node> pathIterator;
     public bool PathComplete { get; private set; } = true;
     bool shouldStopMoving = false;
+    public bool IsCrouching { get; private set; }
 
     Pathfinder pathfinder;
     GridManager gridManager;
+
+    GuardAnimation guardAnimation;
 
     void Awake()
     {
         pathfinder = FindFirstObjectByType<Pathfinder>();
         gridManager = pathfinder.GetComponent<GridManager>();
+
+        guardAnimation = GetComponent<GuardAnimation>();
     }
 
     void Start()
@@ -82,7 +87,12 @@ public class GuardMovement : MonoBehaviour
 
     public void LookAt(Vector2 loc)
     {
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, loc - (Vector2)transform.position);
+        LookInDirection(loc - (Vector2)transform.position);
+    }
+
+    public void LookInDirection(Vector2 dir)
+    {
+        guardAnimation.LookInDirection(dir);
     }
 
     IEnumerator GuardMovementHandler()
@@ -127,6 +137,7 @@ public class GuardMovement : MonoBehaviour
         Vector2Int prevTile = Vector2Int.RoundToInt(transform.position);
         gridManager.BlockTile(loc);
 
+        guardAnimation.SetMoving(true);
         while(Vector2.Distance((Vector2)transform.position, loc) > maxPositionalError)
         {
             LookAt(loc);
@@ -134,6 +145,7 @@ public class GuardMovement : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, loc, Time.fixedDeltaTime * speed);
             yield return new WaitForFixedUpdate();
         }
+        guardAnimation.SetMoving(false);
 
         gridManager.UnblockTile(prevTile);
     }
@@ -142,5 +154,11 @@ public class GuardMovement : MonoBehaviour
     {
         patrolSpeed = settings.patrolSpeed;
         SetSpeed();
+    }
+
+    public void SetCrouch(bool crouching)
+    {
+        IsCrouching = crouching;
+        guardAnimation.SetCrouching(IsCrouching);
     }
 }

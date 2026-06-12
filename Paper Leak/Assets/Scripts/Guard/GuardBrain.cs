@@ -11,7 +11,7 @@ public class GuardBrain : MonoBehaviour
 
     GuardMovement guardMovement;
     GuardDistractionSensor guardDistractionSensor;
-    GuardSpriteManager guardVisualManager;
+    GuardAnimation guardVisualManager;
 
     GridManager gridMovementMonitor;
 
@@ -37,7 +37,6 @@ public class GuardBrain : MonoBehaviour
     //state variables
     IEnumerator<Waypoint> patrolIterator;
     Vector2Int interruptLocation;
-    bool isCrouched;
     Distraction currentDistraction = null;
     Vector2Int lastSeenDistractionPosition;
 
@@ -50,7 +49,7 @@ public class GuardBrain : MonoBehaviour
     {
         guardMovement = GetComponent<GuardMovement>();
         guardDistractionSensor = GetComponent<GuardDistractionSensor>();
-        guardVisualManager = GetComponent<GuardSpriteManager>();
+        guardVisualManager = GetComponent<GuardAnimation>();
 
         gridMovementMonitor = FindAnyObjectByType<GridManager>();
 
@@ -109,7 +108,7 @@ public class GuardBrain : MonoBehaviour
             BState.Patrolling,
             () => 
             {
-                transform.rotation = patrolIterator.Current.Rotation; 
+                guardMovement.LookInDirection(patrolIterator.Current.Rotation * Vector2.up);
             }, 
             () =>
             {
@@ -139,7 +138,8 @@ public class GuardBrain : MonoBehaviour
             BState.Alert,
             () =>
             {
-                isCrouched = false;
+                //isCrouched = false;
+                guardMovement.SetCrouch(false);
                 guardMovement.StopMoving();
                 guardVisualManager.ChangeToCautionColor();
             });
@@ -154,7 +154,8 @@ public class GuardBrain : MonoBehaviour
             BState.Investigating,
             () =>
             {
-                isCrouched = false;
+                //isCrouched = false;
+                guardMovement.SetCrouch(false);
                 guardVisualManager.ChangeToCautionColor();
                 guardMovement.SetCardinalDestination(lastSeenDistractionPosition);
             },
@@ -171,8 +172,8 @@ public class GuardBrain : MonoBehaviour
 
                 if (canCrouch && gridMovementMonitor.IsLocationInMask(lastSeenDistractionPosition, crawlableLayerMask))
                 {
-                    isCrouched = true;
-                    guardVisualManager.ChangeToCrouchColor();
+                    //isCrouched = true;
+                    guardMovement.SetCrouch(true);
                 }
             },
             () =>
@@ -184,7 +185,8 @@ public class GuardBrain : MonoBehaviour
             BState.Investigating,
             () =>
             {
-                isCrouched = false;
+                //isCrouched = false;
+                guardMovement.SetCrouch(false);
                 guardDistractionSensor.RegisterDistraction(currentDistraction);
                 currentDistraction = null;
                 guardVisualManager.ChangeToIdleColor();
@@ -231,7 +233,7 @@ public class GuardBrain : MonoBehaviour
 
     void GetOverridingDistraction()
     {
-        Distraction newDistraction = guardDistractionSensor.GetDistraction(isCrouched);
+        Distraction newDistraction = guardDistractionSensor.GetDistraction(guardMovement.IsCrouching);
         if (newDistraction == null) return;
 
         if (currentDistraction != null && currentDistraction.Priority > newDistraction.Priority) return;
