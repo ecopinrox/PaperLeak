@@ -186,7 +186,7 @@ public class GuardDistractionSensor : MonoBehaviour
 
     bool CheckInViewRegion(Vector2 loc, float multiplier)
     {
-        float theta = Vector3.Angle(transform.rotation * Vector3.up, loc - (Vector2)transform.position);
+        float theta = Vector3.Angle(guardMovement.FacingDir, loc - (Vector2)transform.position);
         float distance = GetDistanceFromLocation(loc);
 
         if(theta <= frontalViewAngle && distance <= frontalViewRadius * multiplier) return true;

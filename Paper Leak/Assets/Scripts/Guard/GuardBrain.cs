@@ -138,7 +138,6 @@ public class GuardBrain : MonoBehaviour
             BState.Alert,
             () =>
             {
-                //isCrouched = false;
                 guardMovement.SetCrouch(false);
                 guardMovement.StopMoving();
                 guardVisualManager.ChangeToCautionColor();
@@ -154,7 +153,6 @@ public class GuardBrain : MonoBehaviour
             BState.Investigating,
             () =>
             {
-                //isCrouched = false;
                 guardMovement.SetCrouch(false);
                 guardVisualManager.ChangeToCautionColor();
                 guardMovement.SetCardinalDestination(lastSeenDistractionPosition);
@@ -172,7 +170,6 @@ public class GuardBrain : MonoBehaviour
 
                 if (canCrouch && gridMovementMonitor.IsLocationInMask(lastSeenDistractionPosition, crawlableLayerMask))
                 {
-                    //isCrouched = true;
                     guardMovement.SetCrouch(true);
                 }
             },
@@ -185,7 +182,6 @@ public class GuardBrain : MonoBehaviour
             BState.Investigating,
             () =>
             {
-                //isCrouched = false;
                 guardMovement.SetCrouch(false);
                 guardDistractionSensor.RegisterDistraction(currentDistraction);
                 currentDistraction = null;
@@ -294,6 +290,7 @@ public class GuardBrain : MonoBehaviour
         guardMovement.LoadSettings(settings);
     }
 
+    //TODO: replace transform.rotation here with guardMovement.FacingDir
     void LoadFrozenState(SaveState saveState)
     {
         if(saveState.frozenGuards.ContainsKey(spawnLoc))

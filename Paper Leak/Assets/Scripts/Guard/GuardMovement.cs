@@ -28,6 +28,8 @@ public class GuardMovement : MonoBehaviour
     bool shouldStopMoving = false;
     public bool IsCrouching { get; private set; }
 
+    public Vector2 FacingDir { get; private set; } = Vector2.up;
+
     Pathfinder pathfinder;
     GridManager gridManager;
 
@@ -92,7 +94,24 @@ public class GuardMovement : MonoBehaviour
 
     public void LookInDirection(Vector2 dir)
     {
-        guardAnimation.LookInDirection(dir);
+        if(dir.sqrMagnitude < Mathf.Epsilon)
+        {
+            return;
+        }
+
+        //Rounds the direction vector to the nearest axis vector (up/down/left/right)
+        Vector2 axisVector = new();
+        if(Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            axisVector.x = Mathf.Sign(dir.x);
+        }
+        else
+        {
+            axisVector.y = Mathf.Sign(dir.y);
+        }
+
+        FacingDir = axisVector;
+        guardAnimation.LookInDirection(axisVector);
     }
 
     IEnumerator GuardMovementHandler()

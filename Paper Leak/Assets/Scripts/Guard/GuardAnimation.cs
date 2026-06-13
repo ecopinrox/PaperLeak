@@ -38,23 +38,8 @@ public class GuardAnimation : MonoBehaviour
 
     public void LookInDirection(Vector2 direction)
     {
-        if(direction.sqrMagnitude < Mathf.Epsilon)
-        {
-            return;
-        }
-
-        Vector2 animValues = new();
-        if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-        {
-            animValues.x = Mathf.Sign(direction.x);
-        }
-        else
-        {
-            animValues.y = Mathf.Sign(direction.y);
-        }
-
-        guardAnimator.SetFloat("XFacing", animValues.x);
-        guardAnimator.SetFloat("YFacing", animValues.y);
+        guardAnimator.SetFloat("XFacing", direction.x);
+        guardAnimator.SetFloat("YFacing", direction.y);
     }
 
     public void SetMoving(bool moving)
