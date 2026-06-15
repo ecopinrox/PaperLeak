@@ -15,6 +15,12 @@ public class GuardMovement : MonoBehaviour
     float patrolSpeed = 1f;
     [SerializeField] float maxPositionalError = 0.01f;
     [SerializeField] LayerMask excludedLayersInPathfinding;
+
+    /// <summary>
+    /// The maximum tile that the guard waits for a tile to be unblocked before moving to it anyway. This prevents deadlocks.
+    /// </summary>
+    [SerializeField] float maxTileBlockWaitSeconds = 4f;
+
     float speed;
 
     /// <summary>
@@ -130,8 +136,10 @@ public class GuardMovement : MonoBehaviour
 
                 if(pathIterator.Current.pos != GridBasedPosition)
                 {
-                    while(!gridManager.CanMove(pathIterator.Current.pos, false))
+                    float waitTime = 0f;
+                    while(!gridManager.CanMove(pathIterator.Current.pos, false) && waitTime < maxTileBlockWaitSeconds)
                     {
+                        waitTime += Time.fixedDeltaTime;
                         yield return new WaitForFixedUpdate();
                     }
 
