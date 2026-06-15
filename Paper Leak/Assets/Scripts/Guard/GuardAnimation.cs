@@ -16,6 +16,11 @@ public class GuardAnimation : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void FixedUpdate()
+    {
+        UpdateSpriteOrderInLayer(Mathf.RoundToInt(transform.position.y));
+    }
+
     void Start()
     {
         defaultColor = spriteRenderer.color;
@@ -50,5 +55,10 @@ public class GuardAnimation : MonoBehaviour
     public void SetCrouching(bool crouching)
     {
         guardAnimator.SetBool("IsCrouching", crouching);
+    }
+
+    void UpdateSpriteOrderInLayer(int yPos)
+    {
+        spriteRenderer.sortingOrder = -yPos;
     }
 }

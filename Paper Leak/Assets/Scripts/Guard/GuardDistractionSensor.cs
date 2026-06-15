@@ -102,6 +102,11 @@ public class GuardDistractionSensor : MonoBehaviour
 
     Distraction GetPlayerDistraction(bool isCrouched)
     {
+
+#if UNITY_EDITOR
+        if (playerDistraction.IsInvisible) return null;
+#endif
+
         Vector2Int dPos = playerDistraction.Position;
         Vector2 realPos = playerDistraction.transform.position;
 

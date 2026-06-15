@@ -14,6 +14,11 @@ public class PlayerDistraction : Distraction
     [SerializeField] SoundData fartSFX;
     [SerializeField] SoundData walkSFX;
 
+    /// <summary>
+    /// Makes the player invisible to guards. Only affects play mode.
+    /// </summary>
+    [field: SerializeField] public bool IsInvisible { get; private set; }
+
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();

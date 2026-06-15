@@ -21,6 +21,11 @@ public class PlayerAnimation : MonoBehaviour
         overlayAnimator = overlaySprite.GetComponent<Animator>();
     }
 
+    private void FixedUpdate()
+    {
+        UpdateSpriteLayers(Mathf.RoundToInt(transform.position.y));
+    }
+
     public void SetDirection(Vector2Int direction)
     {
         if (direction == Vector2Int.zero)
@@ -47,5 +52,11 @@ public class PlayerAnimation : MonoBehaviour
         mainAnimator.SetBool("IsCrouching", isCrouching);
 
         overlayAnimator.SetBool("IsCrouching", isCrouching);
+    }
+
+    void UpdateSpriteLayers(int yPos)
+    {
+        mainSpriteRenderer.sortingOrder = -yPos;
+        overlaySpriteRenderer.sortingOrder = -yPos;
     }
 }
