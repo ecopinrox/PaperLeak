@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
             JsonSaver.Save(masterSave, saveFileName);
         }
 
-        if(CurrentLevelIndex >= 0)
+        if(CurrentSceneIndex >= 0)
         {
             _ = DevInitLevel();
         }
