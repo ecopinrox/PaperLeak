@@ -6,7 +6,7 @@ public class GuardAnimation : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     Color defaultColor;
-    [SerializeField] Color cautionColor = Color.yellow;
+    [SerializeField] GameObject alertOverlay;
     [SerializeField] Color freezeColor = Color.aliceBlue;
 
     [SerializeField] Animator guardAnimator;
@@ -14,6 +14,7 @@ public class GuardAnimation : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        alertOverlay.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -26,14 +27,9 @@ public class GuardAnimation : MonoBehaviour
         defaultColor = spriteRenderer.color;
     }
 
-    public void ChangeToCautionColor()
+    public void SetCautionOverlayStatus(bool enabled)
     {
-        spriteRenderer.color = cautionColor;
-    }
-
-    public void ChangeToIdleColor()
-    {
-        spriteRenderer.color = defaultColor;
+        alertOverlay.SetActive(enabled);
     }
 
     public void ChangeToFreezeColor()

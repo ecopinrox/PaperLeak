@@ -140,7 +140,7 @@ public class GuardBrain : MonoBehaviour
             {
                 guardMovement.SetCrouch(false);
                 guardMovement.StopMoving();
-                guardVisualManager.ChangeToCautionColor();
+                guardVisualManager.SetCautionOverlayStatus(true);
             });
 
         BTimer waitOnAlert = new(
@@ -154,7 +154,7 @@ public class GuardBrain : MonoBehaviour
             () =>
             {
                 guardMovement.SetCrouch(false);
-                guardVisualManager.ChangeToCautionColor();
+                guardVisualManager.SetCautionOverlayStatus(true);
                 guardMovement.SetCardinalDestination(lastSeenDistractionPosition);
             },
             () =>
@@ -185,7 +185,7 @@ public class GuardBrain : MonoBehaviour
                 guardMovement.SetCrouch(false);
                 guardDistractionSensor.RegisterDistraction(currentDistraction);
                 currentDistraction = null;
-                guardVisualManager.ChangeToIdleColor();
+                guardVisualManager.SetCautionOverlayStatus(false);
             });
 
         //Patrolling states
