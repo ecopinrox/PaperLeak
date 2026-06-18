@@ -15,7 +15,7 @@ public class ItemHolder : MonoBehaviour
     private void Awake()
     {
         pickup = GetComponent<Pickup>();
-        itemPrefab = LevelManager.Instance.ItemIndexer.GetItem(itemIndex);
+        //itemPrefab = LevelManager.Instance.ItemIndexer.GetItem(itemIndex);
     }
 
     private void OnEnable()

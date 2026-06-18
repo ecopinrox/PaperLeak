@@ -18,7 +18,7 @@ MonoBehaviour:
   peripheralViewAngle: 70
   frontalViewRadius: 8
   peripheralViewRadius: 5
-  dangerZoneMultiplier: 0.5
+  dangerZoneMultiplier: 0.125
   soundAlertDistanceMultiplier: 1.25
   canCrouch: 1
   patrolSpeed: 3

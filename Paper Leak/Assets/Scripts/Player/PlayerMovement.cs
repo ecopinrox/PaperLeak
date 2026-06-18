@@ -112,9 +112,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void SnapToPosition(Vector2Int pos)
     {
+        gridMovementMonitor.UnblockTile(GridBasedPosition);
         shouldStopMoving = true;
         transform.position = (Vector2)pos;
         GridBasedPosition = pos;
+        shouldStopMoving = false;
+        gridMovementMonitor.BlockTile(GridBasedPosition);
     }
 
     public void ToggleProne()
