@@ -42,14 +42,14 @@ public class PlayerInteractionHandler : MonoBehaviour
         currentInteractible = null;
     }
 
-    public bool Interact()
+    public void Interact()
     {
         if (currentInteractible == null)
         {
-            return false;
+            return;
         }
 
-        return currentInteractible.Interact();
+        currentInteractible.Interact();
     }
 
     public void SetDirection(Vector2 direction)

@@ -7,9 +7,8 @@ public class Checkpoint : Interactible
         uiManager = FindFirstObjectByType<UIManager>();
     }
 
-    public override bool Interact()
+    public override void Interact()
     {
         uiManager.SetCheckpointPanelStatus(true);
-        return true;
     }
 }

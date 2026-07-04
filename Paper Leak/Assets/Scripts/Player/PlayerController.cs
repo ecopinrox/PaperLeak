@@ -233,8 +233,7 @@ public class PlayerController : MonoBehaviour
 
     void Interact(InputAction.CallbackContext ctx) 
     {
-        if(playerInteractionHandler.Interact()) 
-            SwitchActionMap(uiActionMapName);
+        playerInteractionHandler.Interact();
     }
 
     void ExitUI(InputAction.CallbackContext ctx)
