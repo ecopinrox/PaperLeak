@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     PlayerInput playerInput;
     PlayerMovement playerMovement;
     PlayerInventory playerInventory;
+    PlayerInteractionHandler playerInteractionHandler;
     SpriteRenderer spriteRenderer;
     PlayerDistraction playerDistraction;
     PlayerCameraRigHandler playerCameraRigHandler;
@@ -37,8 +38,6 @@ public class PlayerController : MonoBehaviour
     const string aimingActionMapName = "Aiming";
     const string uiActionMapName = "UI";
 
-    Interactible interactible;
-
     void Awake()
     {
         Instance = this;
@@ -46,6 +45,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
         playerInventory = GetComponent<PlayerInventory>();
+        playerInteractionHandler = GetComponent<PlayerInteractionHandler>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         playerDistraction = GetComponent<PlayerDistraction>();
         playerCameraRigHandler = GetComponent<PlayerCameraRigHandler>();
@@ -143,16 +143,6 @@ public class PlayerController : MonoBehaviour
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
     }
 
-    public void SetInteractible(Interactible interactible)
-    {
-        this.interactible = interactible;
-    }
-
-    public void ClearInteractible()
-    {
-        interactible = null;
-    }
-
     public void EnterUIActionMap()
     {
         SwitchActionMap(uiActionMapName);
@@ -242,13 +232,8 @@ public class PlayerController : MonoBehaviour
 
     void Interact(InputAction.CallbackContext ctx) 
     {
-        if (!interactible)
-        {
-            return;
-        }
-
-        interactible.Interact(out bool uiEnabled);
-        if(uiEnabled) SwitchActionMap(uiActionMapName);
+        if(playerInteractionHandler.Interact()) 
+            SwitchActionMap(uiActionMapName);
     }
 
     void ExitUI(InputAction.CallbackContext ctx)

@@ -28,14 +28,14 @@ public class LockedDoor : Interactible
         LevelManager.OnStateSave -= SaveState;
     }
 
-    public override void Interact(out bool uiEnabled)
+    public override bool Interact()
     {
-        uiEnabled = false;
-
         if (PlayerInventory.Instance.HasCollectible(keyID))
         {
             OpenDoor();
         }
+
+        return false;
     }
 
     void OpenDoor()
