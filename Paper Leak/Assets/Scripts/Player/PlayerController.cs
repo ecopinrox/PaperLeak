@@ -214,6 +214,7 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = ctx.ReadValue<Vector2>();
 
         playerMovement.SetDirection(direction);
+        playerInteractionHandler.SetDirection(direction);
         SetMovementCamera(direction);
     }
 

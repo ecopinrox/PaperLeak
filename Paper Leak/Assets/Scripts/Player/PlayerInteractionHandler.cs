@@ -4,6 +4,19 @@ public class PlayerInteractionHandler : MonoBehaviour
 {
     Interactible currentInteractible;
 
+    BoxCollider2D interactionTrigger;
+
+    private void Awake()
+    {
+        interactionTrigger = GetComponent<BoxCollider2D>();
+    }
+
+    private void Start()
+    {
+        //temporary - player faces away from the screen on game start
+        SetDirection(Vector2.up);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(!collision.TryGetComponent(out Interactible interactible))
@@ -31,6 +44,21 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     public bool Interact()
     {
+        if (currentInteractible == null)
+        {
+            return false;
+        }
+
         return currentInteractible.Interact();
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude <= Mathf.Epsilon)
+        {
+            return;
+        }
+
+        interactionTrigger.offset = direction / 2;
     }
 }
