@@ -18815,6 +18815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3028daaf9855e3469afa7ad0db515f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConversationPoint
+  interactedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
 --- !u!1001 &2104095779
 PrefabInstance:
   m_ObjectHideFlags: 0
