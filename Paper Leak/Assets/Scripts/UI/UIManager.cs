@@ -16,6 +16,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject changeDifficultyPanel;
     [SerializeField] Button[] difficultyButtons;
 
+    [Header("Dialogue")]
+    [SerializeField] GameObject dialoguePanel;
+    [SerializeField] Image portraitImage;
+    [SerializeField] TextMeshProUGUI speakerName;
+    [SerializeField] TextMeshProUGUI dialogueText;
+
     [Header("Items")]
     [SerializeField] List<ItemSlotUIElement> itemSlots;
 
@@ -30,6 +36,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         playerController = FindFirstObjectByType<PlayerController>();
+
+        SetDialoguePanelStatus(false);
     }
 
     private void OnEnable()
@@ -60,6 +68,11 @@ public class UIManager : MonoBehaviour
     public void SetChangeDifficultyPanelStatus(bool active)
     {
         changeDifficultyPanel.SetActive(active);
+    }
+
+    public void SetDialoguePanelStatus(bool active)
+    {
+        dialoguePanel.SetActive(active);
     }
 
     public void SetActiveDifficultyButtons()
