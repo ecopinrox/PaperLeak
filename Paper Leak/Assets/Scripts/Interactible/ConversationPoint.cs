@@ -13,11 +13,25 @@ public class ConversationPoint : Interactible
 
     ConversationRunner conversationRunner;
 
+    Vector2Int GridPos { get { return Vector2Int.RoundToInt(transform.position); } }
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         conversationRunner = FindAnyObjectByType<ConversationRunner>();
+    }
+
+    private void OnEnable()
+    {
+        LevelManager.OnStateSave += Save;
+        LevelManager.OnStateLoad += Load;
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.OnStateSave -= Save;
+        LevelManager.OnStateLoad -= Load;
     }
 
     public override void Interact()
@@ -26,8 +40,7 @@ public class ConversationPoint : Interactible
 
         if (!interacted)
         {
-            interacted = true;
-            SwitchColor();
+            MarkAsInteracted();
             conversation = mainConversation;
         }
         else
@@ -38,8 +51,34 @@ public class ConversationPoint : Interactible
         conversationRunner.StartConversation(conversation);
     }
 
+    void MarkAsInteracted()
+    {
+        interacted = true;
+        SwitchColor();
+    }
+
     void SwitchColor()
     {
         spriteRenderer.color = interactedColor;
+    }
+
+    void Save(SaveState saveState)
+    {
+        if(interacted)
+        {
+            saveState.interactedConversationPoints.Add(GridPos);
+        }
+        else
+        {
+            saveState.interactedConversationPoints.Remove(GridPos);
+        }
+    }
+
+    void Load(SaveState saveState)
+    {
+        if(saveState.interactedConversationPoints.Contains(GridPos))
+        {
+            MarkAsInteracted();
+        }
     }
 }

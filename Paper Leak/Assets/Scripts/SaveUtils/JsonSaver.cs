@@ -105,6 +105,8 @@ public class JsonSaver
         dto.mineLocations = save.mineLocations;
 
         dto.frozenGuards = save.frozenGuards;
+
+        dto.interactedConversationPoints = save.interactedConversationPoints;
     }
 
     static void ReadMasterFromDto(MasterSave save, MasterSaveDto dto)
@@ -171,6 +173,12 @@ public class JsonSaver
         if(dto.frozenGuards is not null)
         {
             save.frozenGuards = new(dto.frozenGuards);
+        }
+
+        //conversation points
+        if(dto.interactedConversationPoints is not null)
+        {
+            save.interactedConversationPoints = new(dto.interactedConversationPoints);
         }
     }
 

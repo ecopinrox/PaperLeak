@@ -23,4 +23,7 @@ public class SaveState : ScriptableObject
 
     //frozen guards
     public Dictionary<Vector2Int, ValueTuple<Vector2Int, Quaternion>> frozenGuards = new();
+
+    //conversation points
+    public HashSet<Vector2Int> interactedConversationPoints = new();
 }

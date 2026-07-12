@@ -22,4 +22,6 @@ public class SaveStateDto
     public HashSet<Vector2Int> mineLocations;
 
     public Dictionary<Vector2Int, ValueTuple<Vector2Int, Quaternion>> frozenGuards;
+
+    public HashSet<Vector2Int> interactedConversationPoints;
 }
