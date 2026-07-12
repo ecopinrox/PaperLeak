@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb82bdc547e4aaf47b67663744e60c81, type: 3}
+  m_Name: PlayerPortraits
+  m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
+  speakerName: Prabhu
+  portraits:
+  - {fileID: -2311659948842064771, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
+  - {fileID: 1846922000, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
+  - {fileID: 235834776, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}

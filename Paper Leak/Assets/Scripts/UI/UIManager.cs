@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void SetCheckpointPanelStatus(bool active) 
     {
-        playerController.EnterUIActionMap();
+        playerController.SwitchToUIActionMap();
         checkpointPanel.SetActive(active); 
     }
 
@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
 
     public void DisableAllMenus()
     {
-        playerController.ExitUIActionMap();
+        playerController.SwitchToPlayerActionMap();
         checkpointPanel.SetActive(false);
     }
 }

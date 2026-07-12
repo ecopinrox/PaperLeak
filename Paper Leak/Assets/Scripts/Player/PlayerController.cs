@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     UIManager uiManager;
     AimingController aimingController;
     GameStateManager gameStateManager;
+    ConversationRunner conversationRunner;
 
     [SerializeField] DifficultySwitch playerDifficultySwitch;
     
@@ -34,9 +35,12 @@ public class PlayerController : MonoBehaviour
 
     InputAction pauseAction;
 
+    InputAction nextDialogueAction;
+
     const string movementActionMapName = "Player";
     const string aimingActionMapName = "Aiming";
     const string uiActionMapName = "UI";
+    const string dialogueActionMapName = "Dialogue";
 
     void Awake()
     {
@@ -52,6 +56,7 @@ public class PlayerController : MonoBehaviour
         uiManager = FindFirstObjectByType<UIManager>();
         aimingController = uiManager.GetComponent<AimingController>();
         gameStateManager = uiManager.GetComponent<GameStateManager>();
+        conversationRunner = uiManager.GetComponent<ConversationRunner>();
 
         moveAction              = playerInput.actions["Move"            ];
         crawlAction             = playerInput.actions["Crawl"           ];
@@ -68,6 +73,8 @@ public class PlayerController : MonoBehaviour
         stopAimingAction        = playerInput.actions["StopAiming"      ];
 
         pauseAction             = playerInput.actions["Pause"           ];
+
+        nextDialogueAction      = playerInput.actions["NextDialogue"    ];
     }
 
     //moving also counts as peeking for some odd reason but the vector read is (0,0) so it shouldn't(?) matter for my purposes
@@ -103,10 +110,15 @@ public class PlayerController : MonoBehaviour
 
         pauseAction.performed += TogglePause;
 
+        nextDialogueAction.performed += NextDialogue;
+
         DifficultySwitch.loadDifficultySettings += LoadDifficulty;
 
         LevelManager.OnStateLoad += LoadPosition;
         LevelManager.OnStateSave += SavePosition;
+
+        ConversationRunner.OnConversationStart += SwitchToDialogueActionMap;
+        ConversationRunner.OnConversationEnd += SwitchToPlayerActionMap;
 
         StartCoroutine(playerMovement.MovementHandler());
     }
@@ -137,18 +149,23 @@ public class PlayerController : MonoBehaviour
 
         pauseAction.performed -= TogglePause;
 
+        nextDialogueAction.performed -= NextDialogue;
+
         LevelManager.OnStateLoad -= LoadPosition;
         LevelManager.OnStateSave -= SavePosition;
 
         DifficultySwitch.loadDifficultySettings -= LoadDifficulty;
+
+        ConversationRunner.OnConversationStart -= SwitchToDialogueActionMap;
+        ConversationRunner.OnConversationEnd -= SwitchToPlayerActionMap;
     }
 
-    public void EnterUIActionMap()
+    public void SwitchToUIActionMap()
     {
         SwitchActionMap(uiActionMapName);
     }
 
-    public void ExitUIActionMap()
+    public void SwitchToPlayerActionMap()
     {
         SwitchActionMap(movementActionMapName);
     }
@@ -156,6 +173,11 @@ public class PlayerController : MonoBehaviour
     public void SwitchToAimingActionMap()
     {
         SwitchActionMap(aimingActionMapName);
+    }
+
+    void SwitchToDialogueActionMap()
+    {
+        SwitchActionMap(dialogueActionMapName);
     }
 
     void SwitchActionMap(string actionMapName)
@@ -277,6 +299,11 @@ public class PlayerController : MonoBehaviour
     {
         aimingController.CancelAiming();
         SwitchActionMap(movementActionMapName);
+    }
+
+    void NextDialogue(InputAction.CallbackContext _)
+    {
+        conversationRunner.AdvanceConversation();
     }
 
     void TogglePause(InputAction.CallbackContext _)
