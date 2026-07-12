@@ -9,11 +9,20 @@ public class ConversationRunner : MonoBehaviour
     public static event Action OnConversationStart;
     public static event Action OnConversationEnd;
 
+    UIManager uiManager;
+
+    private void Awake()
+    {
+        uiManager = GetComponent<UIManager>();
+    }
+
     public void StartConversation(ConversationSO conversation)
     {
         dialogueEnumerator = conversation.GetEnumerator();
 
         OnConversationStart?.Invoke();
+        uiManager.SetDialoguePanelStatus(true);
+
         AdvanceConversation();
     }
 
@@ -31,14 +40,14 @@ public class ConversationRunner : MonoBehaviour
 
     void EndConversation()
     {
-        Debug.Log("conversation over");
         OnConversationEnd?.Invoke();
+        uiManager.SetDialoguePanelStatus(false);
 
         dialogueEnumerator.Dispose();
     }
 
     void ShowDialogue(Dialogue dialogue)
     {
-        Debug.Log(dialogue.text);
+        uiManager.ShowDialogue(dialogue);
     }
 }

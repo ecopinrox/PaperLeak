@@ -75,6 +75,13 @@ public class UIManager : MonoBehaviour
         dialoguePanel.SetActive(active);
     }
 
+    public void ShowDialogue(Dialogue dialogue)
+    {
+        portraitImage.sprite = dialogue.portrait;
+        speakerName.text = dialogue.name;   
+        dialogueText.text = dialogue.text;
+    }
+
     public void SetActiveDifficultyButtons()
     {
         for(int i = 0; i < difficultyButtons.Length; i++)
