@@ -105118,6 +105118,14 @@ PrefabInstance:
       propertyPath: conversation
       value: 
       objectReference: {fileID: 11400000, guid: c818991d46c5846488075ca43f268e1f, type: 2}
+    - target: {fileID: 4633023797279898590, guid: 62143be1f58f9024db57947fe46bc060, type: 3}
+      propertyPath: subConversation
+      value: 
+      objectReference: {fileID: 11400000, guid: e582857cb346b714f9bec69383432b3c, type: 2}
+    - target: {fileID: 4633023797279898590, guid: 62143be1f58f9024db57947fe46bc060, type: 3}
+      propertyPath: mainConversation
+      value: 
+      objectReference: {fileID: 11400000, guid: c818991d46c5846488075ca43f268e1f, type: 2}
     - target: {fileID: 4719395198687974848, guid: 62143be1f58f9024db57947fe46bc060, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96

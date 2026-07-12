@@ -5,7 +5,8 @@ public class ConversationPoint : Interactible
 {
     bool interacted = false;
 
-    [SerializeField] ConversationSO conversation;
+    [SerializeField] ConversationSO mainConversation;
+    [SerializeField] ConversationSO subConversation;
     [SerializeField] Color interactedColor;
 
     SpriteRenderer spriteRenderer;
@@ -21,15 +22,17 @@ public class ConversationPoint : Interactible
 
     public override void Interact()
     {
+        ConversationSO conversation;
+
         if (!interacted)
         {
             interacted = true;
             SwitchColor();
-            Debug.Log("conversation start");
+            conversation = mainConversation;
         }
         else
         {
-            Debug.Log("conversation start again");
+            conversation = subConversation;
         }
 
         conversationRunner.StartConversation(conversation);
