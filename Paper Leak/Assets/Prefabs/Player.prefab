@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6868021504478853807, guid: 9add9c05e4a8b74458357d65ae12317e, type: 3}
+  m_Sprite: {fileID: -8306955038239676312, guid: 353077349963bc346ae649e65e0be4a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayer: 10
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6868021504478853807, guid: 9add9c05e4a8b74458357d65ae12317e, type: 3}
+  m_Sprite: {fileID: -8306955038239676312, guid: 353077349963bc346ae649e65e0be4a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.34901962}
   m_FlipX: 0
   m_FlipY: 0
@@ -348,6 +348,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f18f7472-410e-4f3c-a81c-bff875329237
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a5f16b4c-0fbd-407b-ac34-792bd7d6b8ef
+    m_ActionName: 'Dialogue/NextDialogue[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
