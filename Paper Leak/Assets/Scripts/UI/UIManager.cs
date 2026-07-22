@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speakerName;
     [SerializeField] TextMeshProUGUI dialogueText;
 
+    [Header("Interaction")]
+    [SerializeField] GameObject interactionPromptPanel;
+
     [Header("Items")]
     [SerializeField] List<ItemSlotUIElement> itemSlots;
 
@@ -43,11 +46,17 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         DifficultySwitch.loadDifficultySettings += SetDifficultyText;
+
+        PlayerInteractionHandler.OnInteractibleFound += EnableInteractionPromptPanel;
+        PlayerInteractionHandler.OnInteractibleCleared += DisableInteractionPromptPanel;
     }
 
     private void OnDisable()
     {
         DifficultySwitch.loadDifficultySettings -= SetDifficultyText;
+
+        PlayerInteractionHandler.OnInteractibleFound -= EnableInteractionPromptPanel;
+        PlayerInteractionHandler.OnInteractibleCleared -= DisableInteractionPromptPanel;
     }
 
     public void SetGameOverPanelStatus(bool active) => gameOverPanel.SetActive(active);
@@ -80,6 +89,16 @@ public class UIManager : MonoBehaviour
         portraitImage.sprite = dialogue.portrait;
         speakerName.text = dialogue.name;   
         dialogueText.text = dialogue.text;
+    }
+
+    void EnableInteractionPromptPanel()
+    {
+        interactionPromptPanel.SetActive(true);
+    }
+
+    void DisableInteractionPromptPanel()
+    {
+        interactionPromptPanel.SetActive(false);
     }
 
     public void SetActiveDifficultyButtons()

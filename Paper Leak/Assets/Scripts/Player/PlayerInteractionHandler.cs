@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class PlayerInteractionHandler : MonoBehaviour
 {
+    public static event Action OnInteractibleFound;
+    public static event Action OnInteractibleCleared;
+
     Interactible currentInteractible;
 
     BoxCollider2D interactionTrigger;
@@ -25,6 +29,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         }
 
         currentInteractible = interactible;
+        OnInteractibleFound?.Invoke();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -40,6 +45,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         }
 
         currentInteractible = null;
+        OnInteractibleCleared?.Invoke();
     }
 
     public void Interact()
