@@ -288,7 +288,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 672
+        y: 912
         width: 32
         height: 48
       alignment: 0
@@ -310,7 +310,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 672
+        y: 912
         width: 32
         height: 48
       alignment: 0
@@ -332,7 +332,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 672
+        y: 912
         width: 32
         height: 48
       alignment: 0
@@ -354,7 +354,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 672
+        y: 912
         width: 32
         height: 48
       alignment: 0
@@ -376,7 +376,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 624
+        y: 864
         width: 32
         height: 48
       alignment: 0
@@ -398,7 +398,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 624
+        y: 864
         width: 32
         height: 48
       alignment: 0
@@ -420,7 +420,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 624
+        y: 864
         width: 32
         height: 48
       alignment: 0
@@ -442,7 +442,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 624
+        y: 864
         width: 32
         height: 48
       alignment: 0
@@ -464,7 +464,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 576
+        y: 816
         width: 32
         height: 48
       alignment: 0
@@ -486,7 +486,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 576
+        y: 816
         width: 32
         height: 48
       alignment: 0
@@ -508,7 +508,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 576
+        y: 816
         width: 32
         height: 48
       alignment: 0
@@ -530,7 +530,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 576
+        y: 816
         width: 32
         height: 48
       alignment: 0
@@ -552,7 +552,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 528
+        y: 768
         width: 32
         height: 48
       alignment: 0
@@ -574,7 +574,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 528
+        y: 768
         width: 32
         height: 48
       alignment: 0
@@ -596,7 +596,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 528
+        y: 768
         width: 32
         height: 48
       alignment: 0
@@ -618,7 +618,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 528
+        y: 768
         width: 32
         height: 48
       alignment: 0
@@ -640,7 +640,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 480
+        y: 720
         width: 32
         height: 48
       alignment: 0
@@ -662,7 +662,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 480
+        y: 720
         width: 32
         height: 48
       alignment: 0
@@ -684,7 +684,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 480
+        y: 720
         width: 32
         height: 48
       alignment: 0
@@ -706,7 +706,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 480
+        y: 720
         width: 32
         height: 48
       alignment: 0
@@ -728,7 +728,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 432
+        y: 672
         width: 32
         height: 48
       alignment: 0
@@ -750,7 +750,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 432
+        y: 672
         width: 32
         height: 48
       alignment: 0
@@ -772,7 +772,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 432
+        y: 672
         width: 32
         height: 48
       alignment: 0
@@ -794,7 +794,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 432
+        y: 672
         width: 32
         height: 48
       alignment: 0
@@ -816,7 +816,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 624
         width: 32
         height: 48
       alignment: 0
@@ -838,7 +838,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 384
+        y: 624
         width: 32
         height: 48
       alignment: 0
@@ -860,7 +860,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 384
+        y: 624
         width: 32
         height: 48
       alignment: 0
@@ -882,7 +882,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 384
+        y: 624
         width: 32
         height: 48
       alignment: 0
@@ -904,7 +904,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 336
+        y: 576
         width: 32
         height: 48
       alignment: 0
@@ -926,7 +926,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 336
+        y: 576
         width: 32
         height: 48
       alignment: 0
@@ -948,7 +948,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 336
+        y: 576
         width: 32
         height: 48
       alignment: 0
@@ -970,7 +970,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 336
+        y: 576
         width: 32
         height: 48
       alignment: 0
@@ -992,7 +992,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
+        y: 528
         width: 32
         height: 48
       alignment: 0
@@ -1014,7 +1014,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 288
+        y: 528
         width: 32
         height: 48
       alignment: 0
@@ -1036,7 +1036,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 288
+        y: 528
         width: 32
         height: 48
       alignment: 0
@@ -1058,7 +1058,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 288
+        y: 528
         width: 32
         height: 48
       alignment: 0
@@ -1080,7 +1080,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
+        y: 480
         width: 32
         height: 48
       alignment: 0
@@ -1102,7 +1102,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 240
+        y: 480
         width: 32
         height: 48
       alignment: 0
@@ -1124,7 +1124,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 240
+        y: 480
         width: 32
         height: 48
       alignment: 0
@@ -1146,7 +1146,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 240
+        y: 480
         width: 32
         height: 48
       alignment: 0
@@ -1168,7 +1168,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 432
         width: 32
         height: 48
       alignment: 0
@@ -1190,7 +1190,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 192
+        y: 432
         width: 32
         height: 48
       alignment: 0
@@ -1212,7 +1212,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 432
         width: 32
         height: 48
       alignment: 0
@@ -1234,7 +1234,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 192
+        y: 432
         width: 32
         height: 48
       alignment: 0
@@ -1256,7 +1256,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 144
+        y: 384
         width: 32
         height: 48
       alignment: 0
@@ -1278,7 +1278,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 144
+        y: 384
         width: 32
         height: 48
       alignment: 0
@@ -1300,7 +1300,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 144
+        y: 384
         width: 32
         height: 48
       alignment: 0
@@ -1322,7 +1322,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 144
+        y: 384
         width: 32
         height: 48
       alignment: 0
@@ -1344,7 +1344,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 336
         width: 32
         height: 48
       alignment: 0
@@ -1366,7 +1366,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
+        y: 336
         width: 32
         height: 48
       alignment: 0
@@ -1388,7 +1388,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
+        y: 336
         width: 32
         height: 48
       alignment: 0
@@ -1410,7 +1410,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 96
+        y: 336
         width: 32
         height: 48
       alignment: 0
@@ -1432,7 +1432,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 288
         width: 32
         height: 48
       alignment: 0
@@ -1454,7 +1454,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
+        y: 288
         width: 32
         height: 48
       alignment: 0
@@ -1476,7 +1476,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 48
+        y: 288
         width: 32
         height: 48
       alignment: 0
@@ -1498,7 +1498,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 48
+        y: 288
         width: 32
         height: 48
       alignment: 0
@@ -1520,7 +1520,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 240
         width: 32
         height: 48
       alignment: 0
@@ -1542,7 +1542,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 240
         width: 32
         height: 48
       alignment: 0
@@ -1564,7 +1564,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 240
         width: 32
         height: 48
       alignment: 0
@@ -1586,7 +1586,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 240
         width: 32
         height: 48
       alignment: 0
@@ -1599,6 +1599,446 @@ TextureImporter:
       bones: []
       spriteID: cc4b50577d41bf34c9b56f93b4fc4525
       internalID: 558346812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bfd50b85246ae6468a8015ab78c779d
+      internalID: 1655371792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_61
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b826f9b57e0f942478fb145fb5d245cf
+      internalID: -1049078952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_62
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe366de91bb4b046ae21f0fad78e652
+      internalID: 417644294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_63
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b4c21fd3fcb5b841bacd70476e706c9
+      internalID: 2140328801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eaf627a7c4abff44a3decfe19e1a016
+      internalID: -1214713639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_65
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be2094aab48b12e4c9944ad50c7ca7c3
+      internalID: 944878696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_66
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a986beacc261244819fc05f291e599
+      internalID: 344986449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_67
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598cb638382bbbd499ec2458d2eaeb60
+      internalID: 1572931578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_68
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b716850277763fc4b9b0184a3e054517
+      internalID: 945130100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_69
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b59d0deab9be49409b5314fe1fcbc00
+      internalID: -1784004354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_70
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2994e5916041ab447bed4fe236abc3af
+      internalID: -957140820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_71
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b4cac24bebd2c74eaed2965b469537a
+      internalID: 2120657723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066f3682e16acad46b2f21c725da8525
+      internalID: -1658953150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_73
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c898e0a72ef87d4092f3c29698b36bb
+      internalID: 1167024289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_74
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb28eba867654e94f8d4594c5764bf60
+      internalID: -1654702234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_75
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d512203963996d747b67289981b0e6ac
+      internalID: -1516832644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3cd6929fe81e42418e87a1833c8f4e0
+      internalID: 324677370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_77
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134a1e233e53e7041a4f230cadfea4e0
+      internalID: -2045706335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_78
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ccb726172a42143b6b63b961f63ecd
+      internalID: 1217659920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper_Patel_79
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9bd979ffd95ea4da7a2245aa34bfcf
+      internalID: 813508138
       vertices: []
       indices: 
       edges: []
@@ -1617,7 +2057,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":42.0},"gridSpriteSize":{"x":32.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Paper_Patel_0: -8306955038239676312
       Paper_Patel_1: 3743119451085123867
@@ -1676,7 +2116,27 @@ TextureImporter:
       Paper_Patel_58: -1872781833
       Paper_Patel_59: 558346812
       Paper_Patel_6: -4032716736287398525
+      Paper_Patel_60: 1655371792
+      Paper_Patel_61: -1049078952
+      Paper_Patel_62: 417644294
+      Paper_Patel_63: 2140328801
+      Paper_Patel_64: -1214713639
+      Paper_Patel_65: 944878696
+      Paper_Patel_66: 344986449
+      Paper_Patel_67: 1572931578
+      Paper_Patel_68: 945130100
+      Paper_Patel_69: -1784004354
       Paper_Patel_7: -2132178943562552634
+      Paper_Patel_70: -957140820
+      Paper_Patel_71: 2120657723
+      Paper_Patel_72: -1658953150
+      Paper_Patel_73: 1167024289
+      Paper_Patel_74: -1654702234
+      Paper_Patel_75: -1516832644
+      Paper_Patel_76: 324677370
+      Paper_Patel_77: -2045706335
+      Paper_Patel_78: 1217659920
+      Paper_Patel_79: 813508138
       Paper_Patel_8: 4482287380270984341
       Paper_Patel_9: -2476531386264520971
   mipmapLimitGroupName: 
