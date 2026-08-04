@@ -137,6 +137,7 @@ public class GuardMovement : MonoBehaviour
                 if(pathIterator.Current.pos != GridBasedPosition)
                 {
                     float waitTime = 0f;
+                    //no idea what causes an nre here
                     while(!gridManager.CanMove(pathIterator.Current.pos, false) && waitTime < maxTileBlockWaitSeconds)
                     {
                         waitTime += Time.fixedDeltaTime;

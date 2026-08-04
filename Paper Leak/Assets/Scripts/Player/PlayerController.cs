@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     InputAction selectItem1Action;
     InputAction selectItem2Action;
     InputAction selectItem3Action;
-    InputAction selectItem4Action;
 
     InputAction selectTargetAction;
     InputAction stopAimingAction;
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviour
         selectItem1Action       = playerInput.actions["SelectItem1"     ];
         selectItem2Action       = playerInput.actions["SelectItem2"     ];
         selectItem3Action       = playerInput.actions["SelectItem3"     ];
-        selectItem4Action       = playerInput.actions["SelectItem4"     ];
 
         selectTargetAction      = playerInput.actions["SelectTarget"    ];
         stopAimingAction        = playerInput.actions["StopAiming"      ];
@@ -103,7 +101,6 @@ public class PlayerController : MonoBehaviour
         selectItem1Action.performed += SelectItem1;
         selectItem2Action.performed += SelectItem2;
         selectItem3Action.performed += SelectItem3;
-        selectItem4Action.performed += SelectItem4;
 
         selectTargetAction.performed += SelectTarget;
         stopAimingAction.performed += StopAiming;
@@ -142,7 +139,6 @@ public class PlayerController : MonoBehaviour
         selectItem1Action.performed -= SelectItem1;
         selectItem2Action.performed -= SelectItem2;
         selectItem3Action.performed -= SelectItem3;
-        selectItem4Action.performed -= SelectItem4;
 
         selectTargetAction.performed -= SelectTarget;
         stopAimingAction.performed -= StopAiming;
@@ -282,11 +278,6 @@ public class PlayerController : MonoBehaviour
     void SelectItem3(InputAction.CallbackContext _)
     {
         playerInventory.SelectItemSlot(2);
-    }
-
-    void SelectItem4(InputAction.CallbackContext _)
-    {
-        playerInventory.SelectItemSlot(3);
     }
 
     void SelectTarget(InputAction.CallbackContext _)

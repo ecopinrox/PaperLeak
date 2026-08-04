@@ -64,17 +64,20 @@ TagManager:
   - name: CrawlTilemap
     uniqueID: 1358633753
     locked: 0
-  - name: Character
-    uniqueID: 412747615
-    locked: 0
   - name: Distraction
     uniqueID: 3665376683
+    locked: 0
+  - name: Character
+    uniqueID: 412747615
     locked: 0
   - name: SpriteOverlay
     uniqueID: 3746606929
     locked: 0
   - name: AimFOV
     uniqueID: 2061088763
+    locked: 0
+  - name: Mask
+    uniqueID: 1065570155
     locked: 0
   m_RenderingLayers:
   - Default

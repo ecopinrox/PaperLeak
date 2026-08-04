@@ -79,15 +79,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectItem4",
-                    "type": "Button",
-                    "id": "dc5339bd-e49d-41d7-93c1-30c66dab43f0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "f18f7472-410e-4f3c-a81c-bff875329237",
@@ -326,17 +317,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "SelectItem3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a476f24b-79f2-4d9a-bd43-e81d72408531",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectItem4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3028daaf9855e3469afa7ad0db515f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConversationPoint
+  mainConversation: {fileID: 0}
+  subConversation: {fileID: 0}
   interactedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
 --- !u!61 &8953538596389295287
 BoxCollider2D:
@@ -174,8 +176,8 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5500001, g: 1, b: 0, a: 0.29803923}
+  m_Sprite: {fileID: -7516342049021962738, guid: f6d9494f9b57c4b49ac5975ba2444c51, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

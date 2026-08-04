@@ -1,0 +1,1 @@
+Press WASD while holding CAPS LOCK to peek.

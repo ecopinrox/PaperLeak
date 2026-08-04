@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4116409034449952273}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1864, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 412747615
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8306955038239676312, guid: 353077349963bc346ae649e65e0be4a5, type: 3}
@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 4489315864455097802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1864, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e9558099f025944aab91cdf52ff2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotCount: 4
+  slotCount: 3
 --- !u!114 &3586897788279094284
 MonoBehaviour:
   m_ObjectHideFlags: 0
