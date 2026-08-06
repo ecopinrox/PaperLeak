@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 306977694609308822}
   - component: {fileID: 8501753805363031290}
   - component: {fileID: 7890763780857300519}
+  - component: {fileID: 722295655418270588}
+  - component: {fileID: 5416717403977048694}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -179,12 +181,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dialoguePanel: {fileID: 0}
+  portraitImage: {fileID: 0}
+  speakerName: {fileID: 0}
+  dialogueText: {fileID: 0}
+  interactionPromptPanel: {fileID: 0}
   itemSlots:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   collectibleIcons:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -285,6 +292,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileRegionMarker
   textObject: {fileID: 6360070577493810562, guid: f2e551d0de7335a469ab17463684fb6c, type: 3}
+--- !u!114 &722295655418270588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381863772015339245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8e2800b05da1c42a9fb4bc01dd4e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConversationRunner
+--- !u!114 &5416717403977048694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381863772015339245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fe06423f9cfbd43a7e5d010c4d919a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  musicMixer: {fileID: 24100000, guid: 1ab38aec6e1fa064b9564e9ef2ac275a, type: 2}
 --- !u!1 &6753746406560755751
 GameObject:
   m_ObjectHideFlags: 0
