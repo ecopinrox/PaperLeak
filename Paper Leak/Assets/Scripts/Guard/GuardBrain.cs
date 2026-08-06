@@ -120,6 +120,7 @@ public class GuardBrain : MonoBehaviour
             () =>
             {
                 guardMovement.SetDestination(interruptLocation);
+                guardMovement.SetSpeed(false);
             },
             () => 
             { 
@@ -140,6 +141,7 @@ public class GuardBrain : MonoBehaviour
             {
                 guardMovement.SetCrouch(false);
                 guardMovement.StopMoving();
+                guardMovement.SetSpeed(true);
                 guardVisualManager.SetCautionOverlayStatus(true);
             });
 

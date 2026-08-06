@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GuardSettings_Hard
   m_EditorClassIdentifier: Assembly-CSharp::GuardSettings
   investigationRoutineDelay: 1
-  examineDelay: 6.5
+  examineDelay: 8
   frontalViewAngle: 30
   peripheralViewAngle: 60
   frontalViewRadius: 8
@@ -22,3 +22,4 @@ MonoBehaviour:
   soundAlertDistanceMultiplier: 1.75
   canCrouch: 1
   patrolSpeed: 3
+  investigationSpeed: 4

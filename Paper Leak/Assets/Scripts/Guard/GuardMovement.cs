@@ -12,7 +12,8 @@ public class GuardMovement : MonoBehaviour
     //moves from 1 tile to another
 
     [Header("Movement")]
-    float patrolSpeed = 1f;
+    float patrolSpeed = 3f;
+    float investigationSpeed = 4f;
     [SerializeField] float maxPositionalError = 0.01f;
     [SerializeField] LayerMask excludedLayersInPathfinding;
 
@@ -51,15 +52,15 @@ public class GuardMovement : MonoBehaviour
 
     void Start()
     {
-        SetSpeed();
+        SetSpeed(false);
         GridBasedPosition = Vector2Int.RoundToInt(transform.position);
 
         StartCoroutine(GuardMovementHandler());
     }
 
-    void SetSpeed()
+    public void SetSpeed(bool investigating)
     {
-        speed = patrolSpeed;
+        speed = investigating ? investigationSpeed : patrolSpeed;
     }
 
     public void SetDestination(Vector2Int loc)
@@ -181,7 +182,8 @@ public class GuardMovement : MonoBehaviour
     public void LoadSettings(GuardSettings settings)
     {
         patrolSpeed = settings.patrolSpeed;
-        SetSpeed();
+        investigationSpeed = settings.investigationSpeed;
+        SetSpeed(false);
     }
 
     public void SetCrouch(bool crouching)

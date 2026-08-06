@@ -14,5 +14,6 @@ public class GuardSettings : ScriptableObject
     public float soundAlertDistanceMultiplier;
     public bool canCrouch = false;
 
-    public float patrolSpeed = 1f;
+    public float patrolSpeed = 3f;
+    public float investigationSpeed = 4f;
 }
