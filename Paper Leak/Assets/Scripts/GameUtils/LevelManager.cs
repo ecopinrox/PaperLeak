@@ -180,6 +180,7 @@ public class LevelManager : MonoBehaviour
         if (masterSave.visited.Contains(CurrentLevelIndex)) 
         {
             //load the saved state
+
             SaveState saveState = masterSave.GetCurrentLevelState();
             if (saveState != null)
             {
@@ -187,6 +188,7 @@ public class LevelManager : MonoBehaviour
                 JsonSaver.Load(masterSave, saveFileName);
 
                 OnStateLoad?.Invoke(saveState);
+
             }
             else
             {
