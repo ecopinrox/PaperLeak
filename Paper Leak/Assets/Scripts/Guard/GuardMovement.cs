@@ -138,11 +138,18 @@ public class GuardMovement : MonoBehaviour
                 if(pathIterator.Current.pos != GridBasedPosition)
                 {
                     float waitTime = 0f;
-                    //no idea what causes an nre here
+
                     while(!gridManager.CanMove(pathIterator.Current.pos, false) && waitTime < maxTileBlockWaitSeconds)
                     {
                         waitTime += Time.fixedDeltaTime;
                         yield return new WaitForFixedUpdate();
+
+                        //without this if block, an NRE is caused when the pathIterator is changed mid wait because it still points to before the first element of the list (MoveNext is not called) so MoveNext is called once to make it point to the first path node (i.e. the current position of the guard) and then the code breaks from the wait loop, safely continuing execution of the rest of the main path-traversing loop
+                        if(pathIterator.Current == null)
+                        {
+                            pathIterator.MoveNext();
+                            break;
+                        }
                     }
 
                     GridBasedPosition = pathIterator.Current.pos;
