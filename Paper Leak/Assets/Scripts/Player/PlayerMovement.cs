@@ -72,20 +72,20 @@ public class PlayerMovement : MonoBehaviour
             GridBasedPosition = nextPosition;
             gridMovementMonitor.BlockTile(GridBasedPosition);
 
-            yield return StartCoroutine(WalkCoroutine(GridBasedPosition));
+            yield return StartCoroutine(WalkCoroutine());
 
             gridMovementMonitor.UnblockTile(prevPosition);
         }
     }
 
-    IEnumerator WalkCoroutine(Vector2 destination)
+    IEnumerator WalkCoroutine()
     {
         float delay = walkSFXDelay;
 
-        while (transform.position != (Vector3)destination)
+        while (transform.position != (Vector3)(Vector2)GridBasedPosition)
         {
             float speed = IsCrawling ? crawlSpeed : moveSpeed;
-            transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.fixedDeltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, GridBasedPosition, speed * Time.fixedDeltaTime);
 
             if (delay >= walkSFXDelay && !IsCrawling)
             {
