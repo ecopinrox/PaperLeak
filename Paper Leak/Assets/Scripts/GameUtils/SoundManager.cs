@@ -7,6 +7,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] GameObject soundEmitter;
+    float sfxVolume = 1f;
 
     public static SoundManager Instance { get; private set; }
 
@@ -20,7 +21,12 @@ public class SoundManager : MonoBehaviour
     public Coroutine PlaySound(SoundData data, Vector2 position, Distraction source)
     {
         SoundEmitter emitter = GetOrAddSoundEmitter(position);
-        return emitter.PlaySound(data, source);
+        return emitter.PlaySound(data, source, sfxVolume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
     }
 
     SoundEmitter GetOrAddSoundEmitter(Vector2 position)

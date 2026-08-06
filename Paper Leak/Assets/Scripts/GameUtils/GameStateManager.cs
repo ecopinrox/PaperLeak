@@ -31,7 +31,6 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = 0f;
         Paused = true;
         uiManager.SetPausePanelStatus(true);
-        Debug.Log("paused");
     }
 
     public void ResumeGame()
@@ -39,6 +38,5 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = 1f;
         Paused = false;
         uiManager.SetPausePanelStatus(false);
-        Debug.Log("resumed");
     }
 }

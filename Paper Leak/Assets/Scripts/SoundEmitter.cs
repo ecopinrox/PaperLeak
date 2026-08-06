@@ -20,7 +20,7 @@ public class SoundEmitter : MonoBehaviour
         circleCollider.enabled = false;
     }
 
-    public Coroutine PlaySound(SoundData soundData, Distraction originDistraction)
+    public Coroutine PlaySound(SoundData soundData, Distraction originDistraction, float volume)
     {
         List<AudioClip> list = soundData.audioClips;
         AudioClip clip = list[UnityEngine.Random.Range(0, list.Count)];
@@ -28,7 +28,7 @@ public class SoundEmitter : MonoBehaviour
         circleCollider.radius = soundData.distractionRadius;
         circleCollider.enabled = (originDistraction != null);
 
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, volume);
         this.originDistraction = originDistraction;
         circleCollider.enabled = true;
 
