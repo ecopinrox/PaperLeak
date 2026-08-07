@@ -14,10 +14,17 @@ public class GameStateManager : MonoBehaviour
         uiManager = GetComponent<UIManager>();
 
         onPlayerDiscovered = null;
-        onPlayerDiscovered += () =>
+        onPlayerDiscovered += async () =>
         {
-            uiManager.SetGameOverPanelStatus(true);
             Time.timeScale = 0f;
+
+            CartoonEffectManager cartoonEffectManager = FindAnyObjectByType<CartoonEffectManager>();
+            if(cartoonEffectManager != null)
+            {
+                await cartoonEffectManager.ContractHole();
+            }
+
+            uiManager.SetGameOverPanelStatus(true);
         };
     }
 
