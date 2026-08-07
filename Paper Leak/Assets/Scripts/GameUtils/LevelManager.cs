@@ -92,7 +92,6 @@ public class LevelManager : MonoBehaviour
 
     void LoadDifficultySettings()
     {
-        Debug.Log("load");
         DifficultySwitch.loadDifficultySettings(currentDifficultySetting);
     }
 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConversationSO
   conversationScript: {fileID: 4900000, guid: eebc23eaf9275c8469b10c42c08e7a9f, type: 3}
   characterPortraitCollections:
-  - {fileID: 11400000, guid: 308d5dde2becee24996a55413f955199, type: 2}
   - {fileID: 11400000, guid: e6268890ce4b85c4fad5b4182c86ec90, type: 2}
+  - {fileID: 11400000, guid: 308d5dde2becee24996a55413f955199, type: 2}
