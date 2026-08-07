@@ -92,6 +92,7 @@ public class LevelManager : MonoBehaviour
 
     void LoadDifficultySettings()
     {
+        Debug.Log("load");
         DifficultySwitch.loadDifficultySettings(currentDifficultySetting);
     }
 
@@ -185,10 +186,16 @@ public class LevelManager : MonoBehaviour
             if (saveState != null)
             {
                 OnStateSave?.Invoke(saveState);
-                JsonSaver.Load(masterSave, saveFileName);
+                try
+                {
+                    JsonSaver.Load(masterSave, saveFileName);
+                }
+                catch(FileNotFoundException)
+                {
+                    JsonSaver.Save(masterSave, saveFileName);
+                }
 
                 OnStateLoad?.Invoke(saveState);
-
             }
             else
             {
