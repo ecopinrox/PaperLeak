@@ -417,6 +417,28 @@
                     "action": "Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80c96575-b41f-4d01-9e60-efb95e2dd4c4",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eaef1935-f434-4118-b49d-8aa74397d52f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -459,7 +481,18 @@
                 },
                 {
                     "name": "",
-                    "id": "23c126a6-3c5b-4603-8bce-ad1f21f3bd41",
+                    "id": "b6a907cf-434c-4eeb-9310-5a4c17c71229",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8129e69-e3d7-439b-8723-b216c2b614e3",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
