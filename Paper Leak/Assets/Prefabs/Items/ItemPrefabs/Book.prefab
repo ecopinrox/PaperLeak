@@ -48,6 +48,7 @@ MonoBehaviour:
   <IsInfinite>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
   <CooldownSeconds>k__BackingField: 10
+  <CooldownSprite>k__BackingField: {fileID: -3499337713768301206, guid: 9c86cad3769f0ea439275569e1ed5fda, type: 3}
   paperBallIndex: 2
   paperBallAdditionCount: 3
   pointSoundDistractionPrefab: {fileID: 2373735561752840355, guid: cd1b6146ad54d4540962387b25743030, type: 3}
@@ -130,7 +131,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 333012283
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5597995755193609183, guid: c4f31bce793ed2a47becc98c0db85d1a, type: 3}

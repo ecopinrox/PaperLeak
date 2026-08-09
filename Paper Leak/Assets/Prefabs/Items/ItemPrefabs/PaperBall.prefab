@@ -51,6 +51,7 @@ MonoBehaviour:
   <IsInfinite>k__BackingField: 0
   <MaxStackSize>k__BackingField: 5
   <CooldownSeconds>k__BackingField: 0.8
+  <CooldownSprite>k__BackingField: {fileID: -8661384689466296797, guid: 36bfd3ddbd56a0743870ae9992364f0b, type: 3}
   aimRadius: 15
   targetBlockingMask:
     serializedVersion: 2
@@ -202,7 +203,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -629590613
-  m_SortingLayer: 8
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -881356641115400402, guid: 1940d74027657db4f9a4d7cb7edde44d, type: 3}

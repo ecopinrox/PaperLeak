@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 333012283
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5816642994671486895, guid: 8ebcaf1505dd6f34a83e277b82265760, type: 3}
@@ -139,6 +139,7 @@ MonoBehaviour:
   <IsInfinite>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
   <CooldownSeconds>k__BackingField: 23
+  <CooldownSprite>k__BackingField: {fileID: 591282530239737289, guid: fddaaf6fd0c6c304eb0ac8d847c308df, type: 3}
   radius: 13
   targetBlockingMask:
     serializedVersion: 2

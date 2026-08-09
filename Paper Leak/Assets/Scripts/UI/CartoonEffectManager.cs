@@ -25,6 +25,7 @@ public class CartoonEffectManager : MonoBehaviour
 
     async Awaitable ExpandHole()
     {
+        hole.transform.localScale = Vector3.zero;
         await Task.Delay((int)(1000 * innerHoldTime));
         await LerpScale(innerPhaseScale, innerPhaseTime);
         await Task.Delay((int)(1000 * outerHoldTime));
