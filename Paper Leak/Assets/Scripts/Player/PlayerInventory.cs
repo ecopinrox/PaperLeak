@@ -284,6 +284,19 @@ public class PlayerInventory : MonoBehaviour
         UpdateItemSlotUI();
     }
 
+    public void IncrementItemSlot()
+    {
+        selectedItemSlot = (selectedItemSlot + 1) % slotCount;
+        UpdateItemSlotUI();
+    }
+
+    public void DecrementItemSlot()
+    {
+        selectedItemSlot = (selectedItemSlot - 1) % slotCount;
+        if (selectedItemSlot < 0) selectedItemSlot += slotCount;
+        UpdateItemSlotUI();
+    }
+
     public async Awaitable UseSelectedItem()
     {
         await itemSlots[selectedItemSlot].UseItem();

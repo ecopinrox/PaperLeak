@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     InputAction selectItem1Action;
     InputAction selectItem2Action;
     InputAction selectItem3Action;
+    InputAction scrollItemAction;
 
     InputAction selectTargetAction;
     InputAction stopAimingAction;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         selectItem1Action       = playerInput.actions["SelectItem1"     ];
         selectItem2Action       = playerInput.actions["SelectItem2"     ];
         selectItem3Action       = playerInput.actions["SelectItem3"     ];
+        scrollItemAction        = playerInput.actions["ScrollItem"      ];
 
         selectTargetAction      = playerInput.actions["SelectTarget"    ];
         stopAimingAction        = playerInput.actions["StopAiming"      ];
@@ -101,6 +103,8 @@ public class PlayerController : MonoBehaviour
         selectItem1Action.performed += SelectItem1;
         selectItem2Action.performed += SelectItem2;
         selectItem3Action.performed += SelectItem3;
+
+        scrollItemAction.performed += ScrollItem;
 
         selectTargetAction.performed += SelectTarget;
         stopAimingAction.performed += StopAiming;
@@ -139,6 +143,8 @@ public class PlayerController : MonoBehaviour
         selectItem1Action.performed -= SelectItem1;
         selectItem2Action.performed -= SelectItem2;
         selectItem3Action.performed -= SelectItem3;
+
+        scrollItemAction.performed -= ScrollItem;
 
         selectTargetAction.performed -= SelectTarget;
         stopAimingAction.performed -= StopAiming;
@@ -278,6 +284,19 @@ public class PlayerController : MonoBehaviour
     void SelectItem3(InputAction.CallbackContext _)
     {
         playerInventory.SelectItemSlot(2);
+    }
+
+    void ScrollItem(InputAction.CallbackContext ctx)
+    {
+        float dir = ctx.ReadValue<float>();
+        if(dir > 0f)
+        {
+            playerInventory.IncrementItemSlot();
+        }
+        else
+        {
+            playerInventory.DecrementItemSlot();
+        }
     }
 
     void SelectTarget(InputAction.CallbackContext _)
