@@ -7,6 +7,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] GameObject soundEmitter;
+    [SerializeField][Range(0f, 1f)] float maxVolume;
     float sfxVolume = 1f;
 
     public static SoundManager Instance { get; private set; }
@@ -26,7 +27,7 @@ public class SoundManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
-        sfxVolume = volume;
+        sfxVolume = volume * maxVolume;
     }
 
     SoundEmitter GetOrAddSoundEmitter(Vector2 position)
