@@ -115,7 +115,8 @@ public class GuardDistractionSensor : MonoBehaviour
         if (CheckRaycastHit(realPos, isCrouched)) return null;
         if(!IsDistractionReachable(playerDistraction)) return null;
 
-        if(CheckInViewRegion(playerDistraction.Position, dangerZoneMultiplier))
+        if(CheckInViewRegion(playerDistraction.Position, dangerZoneMultiplier)
+            && !CheckRaycastHitGlass(playerDistraction.Position))
         {
             GameStateManager.onPlayerDiscovered();
         }
@@ -184,6 +185,18 @@ public class GuardDistractionSensor : MonoBehaviour
         RaycastHit2D hit;
         if (!isCrouched) hit = Physics2D.Raycast(transform.position, direction, distance, crouchingRaycastHitMask); //standingRaycastHitMask
         else hit = Physics2D.Raycast(transform.position, direction, distance, crouchingRaycastHitMask);
+
+        if (hit.collider != null) return true;
+        return false;
+    }
+
+    bool CheckRaycastHitGlass(Vector2 loc)
+    {
+        int glassRaycastHitMask = LayerMask.GetMask("Transparent");
+
+        Vector2 direction = loc - (Vector2)transform.position;
+        float distance = GetDistanceFromLocation(loc);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, glassRaycastHitMask);
 
         if (hit.collider != null) return true;
         return false;
