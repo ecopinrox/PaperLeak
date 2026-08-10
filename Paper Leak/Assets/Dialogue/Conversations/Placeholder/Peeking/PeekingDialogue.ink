@@ -1,1 +1,1 @@
-Press WASD while holding CAPS LOCK to peek. #1 #0
+Press WASD while holding CAPS LOCK or CTRL to peek. #1 #0

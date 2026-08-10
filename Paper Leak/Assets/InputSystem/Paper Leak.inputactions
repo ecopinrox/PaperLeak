@@ -211,7 +211,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WASD",
+                    "name": "CAPS+WASD",
                     "id": "b4958487-17e9-401b-8490-4b3cc60d5896",
                     "path": "Vector2WithModifiers",
                     "interactions": "",
@@ -269,6 +269,72 @@
                     "name": "modifier",
                     "id": "00efdbda-c93b-4652-b01e-e25f8e4dac87",
                     "path": "<Keyboard>/capsLock",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Peek",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "CTRL+WASD",
+                    "id": "ba94a4b7-e7c1-432b-a319-4d933a325e9d",
+                    "path": "Vector2WithModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Peek",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "axisY",
+                    "id": "5c995808-2cd3-43c2-aea3-6b111fe8e6a2",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Peek",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "axisX",
+                    "id": "40aa5693-751e-4d00-97e0-f165d1a43078",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Peek",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "axisY",
+                    "id": "8d64be7a-a9da-49bd-a1fc-2b36a78db0d7",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Peek",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "axisX",
+                    "id": "1f1167f8-b640-4ba7-b708-7d97ae74d9a9",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Peek",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier",
+                    "id": "7e853948-9e42-4360-a7aa-0a4d120737b6",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
