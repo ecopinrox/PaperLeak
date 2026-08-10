@@ -140,6 +140,11 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
 
+            if(Time.timeScale < Mathf.Epsilon)
+            {
+                return;
+            }
+
             if(await ItemPrefab.GetComponent<Item>().Use())
             {
                 DecrementCount();
