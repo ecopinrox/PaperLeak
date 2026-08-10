@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEmitter: {fileID: 7435693908528943209, guid: 00f60af09d25fd44cad74285beb0825f, type: 3}
-  maxVolume: 0.6
+  maxVolume: 0.8
 --- !u!114 &7890763780857300519
 MonoBehaviour:
   m_ObjectHideFlags: 0
