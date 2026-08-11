@@ -132,7 +132,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 896
+        y: 960
         width: 64
         height: 64
       alignment: 0
@@ -154,7 +154,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 896
+        y: 960
         width: 64
         height: 64
       alignment: 0
@@ -175,7 +175,7 @@ TextureImporter:
       name: birbal_sir_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 896
         width: 64
         height: 64
@@ -197,7 +197,7 @@ TextureImporter:
       name: birbal_sir_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 64
         y: 896
         width: 64
         height: 64
@@ -219,8 +219,8 @@ TextureImporter:
       name: birbal_sir_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 832
+        x: 128
+        y: 896
         width: 64
         height: 64
       alignment: 0
@@ -241,8 +241,8 @@ TextureImporter:
       name: birbal_sir_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 832
+        x: 192
+        y: 896
         width: 64
         height: 64
       alignment: 0
@@ -263,7 +263,7 @@ TextureImporter:
       name: birbal_sir_6
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 832
         width: 64
         height: 64
@@ -285,7 +285,7 @@ TextureImporter:
       name: birbal_sir_7
       rect:
         serializedVersion: 2
-        x: 192
+        x: 64
         y: 832
         width: 64
         height: 64
@@ -307,8 +307,8 @@ TextureImporter:
       name: birbal_sir_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
+        x: 128
+        y: 832
         width: 64
         height: 64
       alignment: 0
@@ -329,8 +329,8 @@ TextureImporter:
       name: birbal_sir_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 768
+        x: 192
+        y: 832
         width: 64
         height: 64
       alignment: 0
@@ -351,8 +351,8 @@ TextureImporter:
       name: birbal_sir_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 768
+        x: 0
+        y: 640
         width: 64
         height: 64
       alignment: 0
@@ -373,8 +373,8 @@ TextureImporter:
       name: birbal_sir_11
       rect:
         serializedVersion: 2
-        x: 192
-        y: 768
+        x: 64
+        y: 640
         width: 64
         height: 64
       alignment: 0
@@ -396,7 +396,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 704
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -418,7 +418,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 704
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -440,7 +440,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 704
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -462,7 +462,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 704
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -484,7 +484,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -506,7 +506,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 640
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -528,7 +528,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 640
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -550,7 +550,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 640
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -572,7 +572,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 576
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -594,7 +594,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 576
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -615,8 +615,8 @@ TextureImporter:
       name: birbal_sir_22
       rect:
         serializedVersion: 2
-        x: 128
-        y: 576
+        x: 0
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -637,8 +637,8 @@ TextureImporter:
       name: birbal_sir_23
       rect:
         serializedVersion: 2
-        x: 192
-        y: 576
+        x: 64
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -659,8 +659,8 @@ TextureImporter:
       name: birbal_sir_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
+        x: 128
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -681,8 +681,8 @@ TextureImporter:
       name: birbal_sir_25
       rect:
         serializedVersion: 2
-        x: 64
-        y: 512
+        x: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -703,8 +703,8 @@ TextureImporter:
       name: birbal_sir_26
       rect:
         serializedVersion: 2
-        x: 128
-        y: 512
+        x: 0
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -725,8 +725,8 @@ TextureImporter:
       name: birbal_sir_27
       rect:
         serializedVersion: 2
-        x: 192
-        y: 512
+        x: 0
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -747,8 +747,8 @@ TextureImporter:
       name: birbal_sir_28
       rect:
         serializedVersion: 2
-        x: 0
-        y: 448
+        x: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -769,8 +769,8 @@ TextureImporter:
       name: birbal_sir_29
       rect:
         serializedVersion: 2
-        x: 64
-        y: 448
+        x: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -791,8 +791,8 @@ TextureImporter:
       name: birbal_sir_30
       rect:
         serializedVersion: 2
-        x: 128
-        y: 448
+        x: 64
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -813,8 +813,8 @@ TextureImporter:
       name: birbal_sir_31
       rect:
         serializedVersion: 2
-        x: 192
-        y: 448
+        x: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -835,8 +835,8 @@ TextureImporter:
       name: birbal_sir_32
       rect:
         serializedVersion: 2
-        x: 0
-        y: 384
+        x: 192
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -857,8 +857,8 @@ TextureImporter:
       name: birbal_sir_33
       rect:
         serializedVersion: 2
-        x: 64
-        y: 384
+        x: 0
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -871,182 +871,6 @@ TextureImporter:
       bones: []
       spriteID: c43015d8f9a0ecb4da77d5841054a282
       internalID: -269157949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_34
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9606ef59c822fb4b9682c235215aeb5
-      internalID: 2004843978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_35
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5ff8ec7c6e343e419d840bac6437c78
-      internalID: -736295045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_36
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a8b1207e4b50784f806517658651d35
-      internalID: -161478520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_37
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fab691c22f75fe4c994f3fde474e1dc
-      internalID: -216768837
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_38
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00aa5af6795926d4f9e0c50deeb47270
-      internalID: -1783112246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_39
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d96a7f1c3a107e84ba6422d9c030aca4
-      internalID: -1014169111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_40
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10cc0b945fa660942bf65c793d75ccfc
-      internalID: -898482575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: birbal_sir_41
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 782ed8350c395a640bd8d1fe2dad956a
-      internalID: -309933711
       vertices: []
       indices: 
       edges: []
@@ -1095,15 +919,7 @@ TextureImporter:
       birbal_sir_31: 438257252
       birbal_sir_32: -613184013
       birbal_sir_33: -269157949
-      birbal_sir_34: 2004843978
-      birbal_sir_35: -736295045
-      birbal_sir_36: -161478520
-      birbal_sir_37: -216768837
-      birbal_sir_38: -1783112246
-      birbal_sir_39: -1014169111
       birbal_sir_4: 2181534653791631788
-      birbal_sir_40: -898482575
-      birbal_sir_41: -309933711
       birbal_sir_5: 7298056938832910612
       birbal_sir_6: -541426543
       birbal_sir_7: 1904394680
