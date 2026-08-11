@@ -24,4 +24,6 @@ public class SaveStateDto
     public Dictionary<Vector2Int, ValueTuple<Vector2Int, Quaternion>> frozenGuards;
 
     public HashSet<Vector2Int> interactedConversationPoints;
+
+    public int? bgmId;
 }

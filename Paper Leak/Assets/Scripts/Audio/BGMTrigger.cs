@@ -11,9 +11,27 @@ public class BGMTrigger : MonoBehaviour
         musicManager = FindAnyObjectByType<MusicManager>();
     }
 
+    private void OnEnable()
+    {
+        MusicManager.OnBgmIdLoaded += DisableOnLoad;
+    }
+
+    private void OnDisable()
+    {
+        MusicManager.OnBgmIdLoaded -= DisableOnLoad;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         musicManager.SetBGMId(bgmId);
         gameObject.SetActive(false);
+    }
+
+    void DisableOnLoad(int currentBgmId)
+    {
+        if(currentBgmId >= bgmId)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

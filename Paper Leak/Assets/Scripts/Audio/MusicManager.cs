@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -5,7 +6,21 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] AudioMixer musicMixer;
 
+    public static event Action<int> OnBgmIdLoaded;
+
     int currentBgmId = 0;
+
+    private void OnEnable()
+    {
+        LevelManager.OnStateSave += Save;
+        LevelManager.OnStateLoad += Load;
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.OnStateSave -= Save;
+        LevelManager.OnStateLoad -= Load;
+    }
 
     public void SetMusicVolume(float value)
     {
@@ -28,5 +43,17 @@ public class MusicManager : MonoBehaviour
 
         currentBgmId = id;
         Debug.Log(currentBgmId);
+    }
+
+    void Save(SaveState save)
+    {
+        save.bgmId = currentBgmId;
+    }
+
+    void Load(SaveState save)
+    {
+        currentBgmId = save.bgmId;
+        Debug.Log("Loaded BGM ID " + currentBgmId);
+        OnBgmIdLoaded?.Invoke(currentBgmId);
     }
 }

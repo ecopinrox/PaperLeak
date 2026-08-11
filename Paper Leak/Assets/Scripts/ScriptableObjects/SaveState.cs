@@ -26,4 +26,6 @@ public class SaveState : ScriptableObject
 
     //conversation points
     public HashSet<Vector2Int> interactedConversationPoints = new();
+
+    public int bgmId = 0;
 }

@@ -107,6 +107,8 @@ public class JsonSaver
         dto.frozenGuards = save.frozenGuards;
 
         dto.interactedConversationPoints = save.interactedConversationPoints;
+
+        dto.bgmId = save.bgmId;
     }
 
     static void ReadMasterFromDto(MasterSave save, MasterSaveDto dto)
@@ -179,6 +181,11 @@ public class JsonSaver
         if(dto.interactedConversationPoints is not null)
         {
             save.interactedConversationPoints = new(dto.interactedConversationPoints);
+        }
+
+        if (dto.bgmId is int bgmId)
+        {
+            save.bgmId = bgmId;
         }
     }
 
