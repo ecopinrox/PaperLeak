@@ -15,7 +15,7 @@ MonoBehaviour:
   investigationRoutineDelay: 1
   examineDelay: 11
   frontalViewAngle: 30
-  peripheralViewAngle: 70
+  peripheralViewAngle: 80
   frontalViewRadius: 8
   peripheralViewRadius: 5
   dangerZoneMultiplier: 0.25
