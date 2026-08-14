@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     [Header("Difficulty")]
     [SerializeField] TextMeshProUGUI difficultyText;
 
+    [Header("Volume Sliders")]
+    [SerializeField] Slider musicSlider;
+
     PlayerController playerController;
 
     private void Awake()
@@ -57,6 +60,11 @@ public class UIManager : MonoBehaviour
 
         PlayerInteractionHandler.OnInteractibleFound -= EnableInteractionPromptPanel;
         PlayerInteractionHandler.OnInteractibleCleared -= DisableInteractionPromptPanel;
+    }
+
+    private void Start()
+    {
+        musicSlider.value = FindAnyObjectByType<MusicManager>().GetMusicVolume();
     }
 
     public void SetGameOverPanelStatus(bool active) => gameOverPanel.SetActive(active);
