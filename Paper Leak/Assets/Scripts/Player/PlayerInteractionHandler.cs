@@ -28,6 +28,11 @@ public class PlayerInteractionHandler : MonoBehaviour
             return;
         }
 
+        if(interactible is CutscenePoint && Mathf.RoundToInt(transform.position.y) >= Mathf.RoundToInt(interactible.transform.position.y))
+        {
+            return;
+        }
+
         currentInteractible = interactible;
         OnInteractibleFound?.Invoke();
     }
