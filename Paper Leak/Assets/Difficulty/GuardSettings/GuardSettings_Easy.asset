@@ -15,11 +15,11 @@ MonoBehaviour:
   investigationRoutineDelay: 1
   examineDelay: 11
   frontalViewAngle: 30
-  peripheralViewAngle: 60
+  peripheralViewAngle: 70
   frontalViewRadius: 8
   peripheralViewRadius: 5
-  dangerZoneMultiplier: 0.125
+  dangerZoneMultiplier: 0.25
   soundAlertDistanceMultiplier: 1.25
-  canCrouch: 1
+  canCrouch: 0
   patrolSpeed: 3
   investigationSpeed: 3

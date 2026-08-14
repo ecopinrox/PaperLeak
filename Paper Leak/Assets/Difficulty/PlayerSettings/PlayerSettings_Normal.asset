@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSettings
   walkSFX: {fileID: 11400000, guid: 1709533c7e1558d488803b72baeb3c9e, type: 2}
   paperTearingSFX: {fileID: 11400000, guid: eb012e99f7cb9fa46b4ffe22987b3e5d, type: 2}
+  walkingViewDistanceMultiplier: 1
+  crawlingViewDistanceMultiplier: 0.75
