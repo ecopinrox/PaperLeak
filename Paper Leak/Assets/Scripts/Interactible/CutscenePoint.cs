@@ -15,6 +15,7 @@ public class CutscenePoint : Interactible
     public override void Interact()
     {
         Debug.Log("interacted");
+        gameObject.SetActive(false);
         //conversationRunner.StartConversation(cutscene);
     }
 }
