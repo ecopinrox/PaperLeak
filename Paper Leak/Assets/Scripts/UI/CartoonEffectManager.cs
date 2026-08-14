@@ -30,6 +30,7 @@ public class CartoonEffectManager : MonoBehaviour
         await LerpScale(innerPhaseScale, innerPhaseTime);
         await Task.Delay((int)(1000 * outerHoldTime));
         await LerpScale(outerPhaseScale, outerPhaseTime);
+        hole.transform.localScale = Vector3.one * outerPhaseScale;
     }
     
     public async Awaitable ContractHole()
@@ -37,6 +38,7 @@ public class CartoonEffectManager : MonoBehaviour
         await LerpScale(innerPhaseScale, outerPhaseTime);
         await Task.Delay((int)(1000 * outerHoldTime));
         await LerpScale(0, innerPhaseTime);
+        hole.transform.localScale = Vector3.zero;
     }
 
     async Awaitable LerpScale(float end, float duration)
