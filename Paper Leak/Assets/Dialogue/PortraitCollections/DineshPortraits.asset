@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb82bdc547e4aaf47b67663744e60c81, type: 3}
-  m_Name: PlayerPortraits
+  m_Name: DineshPortraits
   m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
-  speakerName: Prabhu
+  speakerName: Dinesh
   portraits:
-  - {fileID: -2311659948842064771, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
-  - {fileID: 1846922000, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
-  - {fileID: 235834776, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
+  - {fileID: -6249272725800012304, guid: a3b160f5d23581845b03db77e9eaddc5, type: 3}
+  - {fileID: -1900234404579362240, guid: 9b573fae51271cd469dd02a4050489b0, type: 3}
+  - {fileID: 8232635771134447265, guid: 0c75c1b16bc8eff4c92ec91e0d50188a, type: 3}
