@@ -33,13 +33,12 @@ public class ConversationRunner : MonoBehaviour
             Dialogue current = dialogueEnumerator.Current;
             ShowDialogue(current);
 
-            Debug.Log(
-                $"BGM: {dialogueEnumerator.Current.bgmIndex}\n" +
-                $"Actor index: {dialogueEnumerator.Current.actorIndex}\n" +
-                $"Actor visual state: {dialogueEnumerator.Current.actorVisualState}\n" +
-                $"Actor destination Y: {dialogueEnumerator.Current.actorDestination}\n" +
-                $"Actor speed: {dialogueEnumerator.Current.actorSpeed}\n"
-            );
+            string debug = $"BGM: {dialogueEnumerator.Current.bgmIndex}\n";
+            foreach(string state in current.actorStates)
+            {
+                debug += $"state: {state}\n";
+            }
+            Debug.Log(debug);
         }
         else
         {

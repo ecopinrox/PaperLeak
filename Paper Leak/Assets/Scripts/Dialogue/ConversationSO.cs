@@ -29,10 +29,7 @@ public class ConversationSO : ScriptableObject
             GetPortrait(ParseCharacter(tags), ParsePortrait(tags)),
             ParseIcon(tags),
             ParseBGM(tags),
-            ParseActorIndex(tags),
-            ParseActorVisualState(tags),
-            ParseActorDestination(tags),
-            ParseActorSpeed(tags)
+            GetActorStates(tags)
         );
     }
 
@@ -64,32 +61,10 @@ public class ConversationSO : ScriptableObject
         return bgmIndex;
     }
 
-    int? ParseActorIndex(List<string> tags)
+    List<string> GetActorStates(List<string> tags)
     {
-        if (tags.Count < 5) return null;
-        if (!int.TryParse(tags[4], out int actorIndex)) return null;
-        return actorIndex;
-    }
-
-    int? ParseActorVisualState(List<string> tags)
-    {
-        if(tags.Count < 6) return null;
-        if (!int.TryParse(tags[5], out int actorVisualState)) return null;
-        return actorVisualState;
-    }
-
-    int? ParseActorDestination(List<string> tags)
-    {
-        if(tags.Count < 7) return null;
-        if (!int.TryParse(tags[6], out int actorVisualState)) return null;
-        return actorVisualState;
-    }
-
-    float ParseActorSpeed(List<string> tags)
-    {
-        if (tags.Count < 8) return 3.5f;
-        if (!float.TryParse(tags[7], out float actorSpeed)) return 3.5f;
-        return actorSpeed;
+        if (tags.Count < 5) return new();
+        return tags.GetRange(4, tags.Count - 4);
     }
 
     string GetName(int characterIndex)
