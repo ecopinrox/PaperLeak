@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eea8c823e37e744b36a254b9f0ec7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePoint
-  cutscene: {fileID: 0}
+  cutscene: {fileID: 11400000, guid: 635d8022dc606e8418546e717b32b8e9, type: 2}
 --- !u!1 &477354934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5082648841848726574, guid: 32398de242e2072409eb03c6ceef3845, type: 3}

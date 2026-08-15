@@ -23,6 +23,16 @@ public class ConversationSO : ScriptableObject
 
     Dialogue ConstructDialogue(string text, List<string> tags)
     {
+        Debug.Log(
+            $"Icon: {ParseIcon(tags)}\n" +
+            $"BGM: {ParseBGM(tags)}\n" +
+            $"Actor index: {ParseActorIndex(tags)}\n" +
+            $"Actor visual state: {ParseActorVisualState(tags)}\n" +
+            $"Actor destination Y: {ParseActorDestination(tags)}\n" +
+            $"Actor speed: {ParseActorSpeed(tags)}\n"
+        );
+
+
         return new(
             text, 
             GetName(ParseCharacter(tags)), 
@@ -44,6 +54,47 @@ public class ConversationSO : ScriptableObject
         return portraitIndex;
     }
 
+    int? ParseIcon(List<string> tags)
+    {
+        if (tags.Count < 3) return null;
+        if (!int.TryParse(tags[2], out int iconIndex)) return null;
+        return iconIndex;
+    }
+
+    int? ParseBGM(List<string> tags)
+    {
+        if (tags.Count < 4) return null;
+        if (!int.TryParse(tags[3], out int bgmIndex)) return null;
+        return bgmIndex;
+    }
+
+    int? ParseActorIndex(List<string> tags)
+    {
+        if (tags.Count < 5) return null;
+        if (!int.TryParse(tags[4], out int actorIndex)) return null;
+        return actorIndex;
+    }
+
+    int? ParseActorVisualState(List<string> tags)
+    {
+        if(tags.Count < 6) return null;
+        if (!int.TryParse(tags[5], out int actorVisualState)) return null;
+        return actorVisualState;
+    }
+
+    int? ParseActorDestination(List<string> tags)
+    {
+        if(tags.Count < 7) return null;
+        if (!int.TryParse(tags[6], out int actorVisualState)) return null;
+        return actorVisualState;
+    }
+
+    float ParseActorSpeed(List<string> tags)
+    {
+        if (tags.Count < 8) return 3.5f;
+        if (!float.TryParse(tags[7], out float actorSpeed)) return 3.5f;
+        return actorSpeed;
+    }
 
     string GetName(int characterIndex)
     {

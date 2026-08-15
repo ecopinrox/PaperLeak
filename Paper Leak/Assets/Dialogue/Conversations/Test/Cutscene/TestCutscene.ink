@@ -1,1 +1,1 @@
-test dialogue #1 #0 #- #- #- #- #-
+test dialogue #1 #0 #0 #1 #2 #1 #30 #2.5
