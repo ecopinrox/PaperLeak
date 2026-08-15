@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ConversationRunner : MonoBehaviour
@@ -10,6 +12,7 @@ public class ConversationRunner : MonoBehaviour
     public static event Action OnConversationEnd;
 
     readonly List<CutsceneActor> actorList = new();
+    int runningTasks = 0;
 
     UIManager uiManager;
 
@@ -42,6 +45,8 @@ public class ConversationRunner : MonoBehaviour
 
     public void AdvanceConversation()
     {
+        if (runningTasks > 0) return;
+
         if (dialogueEnumerator.MoveNext())
         {
             Dialogue current = dialogueEnumerator.Current;
@@ -56,10 +61,12 @@ public class ConversationRunner : MonoBehaviour
 
                 int index = int.Parse(values[0]);
 
+                runningTasks++;
                 actorList[index].SetState(
                     TryParseNullableInt(values[1]),
                     TryParseNullableInt(values[2]),
-                    TryParseFloat(values[3], 3.5f)
+                    TryParseFloat(values[3], 3.5f),
+                    DecrementRunningTasks
                 );
             }
         }
@@ -94,5 +101,17 @@ public class ConversationRunner : MonoBehaviour
     {
         if(float.TryParse(tag, out float value)) return value;
         return defaultValue;
+    }
+
+    void DecrementRunningTasks()
+    {
+        if(runningTasks > 0)
+        {
+            runningTasks--;
+        }
+        else
+        {
+            runningTasks = 0;
+        }
     }
 }

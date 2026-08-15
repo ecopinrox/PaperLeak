@@ -1,4 +1,5 @@
 using Ink.Runtime;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class ConversationSO : ScriptableObject
     [SerializeField] List<PortraitCollectionSO> characterPortraitCollections;
     [field: SerializeField] public List<GameObject> ActorPrefabs { get; private set; }
     [field: SerializeField] public List<Vector2Int> ActorStartPos { get; private set;  }
+
+    public event Action OnFinishedMoving;
 
     public IEnumerator<Dialogue> GetEnumerator()
     {
