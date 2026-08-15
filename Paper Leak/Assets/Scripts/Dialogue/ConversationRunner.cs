@@ -30,9 +30,10 @@ public class ConversationRunner : MonoBehaviour
     {
         if(dialogueEnumerator.MoveNext())
         {
-            ShowDialogue(dialogueEnumerator.Current);
+            Dialogue current = dialogueEnumerator.Current;
+            ShowDialogue(current);
+
             Debug.Log(
-                $"Icon: {dialogueEnumerator.Current.iconIndex}\n" +
                 $"BGM: {dialogueEnumerator.Current.bgmIndex}\n" +
                 $"Actor index: {dialogueEnumerator.Current.actorIndex}\n" +
                 $"Actor visual state: {dialogueEnumerator.Current.actorVisualState}\n" +

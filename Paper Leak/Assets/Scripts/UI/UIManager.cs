@@ -97,6 +97,11 @@ public class UIManager : MonoBehaviour
         portraitImage.sprite = dialogue.portrait;
         speakerName.text = dialogue.name;   
         dialogueText.text = dialogue.text;
+
+        if(dialogue.iconIndex is int iconIndex)
+        {
+            collectibleIcons[iconIndex].SetActive(false);
+        }
     }
 
     void EnableInteractionPromptPanel()
