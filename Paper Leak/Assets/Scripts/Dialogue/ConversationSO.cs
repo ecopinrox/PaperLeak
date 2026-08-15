@@ -17,31 +17,33 @@ public class ConversationSO : ScriptableObject
             string dialogue = story.Continue();
             List<string> tags = story.currentTags;
 
-            if(!TryParseTags(tags, out int characterIndex, out int portraitIndex))
-            {
-                Debug.LogWarning($"Error with tag parsing at line \"{dialogue}\"");
-            }
-
-            yield return new(dialogue, GetName(characterIndex), GetPortrait(characterIndex, portraitIndex));
+            yield return ConstructDialogue(dialogue, tags);
         }
     }
 
-    bool TryParseTags(List<string> tags, out int characterIndex, out int portraitIndex)
+    Dialogue ConstructDialogue(string text, List<string> tags)
     {
-        characterIndex = 0;
-        portraitIndex = 0;
-
-        if (tags.Count > 1)
-        {
-            return int.TryParse(tags[0], out characterIndex) && int.TryParse(tags[1], out portraitIndex);
-        }
-        else if (tags.Count > 0)
-        {
-            return int.TryParse(tags[0], out portraitIndex);
-        }
-
-        return true;
+        return new(
+            text, 
+            GetName(ParseCharacter(tags)), 
+            GetPortrait(ParseCharacter(tags), ParsePortrait(tags))
+        );
     }
+
+    int ParseCharacter(List<string> tags)
+    {
+        if (tags.Count < 1) return 0;
+        if (!int.TryParse(tags[0], out int characterIndex)) return 0;
+        return characterIndex;
+    }
+
+    int ParsePortrait(List<string> tags)
+    {
+        if (tags.Count < 2) return 0;
+        if (!int.TryParse(tags[1], out int portraitIndex)) return 0;
+        return portraitIndex;
+    }
+
 
     string GetName(int characterIndex)
     {
