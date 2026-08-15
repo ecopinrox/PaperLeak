@@ -31,6 +31,14 @@ public class ConversationRunner : MonoBehaviour
         if(dialogueEnumerator.MoveNext())
         {
             ShowDialogue(dialogueEnumerator.Current);
+            Debug.Log(
+                $"Icon: {dialogueEnumerator.Current.iconIndex}\n" +
+                $"BGM: {dialogueEnumerator.Current.bgmIndex}\n" +
+                $"Actor index: {dialogueEnumerator.Current.actorIndex}\n" +
+                $"Actor visual state: {dialogueEnumerator.Current.actorVisualState}\n" +
+                $"Actor destination Y: {dialogueEnumerator.Current.actorDestination}\n" +
+                $"Actor speed: {dialogueEnumerator.Current.actorSpeed}\n"
+            );
         }
         else
         {

@@ -23,20 +23,16 @@ public class ConversationSO : ScriptableObject
 
     Dialogue ConstructDialogue(string text, List<string> tags)
     {
-        Debug.Log(
-            $"Icon: {ParseIcon(tags)}\n" +
-            $"BGM: {ParseBGM(tags)}\n" +
-            $"Actor index: {ParseActorIndex(tags)}\n" +
-            $"Actor visual state: {ParseActorVisualState(tags)}\n" +
-            $"Actor destination Y: {ParseActorDestination(tags)}\n" +
-            $"Actor speed: {ParseActorSpeed(tags)}\n"
-        );
-
-
         return new(
             text, 
             GetName(ParseCharacter(tags)), 
-            GetPortrait(ParseCharacter(tags), ParsePortrait(tags))
+            GetPortrait(ParseCharacter(tags), ParsePortrait(tags)),
+            ParseIcon(tags),
+            ParseBGM(tags),
+            ParseActorIndex(tags),
+            ParseActorVisualState(tags),
+            ParseActorDestination(tags),
+            ParseActorSpeed(tags)
         );
     }
 
