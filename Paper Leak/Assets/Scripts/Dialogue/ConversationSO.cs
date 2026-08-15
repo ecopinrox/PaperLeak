@@ -7,6 +7,8 @@ public class ConversationSO : ScriptableObject
 {
     [SerializeField] TextAsset conversationScript;
     [SerializeField] List<PortraitCollectionSO> characterPortraitCollections;
+    [field: SerializeField] public List<GameObject> ActorPrefabs { get; private set; }
+    [field: SerializeField] public List<Vector2Int> ActorStartPos { get; private set;  }
 
     public IEnumerator<Dialogue> GetEnumerator()
     {

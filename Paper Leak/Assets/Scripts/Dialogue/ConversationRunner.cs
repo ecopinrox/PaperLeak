@@ -9,6 +9,8 @@ public class ConversationRunner : MonoBehaviour
     public static event Action OnConversationStart;
     public static event Action OnConversationEnd;
 
+    readonly List<CutsceneActor> actorList = new();
+
     UIManager uiManager;
 
     private void Awake()
@@ -19,6 +21,18 @@ public class ConversationRunner : MonoBehaviour
     public void StartConversation(ConversationSO conversation)
     {
         dialogueEnumerator = conversation.GetEnumerator();
+
+        for (int i = 0; i < conversation.ActorPrefabs.Count; i++)
+        {
+            CutsceneActor actor = Instantiate(
+                conversation.ActorPrefabs[i], 
+                (Vector2)conversation.ActorStartPos[i], 
+                Quaternion.identity, 
+                transform
+            ).GetComponent<CutsceneActor>();
+
+            actorList.Add(actor);
+        }
 
         OnConversationStart?.Invoke();
         uiManager.SetDialoguePanelStatus(true);
@@ -33,12 +47,15 @@ public class ConversationRunner : MonoBehaviour
             Dialogue current = dialogueEnumerator.Current;
             ShowDialogue(current);
 
-            string debug = $"BGM: {dialogueEnumerator.Current.bgmIndex}\n";
-            foreach(string state in current.actorStates)
-            {
-                debug += $"state: {state}\n";
-            }
+            string debug = $"BGM: {current.bgmIndex}\n";
             Debug.Log(debug);
+
+            foreach(string actorState in current.actorStates)
+            {
+                string[] values = actorState.Split(',');
+                int index = int.Parse(values[0]);
+                actorList[index].SetState(actorState);
+            }
         }
         else
         {
@@ -48,6 +65,8 @@ public class ConversationRunner : MonoBehaviour
 
     void EndConversation()
     {
+        actorList.Clear();
+
         OnConversationEnd?.Invoke();
         uiManager.SetDialoguePanelStatus(false);
 

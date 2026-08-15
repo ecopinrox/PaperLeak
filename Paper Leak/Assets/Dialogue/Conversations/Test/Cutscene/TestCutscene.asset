@@ -16,3 +16,11 @@ MonoBehaviour:
   characterPortraitCollections:
   - {fileID: 11400000, guid: e6268890ce4b85c4fad5b4182c86ec90, type: 2}
   - {fileID: 11400000, guid: 308d5dde2becee24996a55413f955199, type: 2}
+  <ActorPrefabs>k__BackingField:
+  - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
+  - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
+  - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
+  <ActorStartPos>k__BackingField:
+  - {x: 38, y: 6}
+  - {x: 40, y: 6}
+  - {x: 42, y: 6}
