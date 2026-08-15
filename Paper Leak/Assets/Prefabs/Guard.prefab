@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095785245461171934}
-  - component: {fileID: 4721988127885635320}
+  - component: {fileID: 6687955367287383917}
   - component: {fileID: 8657089692240338}
   - component: {fileID: 3495636931524791393}
   - component: {fileID: 5905915881776367032}
@@ -40,8 +40,8 @@ Transform:
   - {fileID: 714572237730362609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &4721988127885635320
-PolygonCollider2D:
+--- !u!61 &6687955367287383917
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -74,7 +74,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.2113333}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -84,12 +84,8 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.3, y: -0.2886}
-      - {x: 0, y: 0.5774}
-      - {x: -0.3, y: -0.2886}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &8657089692240338
 MonoBehaviour:
   m_ObjectHideFlags: 0
