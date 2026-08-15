@@ -11,8 +11,8 @@ public class CutsceneActor : MonoBehaviour
         animator.GetComponent<SpriteRenderer>().sortingOrder = -Mathf.RoundToInt(transform.position.y);
     }
 
-    public void SetState(string state)
+    public void SetState(int? visualState, int? yDestination, float speed)
     {
-        Debug.Log($"actor {gameObject.name} (at {transform.position}) state set to {state}");
+        Debug.Log($"actor at pos {transform.position} received the following data: {visualState}, {yDestination}, {speed}");
     }
 }
