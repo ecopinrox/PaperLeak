@@ -15,6 +15,8 @@ public class CutscenePoint : Interactible
     public override void Interact()
     {
         gameObject.SetActive(false);
+        FindAnyObjectByType<PlayerAnimation>().TurnInvisible();
         conversationRunner.StartConversation(cutscene);
+        ConversationRunner.OnConversationEnd += () => { Time.timeScale = 0f; };
     }
 }

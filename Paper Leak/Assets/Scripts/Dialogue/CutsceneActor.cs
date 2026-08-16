@@ -62,6 +62,7 @@ public class CutsceneActor : MonoBehaviour
                 alertIndicator.SetActive(false);
                 break;
             case 4:
+                animator.speed = 0f;
                 animator.SetBool("IsCrouching", true);
                 animator.SetFloat("XFacing", 0);
                 animator.SetFloat("YFacing", 1);

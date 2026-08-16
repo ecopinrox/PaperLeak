@@ -54,6 +54,14 @@ public class PlayerAnimation : MonoBehaviour
         overlayAnimator.SetBool("IsCrouching", isCrouching);
     }
 
+    //when you can't even say
+    //my name
+    public void TurnInvisible()
+    {
+        mainSpriteRenderer.enabled = false;
+        overlaySpriteRenderer.enabled = false;
+    }
+
     void UpdateSpriteLayers(int yPos)
     {
         mainSpriteRenderer.sortingOrder = -yPos;
