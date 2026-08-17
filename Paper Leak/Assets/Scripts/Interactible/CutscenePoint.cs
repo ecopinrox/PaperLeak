@@ -17,6 +17,9 @@ public class CutscenePoint : Interactible
         gameObject.SetActive(false);
         FindAnyObjectByType<PlayerAnimation>().TurnInvisible();
         conversationRunner.StartConversation(cutscene);
-        ConversationRunner.OnConversationEnd += () => { Time.timeScale = 0f; };
+        ConversationRunner.OnConversationEnd += () => { 
+            Time.timeScale = 0f;
+            _ = FindAnyObjectByType<CartoonEffectManager>().ContractHole();
+        };
     }
 }
