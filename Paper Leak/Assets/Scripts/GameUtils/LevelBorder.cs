@@ -19,12 +19,16 @@ public class LevelBorder : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            SwitchLevel();
+            _ = SwitchLevel();
         }
     }
 
-    void SwitchLevel()
+    async Awaitable SwitchLevel()
     {
+        Time.timeScale = 0f;
+        await FindAnyObjectByType<CartoonEffectManager>().ContractHole();
+        Time.timeScale = 1f;
+
         PlayerController.Instance.GetComponent<PlayerMovement>().SnapToPosition(Vector2Int.RoundToInt(exitPlayerPos.position));
         _ = levelManager.SwitchScene(sceneBuildIndex);
     }
