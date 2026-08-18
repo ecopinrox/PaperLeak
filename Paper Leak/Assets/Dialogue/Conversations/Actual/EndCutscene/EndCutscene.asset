@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08d9351965e4fb444be68674357768c2, type: 2}
   - {fileID: 11400000, guid: 4d50268ae41c48f4f84529d0ebb2089f, type: 2}
   <ActorPrefabs>k__BackingField:
-  - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
+  - {fileID: 823254213295250511, guid: ef8f6b605a0ce924789a6514fa493cf2, type: 3}
   - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
   - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
   <ActorStartPos>k__BackingField:
