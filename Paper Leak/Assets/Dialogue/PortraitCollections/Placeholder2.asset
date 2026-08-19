@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb82bdc547e4aaf47b67663744e60c81, type: 3}
   m_Name: Placeholder2
   m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
-  speakerName: Richard
+  speakerName: Dhruv
   portraits:
   - {fileID: 6997741227164693895, guid: bd6372d34f3da1848b833a93756456d6, type: 3}
   - {fileID: 336756511, guid: bd6372d34f3da1848b833a93756456d6, type: 3}

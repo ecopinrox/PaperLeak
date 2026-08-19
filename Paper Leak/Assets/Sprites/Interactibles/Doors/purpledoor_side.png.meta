@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 01092915373265f48a9e4191673e058b
+guid: 5e60ad4d51e67c049a6857b5cefb04eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3221046101668525945
-    second: prabhu_speak_0
+      213: 5079432292815941648
+    second: purpledoor_side_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: prabhu_speak_0
+      name: purpledoor_side_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
-        height: 120
+        x: 25
+        y: 9
+        width: 110
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 977fb171d5473bc20800000000000000
-      internalID: 3221046101668525945
+      spriteID: 01031f122c4cd7640800000000000000
+      internalID: 5079432292815941648
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      prabhu_speak_0: 3221046101668525945
+      purpledoor_side_0: 5079432292815941648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

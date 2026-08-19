@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
   speakerName: Dinesh
   portraits:
-  - {fileID: -6249272725800012304, guid: a3b160f5d23581845b03db77e9eaddc5, type: 3}
-  - {fileID: -1900234404579362240, guid: 9b573fae51271cd469dd02a4050489b0, type: 3}
-  - {fileID: 8232635771134447265, guid: 0c75c1b16bc8eff4c92ec91e0d50188a, type: 3}
+  - {fileID: 2824628852681060206, guid: 750b8c8f711f5b0409e160bc85e26f1b, type: 3}
+  - {fileID: -400795299, guid: 750b8c8f711f5b0409e160bc85e26f1b, type: 3}
+  - {fileID: 686353181, guid: 750b8c8f711f5b0409e160bc85e26f1b, type: 3}
+  - {fileID: 69796510, guid: 750b8c8f711f5b0409e160bc85e26f1b, type: 3}
+  - {fileID: 2028280700, guid: 750b8c8f711f5b0409e160bc85e26f1b, type: 3}
+  - {fileID: -1332914826, guid: 750b8c8f711f5b0409e160bc85e26f1b, type: 3}

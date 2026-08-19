@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b573fae51271cd469dd02a4050489b0
+guid: 4f484c81eb0a0ee4e896ae6cf29421fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1900234404579362240
-    second: dinesh_smile_0
+      213: -3398450525366350119
+    second: door_side_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dinesh_smile_0
+      name: door_side_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
-        height: 120
+        x: 25
+        y: 9
+        width: 110
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04a321d70e201a5e0800000000000000
-      internalID: -1900234404579362240
+      spriteID: 9de8cc0c04746d0d0800000000000000
+      internalID: -3398450525366350119
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dinesh_smile_0: -1900234404579362240
+      door_side_0: -3398450525366350119
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

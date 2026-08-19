@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
   speakerName: Prabhu
   portraits:
-  - {fileID: -4217866670986980713, guid: 6e58470cfd84ba345a7777845197f760, type: 3}
-  - {fileID: 3221046101668525945, guid: 01092915373265f48a9e4191673e058b, type: 3}
+  - {fileID: 168561950975233315, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
+  - {fileID: -5713879842829706040, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
+  - {fileID: 5182356307683236494, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
+  - {fileID: -3317798569287349837, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
+  - {fileID: 4217189966385741476, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
+  - {fileID: -1215866400328584249, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
+  - {fileID: -1007378465294677486, guid: 604eb5cebf889314e9d8c19f6a11b713, type: 3}
