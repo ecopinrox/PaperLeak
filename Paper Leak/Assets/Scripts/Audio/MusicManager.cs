@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] AudioMixer musicMixer;
+
+    [SerializeField] List<AudioSource> trackSources;
+    [SerializeField][Range(0f, 1f)] float maxVolume;
 
     public static event Action<int> OnBgmIdLoaded;
 
@@ -20,6 +24,11 @@ public class MusicManager : MonoBehaviour
     {
         LevelManager.OnStateSave -= Save;
         LevelManager.OnStateLoad -= Load;
+    }
+
+    private void Start()
+    {
+        SetActiveTrack(currentBgmId);
     }
 
     public void SetMusicVolume(float value)
@@ -41,8 +50,16 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
+        SetActiveTrack(id);
+    }
+
+    void SetActiveTrack(int id)
+    {
         currentBgmId = id;
-        Debug.Log(currentBgmId);
+        for (int i = 0; i < trackSources.Count; i++)
+        {
+            trackSources[i].volume = (i == currentBgmId) ? maxVolume : 0f;
+        }
     }
 
     void Save(SaveState save)
@@ -52,8 +69,7 @@ public class MusicManager : MonoBehaviour
 
     void Load(SaveState save)
     {
-        currentBgmId = save.bgmId;
         Debug.Log("Loaded BGM ID " + currentBgmId);
-        OnBgmIdLoaded?.Invoke(currentBgmId);
+        OnBgmIdLoaded?.Invoke(save.bgmId);
     }
 }
