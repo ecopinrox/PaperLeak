@@ -69,7 +69,6 @@ public class MusicManager : MonoBehaviour
 
     void Load(SaveState save)
     {
-        Debug.Log("Loaded BGM ID " + currentBgmId);
         OnBgmIdLoaded?.Invoke(save.bgmId);
     }
 }

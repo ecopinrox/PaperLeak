@@ -19,7 +19,7 @@ public class CutscenePoint : Interactible
         conversationRunner.StartConversation(cutscene);
         ConversationRunner.OnConversationEnd += () => { 
             Time.timeScale = 0f;
-            _ = FindAnyObjectByType<CartoonEffectManager>().ContractHole();
+            _ = FindAnyObjectByType<CreditsManager>().StartCreditsSequence();
         };
     }
 }
