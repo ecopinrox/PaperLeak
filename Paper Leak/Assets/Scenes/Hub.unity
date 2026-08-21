@@ -2741,7 +2741,7 @@ PrefabInstance:
     - target: {fileID: 156432732302949877, guid: 32398de242e2072409eb03c6ceef3845, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8830689037157315130}
+      objectReference: {fileID: 0}
     - target: {fileID: 771535662358952427, guid: 32398de242e2072409eb03c6ceef3845, type: 3}
       propertyPath: m_fontColor.b
       value: 0.12588999
@@ -13376,17 +13376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93051854d1da6df4899a9f5bbb2332a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8830689037157315130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5416717403977048694, guid: a75b5b6bcd5783547b91b47485577e5b, type: 3}
-  m_PrefabInstance: {fileID: 8830689037157315123}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9fe06423f9cfbd43a7e5d010c4d919a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
 --- !u!114 &8830689037157315132 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8501753805363031290, guid: a75b5b6bcd5783547b91b47485577e5b, type: 3}
