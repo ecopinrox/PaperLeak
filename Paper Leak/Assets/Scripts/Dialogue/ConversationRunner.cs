@@ -15,10 +15,12 @@ public class ConversationRunner : MonoBehaviour
     int runningTasks = 0;
 
     UIManager uiManager;
+    MusicManager musicManager;
 
     private void Awake()
     {
         uiManager = GetComponent<UIManager>();
+        musicManager = FindAnyObjectByType<MusicManager>();
     }
 
     public void StartConversation(ConversationSO conversation)
@@ -52,8 +54,10 @@ public class ConversationRunner : MonoBehaviour
             Dialogue current = dialogueEnumerator.Current;
             ShowDialogue(current);
 
-            string debug = $"BGM: {current.bgmIndex}\n";
-            Debug.Log(debug);
+            if(current.bgmIndex is int bgmId)
+            {
+                musicManager.SetBGMId(bgmId);
+            }
 
             foreach (string actorState in current.actorStates)
             {

@@ -15,7 +15,6 @@ public class CutsceneActor : MonoBehaviour
 
     public void SetState(int? visualState, int? yDestination, float speed, Action onReached)
     {
-        Debug.Log($"{transform.position}: {visualState}");
         SetVisualState(visualState);
         _ = Move(yDestination, speed, onReached);
     }

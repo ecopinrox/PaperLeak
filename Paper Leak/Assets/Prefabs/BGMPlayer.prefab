@@ -312,7 +312,7 @@ MonoBehaviour:
   - {fileID: 1555273681217228149}
   - {fileID: 1290099499590686535}
   - {fileID: 2358336388705028078}
-  maxVolume: 0.4
+  maxVolume: 0.5
 --- !u!1 &6322272615651822206
 GameObject:
   m_ObjectHideFlags: 0
