@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb82bdc547e4aaf47b67663744e60c81, type: 3}
-  m_Name: Placeholder1
+  m_Name: LasyaPortraits
   m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
   speakerName: Lasya
   portraits:
-  - {fileID: -2311659948842064771, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
-  - {fileID: 1846922000, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
-  - {fileID: 235834776, guid: 08868c57bdbb9f64cb3969cad30c09bf, type: 3}
+  - {fileID: 3636825155826500061, guid: 382442e551175704195f72b8a47533e3, type: 3}
+  - {fileID: 598790862, guid: 382442e551175704195f72b8a47533e3, type: 3}
+  - {fileID: -80466973, guid: 382442e551175704195f72b8a47533e3, type: 3}
+  - {fileID: -2061843373, guid: 382442e551175704195f72b8a47533e3, type: 3}

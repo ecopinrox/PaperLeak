@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 750b8c8f711f5b0409e160bc85e26f1b
+guid: 382442e551175704195f72b8a47533e3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2824628852681060206
-    second: Char_Port_Dih_Sprite_Sheet_0
+      213: 3636825155826500061
+    second: Char_Port_Lasya_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_0
+      name: Char_Port_Lasya_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,14 +128,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6faf5ad9f8133720800000000000000
-      internalID: 2824628852681060206
+      spriteID: dd14e33e539987230800000000000000
+      internalID: 3636825155826500061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_1
+      name: Char_Port_Lasya_1
       rect:
         serializedVersion: 2
         x: 100
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5e143cf9303a154b946ed10f2f0e637
-      internalID: -400795299
+      spriteID: cdeda57f5f9dffb4b96893ac848bedfa
+      internalID: 598790862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_2
+      name: Char_Port_Lasya_2
       rect:
         serializedVersion: 2
         x: 200
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efac108e213c71f489e0866cdd9dda64
-      internalID: 686353181
+      spriteID: 4e0b969f4a34d05448ac3eaa78b40b8e
+      internalID: -80466973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_3
+      name: Char_Port_Lasya_3
       rect:
         serializedVersion: 2
         x: 300
@@ -194,96 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a1a10a63539639498d0d019d2e751c7
-      internalID: 69796510
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 100
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa3f9d87d38901f4aa6cdac5e4e0f356
-      internalID: 2028280700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 0
-        width: 100
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f822af15c9059314e9f2f01f61609dfa
-      internalID: -1332914826
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 100
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d33c5b17e9880e4493709c6fbbdf25c
-      internalID: -90114985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_Port_Dih_Sprite_Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 0
-        width: 100
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bbc9528eca2dc94cba078f170d35730
-      internalID: 1050036356
+      spriteID: 88fc77839548bdb4e9a61e33455204d7
+      internalID: -2061843373
       vertices: []
       indices: 
       edges: []
@@ -292,7 +204,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a79ed0c903516de41b56d0380bb380a6
+    spriteID: 3312f442b3766b74994ee63f052ba1dc
     internalID: 0
     vertices: []
     indices: 
@@ -304,14 +216,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":100.0,"y":120.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Char_Port_Dih_Sprite_Sheet_0: 2824628852681060206
-      Char_Port_Dih_Sprite_Sheet_1: -400795299
-      Char_Port_Dih_Sprite_Sheet_2: 686353181
-      Char_Port_Dih_Sprite_Sheet_3: 69796510
-      Char_Port_Dih_Sprite_Sheet_4: 2028280700
-      Char_Port_Dih_Sprite_Sheet_5: -1332914826
-      Char_Port_Dih_Sprite_Sheet_6: -90114985
-      Char_Port_Dih_Sprite_Sheet_7: 1050036356
+      Char_Port_Lasya_0: 3636825155826500061
+      Char_Port_Lasya_1: 598790862
+      Char_Port_Lasya_2: -80466973
+      Char_Port_Lasya_3: -2061843373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
