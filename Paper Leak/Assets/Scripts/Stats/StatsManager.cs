@@ -33,7 +33,7 @@ public class StatsManager
             stats.GetMinima(old);
         }
 
-        string json = JsonConvert.SerializeObject(stats);
+        string json = JsonConvert.SerializeObject(stats, Formatting.Indented);
         using(StreamWriter writer = new(BuildPath(filename)))
         {
             writer.Write(json);
