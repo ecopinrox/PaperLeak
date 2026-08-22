@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
         {
             JsonSaver.Load(masterSave, saveFileName);
         }
-        catch(FileNotFoundException)
+        catch (FileNotFoundException)
         {
             //If no save file is found (new game), write a new save file with default data
             JsonSaver.Save(masterSave, saveFileName);
