@@ -6254,6 +6254,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5122063737553796369, guid: 32398de242e2072409eb03c6ceef3845, type: 3}
   m_PrefabInstance: {fileID: 2115796021}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2115796025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5947921742672318544, guid: 32398de242e2072409eb03c6ceef3845, type: 3}
+  m_PrefabInstance: {fileID: 2115796021}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &2142951461
 GameObject:
   m_ObjectHideFlags: 0
@@ -16566,6 +16577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6671036689768282624, guid: a75b5b6bcd5783547b91b47485577e5b, type: 3}
+      propertyPath: sfxSlider
+      value: 
+      objectReference: {fileID: 2115796025}
     - target: {fileID: 6671036689768282624, guid: a75b5b6bcd5783547b91b47485577e5b, type: 3}
       propertyPath: pausePanel
       value: 

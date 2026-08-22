@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Volume Sliders")]
     [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
 
     PlayerController playerController;
 
@@ -65,6 +66,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         musicSlider.value = FindAnyObjectByType<MusicManager>().GetMusicVolume();
+        sfxSlider.value = FindAnyObjectByType<SoundManager>().GetSFXVolume();
     }
 
     public void SetGameOverPanelStatus(bool active) => gameOverPanel.SetActive(active);

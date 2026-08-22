@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] GameObject soundEmitter;
     [SerializeField][Range(0f, 1f)] float maxVolume;
-    float sfxVolume = 1f;
+    [SerializeField] SFXVolume volumeSO;
 
     public static SoundManager Instance { get; private set; }
 
@@ -22,12 +22,17 @@ public class SoundManager : MonoBehaviour
     public Coroutine PlaySound(SoundData data, Vector2 position, Distraction source)
     {
         SoundEmitter emitter = GetOrAddSoundEmitter(position);
-        return emitter.PlaySound(data, source, sfxVolume);
+        return emitter.PlaySound(data, source, volumeSO.volume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        sfxVolume = volume * maxVolume;
+        volumeSO.volume = volume * maxVolume;
+    }
+
+    public float GetSFXVolume()
+    {
+        return volumeSO.volume / maxVolume;
     }
 
     SoundEmitter GetOrAddSoundEmitter(Vector2 position)
