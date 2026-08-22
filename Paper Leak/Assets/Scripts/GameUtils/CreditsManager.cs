@@ -6,6 +6,9 @@ public class CreditsManager : MonoBehaviour
     [SerializeField] List<GameObject> panels;
     [SerializeField] List<float> activationTimeList;
 
+    [SerializeField] float outerPhaseTime;
+    [SerializeField] float outerHoldTime;
+
     CartoonEffectManager cartoonEffectManager;
     AudioSource audioSource;
 
@@ -30,7 +33,7 @@ public class CreditsManager : MonoBehaviour
 
     public async Awaitable StartCreditsSequence()
     {
-        await cartoonEffectManager.ContractHole();
+        await cartoonEffectManager.ContractHole(outerPhaseTime, outerHoldTime);
         audioSource.Play();
         Time.timeScale = 1.0f;
 
