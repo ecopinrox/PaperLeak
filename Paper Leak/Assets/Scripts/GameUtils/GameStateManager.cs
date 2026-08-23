@@ -28,7 +28,12 @@ public class GameStateManager : MonoBehaviour
         };
     }
 
-    public void Save()              => LevelManager.Instance.SaveLevelState();
+    public void Save()
+    {
+        LevelManager.Instance.SaveLevelState();
+        LevelManager.Instance.IncrementSaveCount();
+    }
+
     public void ReloadLevel()       => _ = LevelManager.Instance.ReloadLevelState();
     public void RestartLevel()      => _ = LevelManager.Instance.ReloadLevelFromScratch();
     public void ReturnToMainMenu()  => LevelManager.Instance.ReturnToMainMenu();

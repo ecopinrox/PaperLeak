@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -30,6 +29,12 @@ public class LevelManager : MonoBehaviour
 
     int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
     int CurrentLevelIndex => CurrentSceneIndex - firstLevelIndex;
+
+    float elapsedTime = 0f;
+    int saveCount = 0;
+
+    public static event Action<float> OnTimeUpdated;
+    public static event Action<int> OnSaveCountUpdated;
 
     private void Awake()
     {
@@ -80,6 +85,12 @@ public class LevelManager : MonoBehaviour
         }
 
         _ = StatsUpdateLoop(2);
+        _ = UpdateTime();
+    }
+
+    void FixedUpdate()
+    {
+        OnTimeUpdated?.Invoke(elapsedTime);
     }
 
     /// <summary>
@@ -250,7 +261,7 @@ public class LevelManager : MonoBehaviour
     {
         while(true)
         {
-            if(CurrentSceneIndex < 2)
+            if(CurrentLevelIndex < 0 || Time.timeScale <= Mathf.Epsilon)
             {
                 await Awaitable.FixedUpdateAsync();
                 continue;
@@ -264,6 +275,25 @@ public class LevelManager : MonoBehaviour
                 await Awaitable.NextFrameAsync();
             }
         }
+    }
+
+    async Awaitable UpdateTime()
+    {
+        while(true)
+        {
+            await Awaitable.NextFrameAsync();
+
+            if(CurrentLevelIndex >= 0 && Time.timeScale > Mathf.Epsilon)
+            {
+                elapsedTime += Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    public void IncrementSaveCount()
+    {
+        saveCount++;
+        OnSaveCountUpdated?.Invoke(saveCount);
     }
     #endregion
 

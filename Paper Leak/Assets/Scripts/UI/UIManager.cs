@@ -38,6 +38,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
 
+    [Header("Stats")]
+    [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI saveCountText;
+
     PlayerController playerController;
 
     private void Awake()
@@ -53,6 +57,9 @@ public class UIManager : MonoBehaviour
 
         PlayerInteractionHandler.OnInteractibleFound += EnableInteractionPromptPanel;
         PlayerInteractionHandler.OnInteractibleCleared += DisableInteractionPromptPanel;
+
+        LevelManager.OnTimeUpdated += UpdateTimerText;
+        LevelManager.OnSaveCountUpdated += UpdateSaveCountText;
     }
 
     private void OnDisable()
@@ -61,12 +68,17 @@ public class UIManager : MonoBehaviour
 
         PlayerInteractionHandler.OnInteractibleFound -= EnableInteractionPromptPanel;
         PlayerInteractionHandler.OnInteractibleCleared -= DisableInteractionPromptPanel;
+
+        LevelManager.OnTimeUpdated -= UpdateTimerText;
+        LevelManager.OnSaveCountUpdated -= UpdateSaveCountText;
     }
 
     private void Start()
     {
         musicSlider.value = FindAnyObjectByType<MusicManager>().GetMusicVolume();
         sfxSlider.value = FindAnyObjectByType<SoundManager>().GetSFXVolume();
+
+        UpdateSaveCountText(0);
     }
 
     public void SetGameOverPanelStatus(bool active) => gameOverPanel.SetActive(active);
@@ -173,6 +185,27 @@ public class UIManager : MonoBehaviour
             if (collectibleIDs.Contains(i)) collectibleIcons[i].SetActive(true);
             else collectibleIcons[i].SetActive(false);
         }
+    }
+
+    public void UpdateTimerText(float time)
+    {
+        if(timerText == null)
+        {
+            return;
+        }
+
+        TimeSpan timeSpan = TimeSpan.FromSeconds(time);
+        timerText.text = timeSpan.ToString(@"hh\:mm\:ss");
+    }
+
+    public void UpdateSaveCountText(int saves)
+    {
+        if(saveCountText == null)
+        {
+            return;
+        }
+
+        saveCountText.text = $"Saves: {saves}";
     }
 
     public void DisableAllMenus()
