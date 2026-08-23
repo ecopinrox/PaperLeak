@@ -32,7 +32,12 @@ public class BGMTrigger : MonoBehaviour
             return;
         }
 
-        if(!playerInventory.HasItem(itemIndex) && !playerInventory.HasCollectible(collectibleIndex))
+        if(itemIndex >= 0 && !playerInventory.HasItem(itemIndex))
+        {
+            return;
+        }
+
+        if(collectibleIndex >= 0 && !playerInventory.HasCollectible(collectibleIndex))
         {
             return;
         }
