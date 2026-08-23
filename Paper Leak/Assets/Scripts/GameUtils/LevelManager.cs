@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -76,6 +78,8 @@ public class LevelManager : MonoBehaviour
         {
             _ = DevInitLevel();
         }
+
+        _ = StatsUpdateLoop(2);
     }
 
     /// <summary>
@@ -240,6 +244,28 @@ public class LevelManager : MonoBehaviour
             Instantiate(ItemIndexer.GetItem(landmineIndex), (Vector2)loc, Quaternion.identity);
         }
     }
+
+    #region Stats
+    async Awaitable StatsUpdateLoop(float period)
+    {
+        while(true)
+        {
+            if(CurrentSceneIndex < 2)
+            {
+                await Awaitable.FixedUpdateAsync();
+                continue;
+            }
+
+            Debug.Log("Save");
+
+            if(Time.timeScale > Mathf.Epsilon)
+            {
+                await Task.Delay((int)(1000 * period));
+                await Awaitable.NextFrameAsync();
+            }
+        }
+    }
+    #endregion
 
     #region DifficultySavingAndLoading
     void SaveDifficulty(SaveState saveState)
