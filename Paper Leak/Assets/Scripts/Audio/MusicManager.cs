@@ -9,6 +9,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] List<AudioSource> trackSources;
     [SerializeField][Range(0f, 1f)] float maxVolume;
+    [SerializeField] float interpDuration = 0.5f;
 
     public static event Action<int> OnBgmIdLoaded;
 
@@ -38,7 +39,10 @@ public class MusicManager : MonoBehaviour
         foreach(AudioSource track in trackSources)
         {
             track.Play();
+            track.volume = 0f;
         }
+
+        trackSources[0].volume = maxVolume;
     }
 
     public void SetMusicVolume(float value)
@@ -65,11 +69,31 @@ public class MusicManager : MonoBehaviour
 
     void SetActiveTrack(int id)
     {
+        _ = LerpVolume(currentBgmId, id, interpDuration);
         currentBgmId = id;
-        for (int i = 0; i < trackSources.Count; i++)
+    }
+
+    async Awaitable LerpVolume(int oldId, int newId, float duration)
+    {
+        float time = 0;
+        while(time < duration)
         {
-            trackSources[i].volume = (i == currentBgmId) ? maxVolume : 0f;
+            await Awaitable.FixedUpdateAsync();
+            time += Time.fixedDeltaTime;
+
+            //sine interpolation
+            float t = CosInterp(Mathf.Clamp01(time / duration));
+            float oldVol = maxVolume * (1 - t);
+            float newVol = maxVolume * t;
+
+            trackSources[oldId].volume = oldVol;
+            trackSources[newId].volume = newVol;
         }
+    }
+
+    float CosInterp(float t)
+    {
+        return (1 - Mathf.Cos(Mathf.PI * t)) / 2;
     }
 
     void Save(SaveState save)

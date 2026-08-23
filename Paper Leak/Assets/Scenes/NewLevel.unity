@@ -34211,6 +34211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 35589729105159865, guid: c5f7201bfad9de1418a574133f4c0370, type: 3}
+      propertyPath: bgmId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 568075317923351236, guid: c5f7201bfad9de1418a574133f4c0370, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -228571,6 +228575,10 @@ PrefabInstance:
     - target: {fileID: 4813916179538871646, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
       propertyPath: m_Name
       value: BGMPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
+      propertyPath: interpDuration
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
       propertyPath: trackSources.Array.size
