@@ -22,6 +22,6 @@ MonoBehaviour:
   - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
   - {fileID: 823254213295250511, guid: 7ad6d0887b194bf48a2dd1366ccc2365, type: 3}
   <ActorStartPos>k__BackingField:
-  - {x: 40, y: 32}
-  - {x: 40, y: 33}
-  - {x: 39, y: 39}
+  - {x: 40, y: 92}
+  - {x: 40, y: 93}
+  - {x: 39, y: 99}

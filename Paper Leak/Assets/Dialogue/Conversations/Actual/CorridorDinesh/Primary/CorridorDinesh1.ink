@@ -1,5 +1,5 @@
-macha one tiger you are da! you actually did it! #1 #2 //more emotion here, his friend went to hell and somehow came back
-bro it was insane! i almost got caught like 15 times! #0 #1 //no emotion for prabhu expresses genuine excitement
+macha one tiger you are da! you actually did it! #1 #8
+bro it was insane! i almost got caught like 15 times! #0 #11
 okay da, now for the end! lasya's waiting for you, go confess to her! #1 #2
 .....right now? #0 #7
 what da? you just stole the exam paper from right under their noses and you're too scared to tell lasya you like her? #1 #4

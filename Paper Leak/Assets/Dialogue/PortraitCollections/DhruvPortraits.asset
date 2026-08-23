@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb82bdc547e4aaf47b67663744e60c81, type: 3}
-  m_Name: Placeholder2
+  m_Name: DhruvPortraits
   m_EditorClassIdentifier: Assembly-CSharp::PortraitCollectionSO
   speakerName: Dhruv
   portraits:
-  - {fileID: 6997741227164693895, guid: bd6372d34f3da1848b833a93756456d6, type: 3}
-  - {fileID: 336756511, guid: bd6372d34f3da1848b833a93756456d6, type: 3}
-  - {fileID: 1628933824, guid: bd6372d34f3da1848b833a93756456d6, type: 3}
+  - {fileID: 2432948233394354750, guid: 0a215dedc5cc78c4f9dcf0a437968ba1, type: 3}
+  - {fileID: 5102751798870842822, guid: 25dc98da93a860b4b90add488df93000, type: 3}

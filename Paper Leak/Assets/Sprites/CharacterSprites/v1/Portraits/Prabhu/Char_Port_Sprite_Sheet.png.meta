@@ -394,6 +394,72 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Char_Port_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 100
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e1a91d0541a82438c5d1d5a2a869e2
+      internalID: -1446982340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_Port_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 0
+        width: 100
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4264d5e9009752e41bf1b1074da9b61f
+      internalID: -586867035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_Port_Sprite_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 100
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b78231e128eeb8646bde08421dd8db63
+      internalID: 1976982066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -414,6 +480,9 @@ TextureImporter:
       Char_Port_Sprite_Sheet_1: -5713879842829706040
       Char_Port_Sprite_Sheet_10: 2140904936
       Char_Port_Sprite_Sheet_11: -1861983898
+      Char_Port_Sprite_Sheet_12: -1446982340
+      Char_Port_Sprite_Sheet_13: -586867035
+      Char_Port_Sprite_Sheet_14: 1976982066
       Char_Port_Sprite_Sheet_2: 5182356307683236494
       Char_Port_Sprite_Sheet_3: -3317798569287349837
       Char_Port_Sprite_Sheet_4: 4217189966385741476
