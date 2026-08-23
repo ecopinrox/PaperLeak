@@ -3,12 +3,16 @@ using UnityEngine;
 public class BGMTrigger : MonoBehaviour
 {
     MusicManager musicManager;
+    PlayerInventory playerInventory;
 
     [SerializeField] int bgmId;
+    [SerializeField] int itemIndex = -1;
+    [SerializeField] int collectibleIndex = -1;
 
     private void Awake()
     {
         musicManager = FindAnyObjectByType<MusicManager>();
+        playerInventory = FindAnyObjectByType<PlayerInventory>();
     }
 
     private void OnEnable()
@@ -23,11 +27,18 @@ public class BGMTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if(!collision.CompareTag("Player"))
         {
-            musicManager.SetBGMId(bgmId);
-            gameObject.SetActive(false);
+            return;
         }
+
+        if(!playerInventory.HasItem(itemIndex) && !playerInventory.HasCollectible(collectibleIndex))
+        {
+            return;
+        }
+
+        musicManager.SetBGMId(bgmId);
+        gameObject.SetActive(false);
     }
 
     void DisableOnLoad(int currentBgmId)

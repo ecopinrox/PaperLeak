@@ -296,6 +296,21 @@ public class PlayerInventory : MonoBehaviour
         UpdateItemSlotUI();
     }
 
+    public bool HasItem(int id)
+    {
+        if(id < 0)
+        {
+            return false;
+        }
+
+        foreach(ItemSlot slot in itemSlots)
+        {
+            if(slot.ItemIndex == id) return true;
+        }
+
+        return false;
+    }
+
     public async Awaitable UseSelectedItem()
     {
         await itemSlots[selectedItemSlot].UseItem();
