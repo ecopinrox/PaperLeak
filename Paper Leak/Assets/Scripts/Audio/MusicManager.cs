@@ -18,6 +18,8 @@ public class MusicManager : MonoBehaviour
     {
         LevelManager.OnStateSave += Save;
         LevelManager.OnStateLoad += Load;
+
+        StartAllTracks();
     }
 
     private void OnDisable()
@@ -29,6 +31,14 @@ public class MusicManager : MonoBehaviour
     private void Start()
     {
         SetActiveTrack(currentBgmId);
+    }
+
+    void StartAllTracks()
+    {
+        foreach(AudioSource track in trackSources)
+        {
+            track.Play();
+        }
     }
 
     public void SetMusicVolume(float value)
@@ -69,6 +79,7 @@ public class MusicManager : MonoBehaviour
 
     void Load(SaveState save)
     {
+        SetBGMId(save.bgmId);
         OnBgmIdLoaded?.Invoke(save.bgmId);
     }
 }

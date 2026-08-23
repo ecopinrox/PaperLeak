@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746d6896bd3e8d478d9de4ca439715c, type: 3}
   m_Name: SaveState0
   m_EditorClassIdentifier: Assembly-CSharp::SaveState
-  playerPos: {x: 106, y: 105}
+  playerPos: {x: 40, y: 3}
+  bgmId: 0

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SaveState1
   m_EditorClassIdentifier: Assembly-CSharp::SaveState
   playerPos: {x: 0, y: 0}
+  bgmId: 0
