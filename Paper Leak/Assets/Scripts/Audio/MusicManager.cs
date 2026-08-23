@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] List<AudioSource> trackSources;
     [SerializeField][Range(0f, 1f)] float maxVolume;
-    [SerializeField] float interpDuration = 0.5f;
+    [SerializeField] List<float> interpDurationList = new();
 
     public static event Action<int> OnBgmIdLoaded;
 
@@ -31,6 +31,11 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
+        if(trackSources.Count != interpDurationList.Count)
+        {
+            Debug.LogError("Malformed lists in MusicManager");
+        }
+
         SetActiveTrack(currentBgmId);
     }
 
@@ -69,7 +74,7 @@ public class MusicManager : MonoBehaviour
 
     void SetActiveTrack(int id)
     {
-        _ = LerpVolume(currentBgmId, id, interpDuration);
+        _ = LerpVolume(currentBgmId, id, interpDurationList[currentBgmId]);
         currentBgmId = id;
     }
 
