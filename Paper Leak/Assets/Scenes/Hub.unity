@@ -845,6 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGMTrigger
   bgmId: 2
+  itemIndex: -1
+  collectibleIndex: -1
 --- !u!61 &366815019
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3045,7 +3047,7 @@ Transform:
   m_GameObject: {fileID: 1095752291}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3100,7 +3102,7 @@ SpriteRenderer:
   m_SortingLayer: 9
   m_SortingOrder: -93
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6868021504478853807, guid: 9add9c05e4a8b74458357d65ae12317e, type: 3}
+  m_Sprite: {fileID: -7747621653412376065, guid: eeafc5ab00a2e3742ae30d21c95edc52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3120,7 +3122,7 @@ Animator:
   m_GameObject: {fileID: 1095752291}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a58d6e38e4b91db40bd5281262e5143e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 42fa3f4e4c0a76c42aa14281337e24bc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -21361,6 +21363,26 @@ PrefabInstance:
     - target: {fileID: 4813916179538871646, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
       propertyPath: m_Name
       value: BGMPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
+      propertyPath: interpDurationList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
+      propertyPath: 'interpDurationList.Array.data[0]'
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
+      propertyPath: 'interpDurationList.Array.data[1]'
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
+      propertyPath: 'interpDurationList.Array.data[2]'
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867400732215857259, guid: 8fb4073eddb7e05439984933fbe029d0, type: 3}
+      propertyPath: 'interpDurationList.Array.data[3]'
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

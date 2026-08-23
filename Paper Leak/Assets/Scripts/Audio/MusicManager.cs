@@ -74,6 +74,12 @@ public class MusicManager : MonoBehaviour
 
     void SetActiveTrack(int id)
     {
+        if(id >= trackSources.Count)
+        {
+            DisableAllTracks();
+            return;
+        }
+
         _ = LerpVolume(currentBgmId, id, interpDurationList[currentBgmId]);
         currentBgmId = id;
     }
@@ -93,6 +99,14 @@ public class MusicManager : MonoBehaviour
 
             trackSources[oldId].volume = oldVol;
             trackSources[newId].volume = newVol;
+        }
+    }
+
+    void DisableAllTracks()
+    {
+        foreach(AudioSource track in trackSources)
+        {
+            track.volume = 0;
         }
     }
 
