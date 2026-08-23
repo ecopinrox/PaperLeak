@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,6 +30,9 @@ public class LevelManager : MonoBehaviour
 
     int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
     int CurrentLevelIndex => CurrentSceneIndex - firstLevelIndex;
+
+    [SerializeField] string sessionStatsFileName;
+    [SerializeField] string overallStatsFileName;
 
     float elapsedTime = 0f;
     int saveCount = 0;
@@ -84,8 +88,8 @@ public class LevelManager : MonoBehaviour
             _ = DevInitLevel();
         }
 
-        _ = StatsUpdateLoop(2);
-        _ = UpdateTime();
+        _ = StatsUpdateLoop(2, destroyCancellationToken);
+        _ = UpdateTime(destroyCancellationToken);
     }
 
     void FixedUpdate()
@@ -257,13 +261,22 @@ public class LevelManager : MonoBehaviour
     }
 
     #region Stats
-    async Awaitable StatsUpdateLoop(float period)
+    async Awaitable StatsUpdateLoop(float period, CancellationToken cancellationToken)
     {
         while(true)
         {
+            try
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+            }
+            catch(OperationCanceledException)
+            {
+                return;
+            }
+
             if(CurrentLevelIndex < 0 || Time.timeScale <= Mathf.Epsilon)
             {
-                await Awaitable.FixedUpdateAsync();
+                await Awaitable.FixedUpdateAsync(cancellationToken);
                 continue;
             }
 
@@ -272,16 +285,25 @@ public class LevelManager : MonoBehaviour
             if(Time.timeScale > Mathf.Epsilon)
             {
                 await Task.Delay((int)(1000 * period));
-                await Awaitable.NextFrameAsync();
+                await Awaitable.NextFrameAsync(cancellationToken);
             }
         }
     }
 
-    async Awaitable UpdateTime()
+    async Awaitable UpdateTime(CancellationToken cancellationToken)
     {
         while(true)
         {
-            await Awaitable.NextFrameAsync();
+            try
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+            }
+            catch(OperationCanceledException)
+            {
+                return;
+            }
+
+            await Awaitable.NextFrameAsync(cancellationToken);
 
             if(CurrentLevelIndex >= 0 && Time.timeScale > Mathf.Epsilon)
             {
@@ -294,6 +316,11 @@ public class LevelManager : MonoBehaviour
     {
         saveCount++;
         OnSaveCountUpdated?.Invoke(saveCount);
+    }
+
+    public bool CheckForOverallStats()
+    {
+        return StatsManager.CheckForStats(overallStatsFileName);
     }
     #endregion
 

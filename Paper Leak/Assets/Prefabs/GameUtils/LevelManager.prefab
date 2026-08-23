@@ -50,3 +50,5 @@ MonoBehaviour:
   levelLoadOption: 0
   landmineIndex: 3
   saveFileName: save.json
+  sessionStatsFileName: stats_session.json
+  overallStatsFileName: stats_overall.json

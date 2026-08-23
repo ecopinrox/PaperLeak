@@ -79,6 +79,11 @@ public class UIManager : MonoBehaviour
         sfxSlider.value = FindAnyObjectByType<SoundManager>().GetSFXVolume();
 
         UpdateSaveCountText(0);
+        if(!LevelManager.Instance.CheckForOverallStats())
+        {
+            timerText.gameObject.SetActive(false);
+            saveCountText.gameObject.SetActive(false);
+        }
     }
 
     public void SetGameOverPanelStatus(bool active) => gameOverPanel.SetActive(active);
