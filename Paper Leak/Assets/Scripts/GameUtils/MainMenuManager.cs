@@ -38,20 +38,38 @@ public class MainMenuManager : MonoBehaviour
     public void DeleteStats()
     {
         Debug.Log("delete overall stats");
+        LevelManager.Instance.DeleteOverallStats();
     }
 
     void UpdateChallengesPanel(GameStats stats)
     {
-        challenges[0].SetStatus(true);
-        challenges[1].SetStatus(stats.clearedWithoutChangingDifficulty);
-        challenges[2].SetStatus(stats.clearedWithoutGettingCaught);
-        challenges[3].SetStatus(stats.saveCount <= 0);
-        challenges[4].SetStatus(stats.timeToBeat <= 40 * 60);
-        challenges[5].SetStatus(stats.timeToBeat <= 30 * 60);
-        challenges[6].SetStatus(stats.timeToBeat <= 20 * 60);
-        challenges[7].SetStatus(stats.timeToBeat <= 13 * 60 + 28);
+        if(!stats.clearedWithoutChangingDifficulty)
+        {
+            challenges[0].SetStatus(true);
+            challenges[1].SetStatus(false);
+            challenges[2].SetStatus(false);
+            challenges[3].SetStatus(false);
+            challenges[4].SetStatus(false);
+            challenges[5].SetStatus(false);
+            challenges[6].SetStatus(false);
+            challenges[7].SetStatus(false);
 
-        minTimeText.text = $"minimum time taken: {TimeSpan.FromSeconds(stats.timeToBeat):hh\\:mm\\:ss}";
-        minSaveCountText.text = $"minimum save count: {stats.saveCount}";
+            minTimeText.text = $"minimum time taken: --:--:--";
+            minSaveCountText.text = $"minimum save count: --";
+        }
+        else
+        {
+            challenges[0].SetStatus(true);
+            challenges[1].SetStatus(stats.clearedWithoutChangingDifficulty);
+            challenges[2].SetStatus(stats.clearedWithoutGettingCaught);
+            challenges[3].SetStatus(stats.saveCount <= 0);
+            challenges[4].SetStatus(stats.timeToBeat <= 40 * 60);
+            challenges[5].SetStatus(stats.timeToBeat <= 30 * 60);
+            challenges[6].SetStatus(stats.timeToBeat <= 20 * 60);
+            challenges[7].SetStatus(stats.timeToBeat <= 13 * 60 + 28);
+
+            minTimeText.text = $"minimum time taken: {stats.GetTimeString()}";
+            minSaveCountText.text = $"minimum save count: {stats.saveCount}";
+        }
     }
 }

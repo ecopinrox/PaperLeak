@@ -171,7 +171,7 @@ public class LevelManager : MonoBehaviour
             !hasChangedDifficulty
         );
 
-        if(!overallStatsFileFound)
+        if (!overallStatsFileFound)
         {
             StatsManager.UpdateOverallStats(overallStatsFileName, currentStats);
             _ = SwitchScene(buildIndex);

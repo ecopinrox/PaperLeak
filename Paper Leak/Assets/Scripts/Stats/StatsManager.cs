@@ -32,6 +32,16 @@ public class StatsManager
 
     public static void WriteStats(string filename, GameStats stats)
     {
+        if(!stats.clearedWithoutChangingDifficulty)
+        {
+            stats = new(
+                -1,
+                -1,
+                false,
+                false
+            );
+        }
+
         string json = JsonConvert.SerializeObject(stats, Formatting.Indented);
         using(StreamWriter writer = new(BuildPath(filename)))
         {
