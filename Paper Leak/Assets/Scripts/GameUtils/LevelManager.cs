@@ -437,6 +437,11 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Unable to delete overall stats file as it is currently in use.");
         }
     }
+
+    public GameStats GetOverallStats()
+    {
+        return StatsManager.ReadStats(overallStatsFileName);
+    }
     #endregion
 
     #region DifficultySavingAndLoading
