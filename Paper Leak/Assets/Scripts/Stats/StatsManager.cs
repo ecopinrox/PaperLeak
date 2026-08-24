@@ -41,6 +41,7 @@ public class StatsManager
 
     public static void UpdateOverallStats(string filename, GameStats stats)
     {
+        Debug.Log("Updated overall stats");
         if(CheckForStats(filename))
         {
             GameStats old = ReadStats(filename);

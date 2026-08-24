@@ -42,6 +42,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI saveCountText;
 
+    [Header("Completion Menu")]
+    [SerializeField] GameObject completionPanel;
+    [SerializeField] TextMeshProUGUI timerTextValue;
+    [SerializeField] TextMeshProUGUI saveCountTextValue;
+    [SerializeField] TextMeshProUGUI caughtTextValue;
+    [SerializeField] TextMeshProUGUI changedDifficultyTextValue;
+
     PlayerController playerController;
 
     private void Awake()
@@ -217,5 +224,14 @@ public class UIManager : MonoBehaviour
     {
         playerController.SwitchToPlayerActionMap();
         checkpointPanel.SetActive(false);
+    }
+
+    public void EnableCompletionScreen(GameStats stats)
+    {
+        completionPanel.SetActive(true);
+        timerTextValue.text = TimeSpan.FromSeconds(stats.timeToBeat).ToString(@"hh\:mm\:ss");
+        saveCountTextValue.text = stats.saveCount.ToString();
+        caughtTextValue.text = stats.clearedWithoutGettingCaught ? "No" : "Yes";
+        changedDifficultyTextValue.text = stats.clearedWithoutChangingDifficulty ? "No" : "Yes";
     }
 }

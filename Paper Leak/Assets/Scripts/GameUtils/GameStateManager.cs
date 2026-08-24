@@ -20,7 +20,7 @@ public class GameStateManager : MonoBehaviour
             LevelManager.Instance.RecordPlayerCaught();
 
             CartoonEffectManager cartoonEffectManager = FindAnyObjectByType<CartoonEffectManager>();
-            if(cartoonEffectManager != null)
+            if (cartoonEffectManager != null)
             {
                 await cartoonEffectManager.ContractHole();
             }
@@ -35,9 +35,18 @@ public class GameStateManager : MonoBehaviour
         LevelManager.Instance.IncrementSaveCount();
     }
 
-    public void ReloadLevel()       => _ = LevelManager.Instance.ReloadLevelState();
-    public void RestartLevel()      => _ = LevelManager.Instance.ReloadLevelFromScratch();
-    public void ReturnToMainMenu()  => LevelManager.Instance.ReturnToMainMenu();
+    public void ReloadLevel() => _ = LevelManager.Instance.ReloadLevelState();
+    public void RestartLevel() => _ = LevelManager.Instance.ReloadLevelFromScratch();
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1f;
+        LevelManager.Instance.ReturnToMainMenu();
+    }
+    public void GoToLasya()
+    {
+        Time.timeScale = 1f;
+        _ = LevelManager.Instance.SwitchScene(1);
+    }
 
     public void PauseGame()
     {

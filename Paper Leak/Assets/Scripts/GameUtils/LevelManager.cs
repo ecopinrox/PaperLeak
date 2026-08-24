@@ -170,15 +170,18 @@ public class LevelManager : MonoBehaviour
             !hasGottenCaught,
             !hasChangedDifficulty
         );
-        StatsManager.UpdateOverallStats(overallStatsFileName, currentStats);
-        Debug.Log("Updated overall stats");
 
-        Debug.Log("Overall stats found: " + overallStatsFileFound);
-        //if overall stats did not already exist before this function saved to it,
-        _ = SwitchScene(buildIndex);
-
-        //if it did, 
-            //show completion menu
+        if(!overallStatsFileFound)
+        {
+            StatsManager.UpdateOverallStats(overallStatsFileName, currentStats);
+            _ = SwitchScene(buildIndex);
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            FindAnyObjectByType<UIManager>().EnableCompletionScreen(currentStats);
+            StatsManager.UpdateOverallStats(overallStatsFileName, currentStats);
+        }
     }
 
     public async Awaitable ReloadLevelFromScratch() 
