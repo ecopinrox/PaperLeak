@@ -264,6 +264,20 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Unable to delete save file as it is currently in use.");
         }
+
+        try
+        {
+            StatsManager.DeleteFile(sessionStatsFileName);
+            Debug.LogWarning($"Deleted {sessionStatsFileName}.");
+        }
+        catch(DirectoryNotFoundException)
+        {
+            Debug.Log("Session stats file not found.");
+        }
+        catch(IOException)
+        {
+            Debug.Log("Unable to delete session stats file as it is currently in use.");
+        }
     }
 
     void LoadLandmines(SaveState saveState)
@@ -319,10 +333,13 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("loaded");
         GameStats stats = StatsManager.ReadStats(sessionStatsFileName);
-        elapsedTime = stats.timeToBeat;
-        SetSaveCount(stats.saveCount);
-        hasGottenCaught = !stats.clearedWithoutGettingCaught;
-        hasChangedDifficulty = !stats.clearedWithoutChangingDifficulty;
+        if(stats != null)
+        {
+            elapsedTime = stats.timeToBeat;
+            SetSaveCount(stats.saveCount);
+            hasGottenCaught = !stats.clearedWithoutGettingCaught;
+            hasChangedDifficulty = !stats.clearedWithoutChangingDifficulty;
+        }
     }
 
     async Awaitable UpdateTime(CancellationToken cancellationToken)

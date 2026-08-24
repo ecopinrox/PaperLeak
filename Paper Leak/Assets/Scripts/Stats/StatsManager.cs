@@ -17,6 +17,7 @@ public class StatsManager
     {
         if(!CheckForStats(filename))
         {
+            Debug.LogWarning("Tried loading session stats, but file not found.");
             return null;
         }
 
@@ -47,6 +48,11 @@ public class StatsManager
         }
 
         WriteStats(filename, stats);
+    }
+
+    public static void DeleteFile(string filename)
+    {
+        File.Delete(BuildPath(filename));
     }
 
     static string BuildPath(string filename)
