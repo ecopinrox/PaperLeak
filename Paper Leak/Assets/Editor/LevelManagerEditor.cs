@@ -13,5 +13,10 @@ public class LevelManagerEditor : Editor
         {
             levelManager.DeleteSave();
         }
+
+        if(GUILayout.Button("Delete Overall Stats"))
+        {
+            levelManager.DeleteOverallStats();
+        }
     }
 }

@@ -390,6 +390,23 @@ public class LevelManager : MonoBehaviour
     {
         return StatsManager.CheckForStats(overallStatsFileName);
     }
+
+    public void DeleteOverallStats()
+    {
+        try
+        {
+            StatsManager.DeleteFile(overallStatsFileName);
+            Debug.LogWarning($"Deleted {overallStatsFileName}.");
+        }
+        catch(DirectoryNotFoundException)
+        {
+            Debug.Log("Overall stats file not found.");
+        }
+        catch(IOException)
+        {
+            Debug.Log("Unable to delete overall stats file as it is currently in use.");
+        }
+    }
     #endregion
 
     #region DifficultySavingAndLoading
