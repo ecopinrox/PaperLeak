@@ -81,8 +81,8 @@ public class UIManager : MonoBehaviour
         UpdateSaveCountText(LevelManager.Instance.SaveCount);
         if(!LevelManager.Instance.CheckForOverallStats())
         {
-            timerText.gameObject.SetActive(false);
-            saveCountText.gameObject.SetActive(false);
+            if(timerText != null) timerText.gameObject.SetActive(false);
+            if(saveCountText != null) saveCountText.gameObject.SetActive(false);
         }
     }
 
