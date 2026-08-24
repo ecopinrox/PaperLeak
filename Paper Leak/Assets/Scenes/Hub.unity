@@ -2860,9 +2860,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9162737003293118247}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: ReturnToMainMenu
+      - m_Target: {fileID: 8830689037157315124}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: ClearSaveAndReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3726,7 +3726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1307566938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21884,17 +21884,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
---- !u!114 &9162737003293118247 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1833848354730424326, guid: fb337af8ff74b7540aa4be46f3d5f619, type: 3}
-  m_PrefabInstance: {fileID: 9162737003293118246}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf73109757dbf34e81d5b736e0c11a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!483693784 &9221157898789885532
 TilemapRenderer:
   serializedVersion: 2

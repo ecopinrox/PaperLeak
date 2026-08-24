@@ -303,6 +303,11 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Unable to delete session stats file as it is currently in use.");
         }
+
+        elapsedTime = 0f;
+        SaveCount = 0;
+        hasGottenCaught = false;
+        hasChangedDifficulty = false;
     }
 
     void LoadLandmines(SaveState saveState)

@@ -42,6 +42,11 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = 1f;
         LevelManager.Instance.ReturnToMainMenu();
     }
+    public void ClearSaveAndReturnToMainMenu()
+    {
+        LevelManager.Instance.DeleteSave();
+        ReturnToMainMenu();
+    }
     public void GoToLasya()
     {
         Time.timeScale = 1f;

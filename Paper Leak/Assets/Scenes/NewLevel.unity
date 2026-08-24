@@ -7947,7 +7947,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8830689037157315124}
         m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
-        m_MethodName: ReturnToMainMenu
+        m_MethodName: ClearSaveAndReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
