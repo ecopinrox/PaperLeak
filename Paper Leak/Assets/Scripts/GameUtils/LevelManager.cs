@@ -159,6 +159,28 @@ public class LevelManager : MonoBehaviour
         LoadOrInitializeLevelState();
     }
 
+    public void EndLevelAndSwitchScene(int buildIndex)
+    {
+        bool overallStatsFileFound = StatsManager.CheckForStats(overallStatsFileName);
+
+        //save stats to overall stats
+        GameStats currentStats = new(
+            elapsedTime,
+            SaveCount,
+            !hasGottenCaught,
+            !hasChangedDifficulty
+        );
+        StatsManager.UpdateOverallStats(overallStatsFileName, currentStats);
+        Debug.Log("Updated overall stats");
+
+        Debug.Log("Overall stats found: " + overallStatsFileFound);
+        //if overall stats did not already exist before this function saved to it,
+        _ = SwitchScene(buildIndex);
+
+        //if it did, 
+            //show completion menu
+    }
+
     public async Awaitable ReloadLevelFromScratch() 
     {
         await LoadLevelFromScratch(CurrentSceneIndex);

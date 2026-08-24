@@ -30,6 +30,7 @@ public class LevelBorder : MonoBehaviour
         Time.timeScale = 1f;
 
         PlayerController.Instance.GetComponent<PlayerMovement>().SnapToPosition(Vector2Int.RoundToInt(exitPlayerPos.position));
-        _ = levelManager.SwitchScene(sceneBuildIndex);
+        //_ = levelManager.SwitchScene(sceneBuildIndex);
+        levelManager.EndLevelAndSwitchScene(sceneBuildIndex);
     }
 }
