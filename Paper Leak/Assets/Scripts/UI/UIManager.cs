@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
         musicSlider.value = FindAnyObjectByType<MusicManager>().GetMusicVolume();
         sfxSlider.value = FindAnyObjectByType<SoundManager>().GetSFXVolume();
 
-        UpdateSaveCountText(0);
+        UpdateSaveCountText(LevelManager.Instance.SaveCount);
         if(!LevelManager.Instance.CheckForOverallStats())
         {
             timerText.gameObject.SetActive(false);

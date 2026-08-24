@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] string overallStatsFileName;
 
     float elapsedTime = 0f;
-    int saveCount = 0;
+    public int SaveCount { get; private set; }  = 0;
 
     public static event Action<float> OnTimeUpdated;
     public static event Action<int> OnSaveCountUpdated;
@@ -314,8 +314,8 @@ public class LevelManager : MonoBehaviour
 
     public void IncrementSaveCount()
     {
-        saveCount++;
-        OnSaveCountUpdated?.Invoke(saveCount);
+        SaveCount++;
+        OnSaveCountUpdated?.Invoke(SaveCount);
     }
 
     public bool CheckForOverallStats()
