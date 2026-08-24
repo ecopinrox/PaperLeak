@@ -17,6 +17,7 @@ public class GameStateManager : MonoBehaviour
         onPlayerDiscovered += async () =>
         {
             Time.timeScale = 0f;
+            LevelManager.Instance.RecordPlayerCaught();
 
             CartoonEffectManager cartoonEffectManager = FindAnyObjectByType<CartoonEffectManager>();
             if(cartoonEffectManager != null)

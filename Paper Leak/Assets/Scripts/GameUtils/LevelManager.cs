@@ -36,6 +36,8 @@ public class LevelManager : MonoBehaviour
 
     float elapsedTime = 0f;
     public int SaveCount { get; private set; }  = 0;
+    bool hasGottenCaught = false;
+    bool hasChangedDifficulty = false;
 
     public static event Action<float> OnTimeUpdated;
     public static event Action<int> OnSaveCountUpdated;
@@ -232,6 +234,7 @@ public class LevelManager : MonoBehaviour
     public void SetDifficulty(int difficulty)
     {
         currentDifficultySetting = difficulty;
+        Instance.RecordDifficultyChanged();
         LoadDifficultySettings();
     }
 
@@ -281,6 +284,7 @@ public class LevelManager : MonoBehaviour
             }
 
             Debug.Log("Save");
+            SaveSessionStats();
 
             if(Time.timeScale > Mathf.Epsilon)
             {
@@ -288,6 +292,16 @@ public class LevelManager : MonoBehaviour
                 await Awaitable.NextFrameAsync(cancellationToken);
             }
         }
+    }
+
+    void SaveSessionStats()
+    {
+        StatsManager.WriteStats(sessionStatsFileName, new(
+            elapsedTime,
+            SaveCount,
+            !hasGottenCaught,
+            !hasChangedDifficulty
+        ));
     }
 
     async Awaitable UpdateTime(CancellationToken cancellationToken)
@@ -318,6 +332,16 @@ public class LevelManager : MonoBehaviour
         OnSaveCountUpdated?.Invoke(SaveCount);
     }
 
+    public void RecordPlayerCaught()
+    {
+        hasGottenCaught = true;
+    }
+
+    public void RecordDifficultyChanged()
+    {
+        hasChangedDifficulty = true;
+    }
+        
     public bool CheckForOverallStats()
     {
         return StatsManager.CheckForStats(overallStatsFileName);
