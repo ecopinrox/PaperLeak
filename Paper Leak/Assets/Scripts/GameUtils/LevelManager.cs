@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class LevelManager : MonoBehaviour
     public int SaveCount { get; private set; }  = 0;
     bool hasGottenCaught = false;
     bool hasChangedDifficulty = false;
+
+    bool canSaveSessionStats = false;
 
     public static event Action<float> OnTimeUpdated;
     public static event Action<int> OnSaveCountUpdated;
@@ -136,11 +139,17 @@ public class LevelManager : MonoBehaviour
     //pause menu only
     public void ReturnToMainMenu()
     {
+        canSaveSessionStats = false;
         SceneManager.LoadScene(0);
     }
 
     public async Awaitable SwitchScene(int buildIndex)
     {
+        if(buildIndex < firstLevelIndex)
+        {
+            canSaveSessionStats = false;
+        }
+
         SaveLevelState();
 
         SceneManager.LoadScene(buildIndex);
@@ -229,6 +238,8 @@ public class LevelManager : MonoBehaviour
         }
 
         LoadDifficultySettings();
+        LoadSessionStats();
+        canSaveSessionStats = true;
     }
 
     public void SetDifficulty(int difficulty)
@@ -277,7 +288,7 @@ public class LevelManager : MonoBehaviour
                 return;
             }
 
-            if(CurrentLevelIndex < 0 || Time.timeScale <= Mathf.Epsilon)
+            if(CurrentLevelIndex < 0 || !canSaveSessionStats || Time.timeScale <= Mathf.Epsilon)
             {
                 await Awaitable.FixedUpdateAsync(cancellationToken);
                 continue;
@@ -304,6 +315,16 @@ public class LevelManager : MonoBehaviour
         ));
     }
 
+    void LoadSessionStats()
+    {
+        Debug.Log("loaded");
+        GameStats stats = StatsManager.ReadStats(sessionStatsFileName);
+        elapsedTime = stats.timeToBeat;
+        SetSaveCount(stats.saveCount);
+        hasGottenCaught = !stats.clearedWithoutGettingCaught;
+        hasChangedDifficulty = !stats.clearedWithoutChangingDifficulty;
+    }
+
     async Awaitable UpdateTime(CancellationToken cancellationToken)
     {
         while(true)
@@ -324,6 +345,12 @@ public class LevelManager : MonoBehaviour
                 elapsedTime += Time.unscaledDeltaTime;
             }
         }
+    }
+
+    void SetSaveCount(int saveCount)
+    {
+        SaveCount = saveCount;
+        OnSaveCountUpdated?.Invoke(SaveCount);
     }
 
     public void IncrementSaveCount()
