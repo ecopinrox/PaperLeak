@@ -27948,6 +27948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45de6b0a2493b3a45acb62e9766bb830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VentFilter
+  filterFrequency: 5000
 --- !u!61 &1592059941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30468,6 +30469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45de6b0a2493b3a45acb62e9766bb830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VentFilter
+  filterFrequency: 5000
 --- !u!1 &1862148537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7640984770426156705, guid: 0289aa851efd9a74f96fe971e4042d08, type: 3}

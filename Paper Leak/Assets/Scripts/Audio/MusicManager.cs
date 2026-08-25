@@ -78,6 +78,21 @@ public class MusicManager : MonoBehaviour
         SetActiveTrack(id);
     }
 
+    public void ActivateLowPassFilter(float hz)
+    {
+        SetLowPassFilter(hz);
+    }
+
+    public void DeactivateLowPassFilter()
+    {
+        SetLowPassFilter(22000);
+    }
+
+    void SetLowPassFilter(float hz)
+    {
+        Debug.Log($"Set low pass filter to {hz}Hz");
+    }
+
     void SetActiveTrack(int id)
     {
         if(id >= trackSources.Count)
