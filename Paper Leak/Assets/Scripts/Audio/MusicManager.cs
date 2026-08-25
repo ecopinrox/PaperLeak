@@ -33,13 +33,16 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < trackSources.Count; i++)
+        for (int i = 0; i < trackSources.Count; i++)
         {
             trackFilters.Add(trackSources[i].GetComponent<AudioLowPassFilter>());
-            trackFilters[i].cutoffFrequency = 22000f;
+            if (trackFilters[i] != null)
+            {
+                trackFilters[i].cutoffFrequency = 22000f;
+            }
         }
 
-        if(trackSources.Count != interpDurationList.Count)
+        if (trackSources.Count != interpDurationList.Count)
         {
             Debug.LogError("Malformed lists in MusicManager");
         }
