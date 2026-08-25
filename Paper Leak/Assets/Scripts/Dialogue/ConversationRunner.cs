@@ -56,7 +56,14 @@ public class ConversationRunner : MonoBehaviour
 
             if(current.bgmIndex is int bgmId)
             {
-                musicManager.SetBGMId(bgmId);
+                if(bgmId >= 0)
+                {
+                    musicManager.SetBGMId(bgmId, false);
+                }
+                else
+                {
+                    musicManager.SetBGMId(Mathf.Abs(bgmId) - 1, true);
+                }
             }
 
             foreach (string actorState in current.actorStates)

@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] List<AudioSource> trackSources;
     [SerializeField][Range(0f, 1f)] float maxVolume;
     [SerializeField] List<float> interpDurationList = new();
+    [SerializeField] List<AudioSource> oneShotTracks = new();
 
     public static event Action<int> OnBgmIdLoaded;
 
@@ -62,8 +63,13 @@ public class MusicManager : MonoBehaviour
         return Mathf.Pow(10, (db / 20));
     }
 
-    public void SetBGMId(int id)
+    public void SetBGMId(int id, bool oneShot)
     {
+        if(oneShot)
+        {
+            PlayOneShotTrack(id);
+        }
+
         if(currentBgmId >= id)
         {
             return;
@@ -82,6 +88,13 @@ public class MusicManager : MonoBehaviour
 
         _ = LerpVolume(currentBgmId, id, interpDurationList[currentBgmId]);
         currentBgmId = id;
+    }
+
+    void PlayOneShotTrack(int id)
+    {
+        DisableAllTracks();
+        oneShotTracks[id].volume = maxVolume;
+        oneShotTracks[id].Play();
     }
 
     async Awaitable LerpVolume(int oldId, int newId, float duration)
@@ -108,6 +121,11 @@ public class MusicManager : MonoBehaviour
         {
             track.volume = 0;
         }
+
+        foreach(AudioSource track in oneShotTracks)
+        {
+            track.Stop();
+        }
     }
 
     float CosInterp(float t)
@@ -122,7 +140,7 @@ public class MusicManager : MonoBehaviour
 
     void Load(SaveState save)
     {
-        SetBGMId(save.bgmId);
+        SetBGMId(save.bgmId, false);
         OnBgmIdLoaded?.Invoke(save.bgmId);
     }
 }

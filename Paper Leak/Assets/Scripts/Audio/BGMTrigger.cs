@@ -42,7 +42,7 @@ public class BGMTrigger : MonoBehaviour
             return;
         }
 
-        musicManager.SetBGMId(bgmId);
+        musicManager.SetBGMId(bgmId, false);
         gameObject.SetActive(false);
     }
 
