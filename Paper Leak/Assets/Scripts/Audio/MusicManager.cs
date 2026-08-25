@@ -8,6 +8,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioMixer musicMixer;
 
     [SerializeField] List<AudioSource> trackSources;
+    [SerializeField] List<AudioLowPassFilter> trackFilters;
     [SerializeField][Range(0f, 1f)] float maxVolume;
     [SerializeField] List<float> interpDurationList = new();
     [SerializeField] List<AudioSource> oneShotTracks = new();
@@ -32,6 +33,12 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
+        for(int i = 0; i < trackSources.Count; i++)
+        {
+            trackFilters.Add(trackSources[i].GetComponent<AudioLowPassFilter>());
+            trackFilters[i].cutoffFrequency = 22000f;
+        }
+
         if(trackSources.Count != interpDurationList.Count)
         {
             Debug.LogError("Malformed lists in MusicManager");
@@ -90,7 +97,11 @@ public class MusicManager : MonoBehaviour
 
     void SetLowPassFilter(float hz)
     {
-        Debug.Log($"Set low pass filter to {hz}Hz");
+        Debug.Log("Set low pass filter frequency to " + hz);
+        foreach(AudioLowPassFilter filter in trackFilters)
+        {
+            filter.cutoffFrequency = hz;
+        }
     }
 
     void SetActiveTrack(int id)
