@@ -66,7 +66,7 @@ public class MainMenuManager : MonoBehaviour
             challenges[4].SetStatus(stats.timeToBeat <= 40 * 60);
             challenges[5].SetStatus(stats.timeToBeat <= 30 * 60);
             challenges[6].SetStatus(stats.timeToBeat <= 20 * 60);
-            challenges[7].SetStatus(stats.timeToBeat <= 13 * 60 + 28);
+            challenges[7].SetStatus(stats.timeToBeat < 10 * 60 + 37);
 
             minTimeText.text = $"minimum time taken: {stats.GetTimeString()}";
             minSaveCountText.text = $"minimum save count: {stats.saveCount}";

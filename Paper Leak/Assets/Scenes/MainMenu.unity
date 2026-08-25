@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper without changing the difficulty
+      value: steal the paper without changing the difficulty
       objectReference: {fileID: 0}
     - target: {fileID: 7172232476116415882, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_Name
@@ -516,7 +516,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper without getting caught
+      value: steal the paper without getting caught
       objectReference: {fileID: 0}
     - target: {fileID: 7172232476116415882, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_Name
@@ -1401,7 +1401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper without saving
+      value: steal the paper without saving
       objectReference: {fileID: 0}
     - target: {fileID: 7172232476116415882, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_Name
@@ -1518,7 +1518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper in 20 minutes or less
+      value: steal the paper in 20 minutes or less
       objectReference: {fileID: 0}
     - target: {fileID: 7172232476116415882, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_Name
@@ -1635,7 +1635,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper in 40 minutes or less
+      value: steal the paper in 40 minutes or less
       objectReference: {fileID: 0}
     - target: {fileID: 7172232476116415882, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_Name
@@ -2671,7 +2671,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper in 30 minutes or less
+      value: steal the paper in 30 minutes or less
       objectReference: {fileID: 0}
     - target: {fileID: 7172232476116415882, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_Name
@@ -2788,7 +2788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1998556091928095593, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_text
-      value: leak the paper in 13:28 minutes or less (developer's record)
+      value: steal the paper in 10:36 minutes or less (developer's record)
       objectReference: {fileID: 0}
     - target: {fileID: 3791744695626533688, guid: 818ba8bf5e45d574888bb16ee877604c, type: 3}
       propertyPath: m_IsActive
