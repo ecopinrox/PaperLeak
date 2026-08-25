@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEditorInternal;
 
 public class GameStats
 {
