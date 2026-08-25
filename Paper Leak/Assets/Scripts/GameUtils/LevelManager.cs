@@ -338,7 +338,6 @@ public class LevelManager : MonoBehaviour
                 continue;
             }
 
-            Debug.Log("Save");
             SaveSessionStats();
 
             if(Time.timeScale > Mathf.Epsilon)
@@ -361,7 +360,6 @@ public class LevelManager : MonoBehaviour
 
     void LoadSessionStats()
     {
-        Debug.Log("loaded");
         GameStats stats = StatsManager.ReadStats(sessionStatsFileName);
         if(stats != null)
         {
