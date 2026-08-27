@@ -28,7 +28,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame() => LevelManager.Instance.StartGame();
 
-    public void ClearSave() => LevelManager.Instance.DeleteSave();
+    public void NewGame()
+    {
+        LevelManager.Instance.DeleteSave();
+        LevelManager.Instance.StartGame();
+    }
 
     public void SetChallengesPanelStatus(bool active)
     {
