@@ -4,7 +4,8 @@ using UnityEngine;
 public class CreditsManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> panels;
-    [SerializeField] List<float> activationTimeList;
+    [SerializeField] int bpm = 130;
+    [SerializeField] List<float> activationBeatList;
 
     [SerializeField] float outerPhaseTime;
     [SerializeField] float outerHoldTime;
@@ -25,7 +26,7 @@ public class CreditsManager : MonoBehaviour
             p.SetActive(false);
         }
 
-        if(panels.Count != activationTimeList.Count)
+        if(panels.Count != activationBeatList.Count)
         {
             Debug.LogError("CreditsManager lists are malformed.");
         }
@@ -38,11 +39,13 @@ public class CreditsManager : MonoBehaviour
         Time.timeScale = 1.0f;
 
         float time = 0f;
-        for (int i = 0; i < activationTimeList.Count; )
+        for (int i = 0; i < activationBeatList.Count; )
         {
-            if(time >= activationTimeList[i])
+            float nextTransitionTime = activationBeatList[i] * (60f/bpm);
+            if(time >= nextTransitionTime)
             {
                 panels[i].SetActive(true);
+                time -= nextTransitionTime;
                 i++;
             }
 
