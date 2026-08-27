@@ -77,17 +77,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        //Load the masterSave
-        try
-        {
-            JsonSaver.Load(masterSave, saveFileName);
-        }
-        catch (FileNotFoundException)
-        {
-            //If no save file is found (new game), write a new save file with default data
-            JsonSaver.Save(masterSave, saveFileName);
-        }
-
         if(CurrentSceneIndex >= 0)
         {
             _ = DevInitLevel();
@@ -272,6 +261,11 @@ public class LevelManager : MonoBehaviour
         currentDifficultySetting = difficulty;
         Instance.RecordDifficultyChanged();
         LoadDifficultySettings();
+    }
+
+    public bool CheckForSave()
+    {
+        return JsonSaver.CheckForSave(saveFileName);
     }
 
     public void DeleteSave()

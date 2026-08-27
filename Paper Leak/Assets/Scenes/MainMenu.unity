@@ -2293,7 +2293,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.70224005, g: 0.722988, b: 0.79800004, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2307,7 +2307,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1449259570}
   m_OnClick:
     m_PersistentCalls:
@@ -2422,6 +2422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf93718ce244a94c9ad111ad6fa35aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
+  continueGameButton: {fileID: 1449259569}
   challengesButton: {fileID: 441587223}
   challengesPanel: {fileID: 2091002241}
   challenges:

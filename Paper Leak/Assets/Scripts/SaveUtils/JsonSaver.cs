@@ -45,6 +45,11 @@ public class JsonSaver
         }
     }
 
+    public static bool CheckForSave(string filename)
+    {
+        return File.Exists(BuildPath(filename));
+    }
+
     public static void DeleteSaveFile(string filename)
     {
         try

@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] Button continueGameButton;
     [SerializeField] GameObject challengesButton;
     [SerializeField] GameObject challengesPanel;
     [SerializeField] List<ChallengeUI> challenges;
@@ -13,6 +15,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        continueGameButton.interactable = LevelManager.Instance.CheckForSave();
+
         GameStats stats = LevelManager.Instance.GetOverallStats();
         if(stats == null)
         {
