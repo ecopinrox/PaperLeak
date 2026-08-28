@@ -357,8 +357,8 @@ public class LevelManager : MonoBehaviour
         GameStats stats = StatsManager.ReadStats(sessionStatsFileName);
         if(stats != null)
         {
-            elapsedTime = stats.timeToBeat;
-            SetSaveCount(stats.saveCount);
+            elapsedTime = Mathf.Max(0, stats.timeToBeat);
+            SetSaveCount(Mathf.Max(0, stats.saveCount));
             hasGottenCaught = !stats.clearedWithoutGettingCaught;
             hasChangedDifficulty = !stats.clearedWithoutChangingDifficulty;
         }
