@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.aginerian.input": "https://github.com/TRS6123/AginerianInput.git#master",
-    "com.unity.behavior": "1.0.12",
+    "com.inkle.ink-unity-integration": "https://github.com/inkle/ink-unity-integration.git#upm",
     "com.unity.cinemachine": "2.10.5",
     "com.unity.collab-proxy": "2.10.2",
     "com.unity.feature.2d": "2.0.2",
@@ -46,7 +46,6 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.inkle.ink-unity-integration": "https://github.com/inkle/ink-unity-integration.git#upm"
+    "com.unity.modules.xr": "1.0.0"
   }
 }
